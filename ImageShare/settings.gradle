@@ -1,0 +1,2 @@
+rootProject.name = "ImageShare"
+include ':app'

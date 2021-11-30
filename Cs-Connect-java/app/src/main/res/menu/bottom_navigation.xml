@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/navigation_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:title="Home"/>
+
+    <item
+        android:id="@+id/navigation_projects"
+        android:enabled="true"
+        android:icon="@drawable/ic_projects"
+        android:title="Projects"/>
+
+    <item
+        android:id="@+id/navigation_assigned_leads"
+        android:enabled="true"
+        android:icon="@drawable/ic_submitted_leads"
+        android:title="Leads"/>
+
+  <item
+        android:id="@+id/navigation_comission"
+      android:enabled="true"
+        android:icon="@drawable/ic_comission"
+        android:title="Commision"/>
+
+</menu>

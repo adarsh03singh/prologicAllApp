@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_settings"
+        android:title="Total Commission"
+        android:icon="@drawable/total_commission_icon"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/navigation_home"
+        android:enabled="true"
+        android:icon="@drawable/commission_payable_icon"
+        android:title="Commission Payable"/>
+
+    <item
+        android:id="@+id/navigation_projects"
+        android:enabled="true"
+        android:icon="@drawable/commission_paid_icon"
+        android:title="Commission Paid"/>
+
+    <item
+        android:id="@+id/navigation_assigned_leads"
+        android:enabled="true"
+        android:icon="@drawable/balance_commission_icon"
+        android:title="Balance Commission"/>
+</menu>
+<!--
+<android.support.v7.widget.CardView
+android:layout_width="361dp"
+android:layout_height="163dp"
+android:layout_marginStart="12dp"
+android:layout_marginTop="10dp"
+android:layout_marginEnd="12dp"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="15sp"
+            android:layout_weight="1"
+            android:paddingTop="10sp"
+            android:paddingEnd="15sp"
+            android:text="Total Commission"
+            android:drawableLeft="@drawable/total_commission_icon"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_weight="1"
+            android:paddingStart="15sp"
+            android:paddingTop="10sp"
+            android:paddingEnd="15sp"
+            android:text="0"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/commission_payable_icon"
+            android:layout_weight="1"
+            android:paddingStart="15sp"
+            android:paddingTop="13sp"
+            android:paddingEnd="15sp"
+            android:text="Commission Payable"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_weight="1"
+            android:paddingStart="15sp"
+            android:paddingTop="10sp"
+            android:paddingEnd="15sp"
+            android:text="0"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/commission_paid_icon"
+            android:layout_weight="1"
+            android:paddingStart="15sp"
+            android:paddingTop="13sp"
+            android:paddingEnd="15sp"
+            android:text="Commission Paid"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_weight="1"
+            android:paddingStart="15sp"
+            android:paddingTop="10sp"
+            android:paddingEnd="15sp"
+            android:text="0"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/balance_commission_icon"
+            android:layout_weight="1"
+            android:paddingStart="15sp"
+            android:paddingTop="13sp"
+            android:paddingEnd="15sp"
+            android:paddingBottom="15sp"
+            android:text="Balance Commission"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_weight="1"
+            android:paddingStart="15sp"
+            android:paddingTop="10sp"
+            android:paddingEnd="15sp"
+            android:text="0"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp" />
+    </LinearLayout>
+</LinearLayout>
+
+
+</android.support.v7.widget.CardView>-->

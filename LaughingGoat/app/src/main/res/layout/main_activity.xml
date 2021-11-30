@@ -1,0 +1,387 @@
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.prologic.laughinggoat.viewmodel.MainActivityViewModel" />
+    </data>
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/headerLay"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/header_height"
+                android:background="@color/colorPrimary"
+                android:orientation="vertical"
+                android:visibility="@{viewModel.header_lay}">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/menu_button"
+                        android:layout_width="45sp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/custom_trans_button"
+                        android:paddingStart="5sp"
+                        android:paddingEnd="7sp"
+                        android:src="@drawable/ic_menu_24"
+                        android:visibility="@{viewModel.menu_visibility}" />
+
+                    <ImageView
+                        android:id="@+id/back_button"
+                        android:layout_width="45sp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/custom_trans_button"
+                        android:paddingStart="7sp"
+                        android:paddingEnd="7sp"
+                        android:src="@drawable/ic_arrow_back"
+                        android:visibility="@{viewModel.back_visibility}" />
+
+                    <TextView
+                        android:id="@+id/title_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/bold"
+                        android:gravity="center|start"
+                        android:hint="@string/app_name"
+                        android:paddingStart="5sp"
+                        android:singleLine="true"
+                        android:text="@{viewModel.title_text}"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textSize="@dimen/header_text_size"
+                        android:visibility="@{viewModel.title_text_visibility}" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/searchClick"
+                            android:layout_width="40sp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/custom_trans_button"
+                            android:padding="2sp"
+                            android:src="@drawable/ic_search_"
+                            android:visibility="@{viewModel.search_visibility}"
+                            android:tint="@color/white"
+                            tools:ignore="UseAppTint" />
+
+                        <FrameLayout
+                            android:id="@+id/cartClick"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/custom_trans_button"
+                            android:visibility="@{viewModel.my_cart_visibility}">
+
+                            <ImageView
+                                android:layout_width="45sp"
+                                android:layout_height="match_parent"
+                                android:padding="5sp"
+                                android:src="@drawable/ic_shopping_cart" />
+
+                            <TextView
+                                android:id="@+id/cart_item_count"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="10sp"
+                                android:layout_marginBottom="10sp"
+                                android:background="@drawable/circle_yellow_button"
+                                android:fontFamily="@font/medium"
+                                android:gravity="center"
+                                android:hint="0"
+                                android:includeFontPadding="false"
+                                android:minWidth="15sp"
+                                android:minHeight="15sp"
+                                android:paddingLeft="3sp"
+                                android:paddingTop="1sp"
+                                android:paddingRight="3sp"
+                                android:paddingBottom="1sp"
+                                android:text="@{viewModel.cart_item_count.toString()}"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/gray"
+                                android:textSize="10sp" />
+
+
+                        </FrameLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.appbar.AppBarLayout>
+
+
+
+            <FrameLayout
+                android:id="@+id/main_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!--
+         android:layout_gravity="start"
+        -->
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/loginClick"
+                    android:layout_width="150sp"
+                    android:layout_height="45sp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="25sp"
+                    android:background="@drawable/circle_border_red_button"
+                    android:fontFamily="@font/medium"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="Login"
+                    android:textColor="@color/red"
+                    android:textSize="20sp"
+                    android:visibility="@{viewModel.login_button_visibility}" />
+
+                <com.google.android.material.appbar.AppBarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:gravity="center|start"
+                    android:paddingLeft="20sp"
+                    android:paddingTop="15sp"
+                    android:paddingBottom="15sp"
+                    android:visibility="@{viewModel.user_lay_visibility}">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:layout_width="150sp"
+                        android:layout_height="150sp"
+                        android:src="@drawable/logo_circle"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3sp"
+                        android:fontFamily="@font/bold"
+                        android:hint="User Name"
+                        android:text="@{viewModel.user_name}"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textSize="@dimen/header_text_size" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/medium"
+                        android:hint="User Email"
+                        android:text="@{viewModel.user_email}"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textSize="13sp" />
+                </com.google.android.material.appbar.AppBarLayout>
+
+                <LinearLayout
+                    android:id="@+id/profileClick"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10sp"
+                    android:background="@drawable/custom_trans_button"
+                    android:gravity="center"
+                    android:padding="15sp">
+
+                    <ImageView
+                        android:layout_width="20sp"
+                        android:layout_height="20sp"
+                        android:layout_marginLeft="5sp"
+                        android:src="@drawable/profile"
+                        app:tint="@color/graydark" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15sp"
+                        android:fontFamily="@font/medium"
+                        android:text="My Profile"
+                        android:textColor="@color/graydark"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ordersClick"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_trans_button"
+                    android:gravity="center"
+                    android:padding="15sp">
+
+                    <ImageView
+                        android:layout_width="20sp"
+                        android:layout_height="20sp"
+                        android:layout_marginLeft="5sp"
+                        android:src="@drawable/order"
+                        app:tint="@color/graydark" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15sp"
+                        android:fontFamily="@font/medium"
+                        android:text="My Orders"
+                        android:textColor="@color/graydark"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rateUsClick"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_trans_button"
+                    android:gravity="center"
+                    android:padding="15sp">
+
+                    <ImageView
+                        android:layout_width="20sp"
+                        android:layout_height="20sp"
+                        android:layout_marginLeft="5sp"
+                        android:src="@drawable/rate_us"
+                        app:tint="@color/gray" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15sp"
+                        android:fontFamily="@font/medium"
+                        android:text="Rate Us"
+                        android:textColor="@color/graydark"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50sp"
+                    android:layout_marginTop="12sp"
+                    android:layout_marginBottom="10sp"
+                    android:background="@color/background2_color"
+                    android:fontFamily="@font/bold"
+                    android:gravity="center|start"
+                    android:paddingLeft="15sp"
+                    android:text="Other"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/header_text_size" />
+
+                <LinearLayout
+                    android:id="@+id/contactClick"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_trans_button"
+                    android:gravity="center"
+                    android:padding="15sp">
+
+                    <ImageView
+                        android:layout_width="20sp"
+                        android:layout_height="20sp"
+                        android:layout_marginLeft="5sp"
+                        android:src="@drawable/contact_us"
+                        app:tint="@color/graydark" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15sp"
+                        android:fontFamily="@font/medium"
+                        android:text="Contact Us"
+                        android:textColor="@color/graydark"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/aboutUsClick"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_trans_button"
+                    android:gravity="center"
+                    android:padding="15sp">
+
+                    <ImageView
+                        android:layout_width="20sp"
+                        android:layout_height="20sp"
+                        android:layout_marginLeft="5sp"
+                        android:src="@drawable/about_us"
+                        app:tint="@color/graydark" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15sp"
+                        android:fontFamily="@font/medium"
+                        android:text="About Us"
+                        android:textColor="@color/graydark"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/logoutClick"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_trans_button"
+                    android:gravity="center"
+                    android:padding="15sp">
+
+                    <ImageView
+                        android:layout_width="20sp"
+                        android:layout_height="20sp"
+                        android:layout_marginLeft="5sp"
+                        android:src="@drawable/logout"
+                        app:tint="@color/graydark" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15sp"
+                        android:fontFamily="@font/medium"
+                        android:text="Logout"
+                        android:textColor="@color/graydark"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+</layout>

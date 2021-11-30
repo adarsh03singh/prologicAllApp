@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_ac_verification"
+            android:title="A/C Details"
+            android:icon="@drawable/ic_bank_account"/>
+
+        <item
+            android:id="@+id/nav_verification"
+            android:title="Verification"
+            android:icon="@drawable/ic_verification"/>
+
+    </group>
+
+    <item android:title="Leads">
+        <menu>
+            <item
+                android:id="@+id/nav_assigned_leads"
+                android:title="CS Assigned Leads"
+                android:icon="@drawable/ic_cs_assigned_leads"/>
+
+            <item
+                android:id="@+id/nav_submit_your_leads"
+                android:title="My Referral Leads"
+                android:icon="@drawable/ic_submitted_leads"/>
+
+            <item
+                android:id="@+id/nav_create_lead"
+                android:title="Create Lead"
+                android:icon="@drawable/ic_create_lead"/>
+
+        </menu>
+    </item>
+
+    <item android:title="Support">
+        <menu>
+            <item
+                android:id="@+id/nav_faqs"
+                android:title="FAQS"
+                android:icon="@drawable/ic_faqs"/>
+            <item
+                android:id="@+id/nav_support"
+                android:title="Support"
+                android:icon="@drawable/ic_support"/>
+        </menu>
+    </item>
+
+    <item android:title="Information">
+        <menu>
+            <item
+                android:id="@+id/nav_about_us"
+                android:title="About Us"
+                android:icon="@drawable/ic_info_outline_black_24dp"/>
+            <item
+                android:id="@+id/nav_Terms_conditions"
+                android:title="Terms &amp; Conditions"
+                android:icon="@drawable/ic_terms_and_conditions"/>
+
+            <item
+                android:id="@+id/privacy_policy"
+                android:title="Privacy Policy"
+                android:icon="@drawable/log_out_icon_24dp"/>
+
+            <item
+                android:id="@+id/log_out"
+                android:title="Log Out"
+                android:icon="@drawable/privacy_policy"/>
+
+        </menu>
+    </item>
+
+</menu>

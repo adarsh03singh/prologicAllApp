@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="fingerprint">
+        <item>Next</item>
+        <item>Precision</item>
+        <item>Tatvik</item>
+        <item>Mantra</item>
+        <item>Morpho</item>
+        <item>Startek</item>
+        <item>Secugen</item>
+    </array>
+</resources>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="1dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="12sp"
+            android:text="Lead Filter"
+            android:textColor="@color/colorButton"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12sp"
+                android:buttonTint="@color/colorButton"
+                android:paddingStart="10sp"
+                android:text="Created Date" />
+
+            <EditText
+                android:id="@+id/bottsheet_created_date1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5sp"
+                android:focusable="false"
+                android:inputType="datetime"
+                android:backgroundTint="@color/colorButton"
+                android:layout_marginLeft="12sp"
+                android:paddingStart="10sp"
+                android:hint="yyyy/mm/dd" />
+
+            <EditText
+                android:id="@+id/bottsheet_created_date2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:inputType="datetime"
+                android:layout_marginTop="5sp"
+                android:backgroundTint="@color/colorButton"
+                android:layout_marginLeft="12sp"
+                android:paddingStart="10sp"
+                android:hint="yyyy/mm/dd" />
+
+    </LinearLayout>
+
+      <!--  <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
+            android:orientation="vertical">
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12sp"
+                android:buttonTint="@color/colorButton"
+                android:paddingStart="10sp"
+                android:text="Updated Date" />
+
+            <EditText
+                android:id="@+id/lead_updated_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorButton"
+                android:layout_marginLeft="12sp"
+                android:paddingStart="10sp"
+                android:hint="dd/mm/yyyy" />
+
+        </LinearLayout>
+-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:layout_marginBottom="20sp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/bottomsheet_cancel_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12sp"
+                android:layout_weight="0.5"
+                android:background="@color/colorButton"
+                android:text="Cancel" />
+
+            <Button
+                android:id="@+id/bottomsheet_apply_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="12sp"
+                android:layout_weight="0.5"
+                android:background="@color/colorButton"
+                android:text="Apply" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

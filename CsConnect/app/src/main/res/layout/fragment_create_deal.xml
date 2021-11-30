@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.csestateconnect.viewmodel.DealsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F4F3F3"
+        tools:context=".ui.home.deal_Frags.CreateDealFragment">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollViewCreateDeal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#F4F3F3"
+            tools:layout_editor_absoluteX="-581dp"
+            tools:layout_editor_absoluteY="-62dp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#F4F3F3"
+                android:orientation="vertical"
+                tools:ignore="ExtraText">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="55sp"
+                    android:layout_marginLeft="@dimen/sp_12"
+                    android:layout_marginTop="16sp"
+                    android:layout_marginRight="@dimen/sp_12"
+
+                    app:cardBackgroundColor="@color/colorWhite">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:paddingLeft="16sp"
+                        android:paddingRight="16sp">
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.5"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="*Deal Status"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15sp" />
+
+
+                        <androidx.appcompat.widget.AppCompatImageButton
+                            android:id="@+id/deal_status_drop_close"
+                            android:layout_width="50dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:src="@drawable/ic_drop_close"
+                            android:visibility="visible" />
+
+                        <androidx.appcompat.widget.AppCompatImageButton
+                            android:id="@+id/deal_status_drop_down"
+                            android:layout_width="50dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:visibility="gone"
+                            android:src="@drawable/ic_dropdown" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/sp_12"
+                    android:layout_marginTop="3sp"
+                    android:layout_marginRight="@dimen/sp_12"
+                    app:cardBackgroundColor="@color/colorWhite"
+                    tools:layout_editor_absoluteX="12dp">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/deal_status_recycler_view_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15sp"
+                        android:orientation="vertical"
+                        android:paddingLeft="16sp"
+                        android:paddingRight="16sp"
+                        android:visibility="visible">
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/createdeal_status_recycler_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:paddingBottom="10sp" />
+                        <!--                            tools:listitem="@layout/create_deal_deal_status_recyclerview_item" />-->
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- @break@ -->
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/createDealSelectProject"
+                    android:layout_width="match_parent"
+                    android:layout_height="55sp"
+                    android:layout_marginLeft="@dimen/sp_12"
+                    android:layout_marginTop="18sp"
+                    android:layout_marginRight="@dimen/sp_12"
+                    android:onClick="@{viewmodel::createDealSelectProject}"
+                    app:cardBackgroundColor="@color/colorWhite">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:paddingStart="16sp"
+                        android:paddingEnd="16sp">
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/createDealProjectName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.5"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="@={viewmodel.createDealProject}"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15sp"
+                            app:fontFamily="@font/roboto_bold" />
+
+
+                        <androidx.appcompat.widget.AppCompatImageButton
+                            android:id="@+id/project_name_drop_close"
+                            android:layout_width="50dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.5"
+                            android:background="@null"
+                            android:rotation="90"
+                            android:src="@drawable/ic_drop_close"
+                            android:visibility="visible" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+
+                <!-- @break1@ -->
+
+
+                <!-- @break2@ -->
+
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:id="@+id/cardView4"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="@dimen/sp_12"-->
+<!--                    android:layout_marginTop="3sp"-->
+<!--                    android:layout_marginRight="@dimen/sp_12"-->
+<!--                    app:cardBackgroundColor="@color/colorWhite"-->
+<!--                    tools:layout_editor_absoluteX="12dp">-->
+
+<!--                    <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--                        android:id="@+id/project_name_recycler_view_layout"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="10sp"-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:paddingLeft="16sp"-->
+<!--                        android:paddingRight="16sp"-->
+<!--                        android:visibility="visible">-->
+
+<!--                        <androidx.appcompat.widget.SearchView-->
+<!--                            android:id="@+id/create_deal_project_name_search_view"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="46sp"-->
+<!--                            android:layout_marginStart="-23sp"-->
+<!--                            android:textColorHint="@color/colorPrimaryDark"-->
+<!--                            app:iconifiedByDefault="false"-->
+<!--                            app:searchIcon="@drawable/ic_search" />-->
+<!--                        &lt;!&ndash;                            android:theme="@style/HintStyle"&ndash;&gt;-->
+
+
+<!--                        <View-->
+<!--                            android:id="@+id/_view"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="0.2sp"-->
+<!--                            android:background="@color/colorPrimaryDark" />-->
+
+
+<!--                        <androidx.recyclerview.widget.RecyclerView-->
+<!--                            android:id="@+id/project_name_recycler_view"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="12sp"-->
+<!--                            android:paddingBottom="10sp" />-->
+<!--                        &lt;!&ndash;                            tools:listitem="@layout/create_deal_project_name_recyclerview_item" />&ndash;&gt;-->
+
+
+
+<!--                    </androidx.appcompat.widget.LinearLayoutCompat>-->
+
+
+<!--                </androidx.cardview.widget.CardView>-->
+
+                <!-- @break2@ -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15sp"
+                    android:layout_marginTop="25sp"
+                    android:layout_marginRight="15sp"
+                    android:text="Commission"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewFields"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/sp_12"
+                    android:layout_marginTop="18sp"
+                    android:layout_marginBottom="90dp"
+                    android:layout_marginRight="@dimen/sp_12"
+                    android:visibility="visible"
+                    app:cardBackgroundColor="@color/colorWhite">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingStart="15sp"
+                        android:paddingEnd="15sp">
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12sp"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:hint="*Total Commission"
+                                android:textColorHint="@color/colorPrimary"
+                                app:boxBackgroundColor="@null"
+                                app:hintTextAppearance="@style/HintText">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/total_comm_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="textCapWords"
+                                    android:text="@={viewmodel.createDealTotalCommission}"
+                                    android:textAppearance="@style/TextSize"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="16sp"
+                                    android:textStyle="normal" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <Space android:layout_width="30dp"
+                                android:layout_height="wrap_content"/>
+
+                            <androidx.appcompat.widget.AppCompatSpinner
+                                android:id="@+id/total_spinner"
+                                android:layout_width="90dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="end"
+                                android:backgroundTint="@color/colorgray" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12sp"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:hint="*Payable Commission"
+                                android:textColorHint="@color/colorPrimary"
+                                app:boxBackgroundColor="@null"
+                                app:hintTextAppearance="@style/HintText">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/pay_comm_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="textCapWords"
+                                    android:text="@={viewmodel.createDealPayableCommission}"
+                                    android:textAppearance="@style/TextSize"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="16sp"
+                                    android:textStyle="normal" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <Space android:layout_width="30dp"
+                                android:layout_height="wrap_content"/>
+
+                            <androidx.appcompat.widget.AppCompatSpinner
+                                android:id="@+id/payable_spinner"
+                                android:layout_width="90dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="end"
+                                android:backgroundTint="@color/colorgray" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12sp"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:hint="*Commission Amount Paid"
+                                android:textColorHint="@color/colorPrimary"
+                                app:boxBackgroundColor="@null"
+                                app:hintTextAppearance="@style/HintText">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/paid_comm_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="textCapWords"
+                                    android:text="@={viewmodel.createDealPaidCommission}"
+                                    android:textAppearance="@style/TextSize"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="16sp"
+                                    android:textStyle="normal" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <Space android:layout_width="30dp"
+                                android:layout_height="wrap_content"/>
+
+                            <androidx.appcompat.widget.AppCompatSpinner
+                                android:id="@+id/paid_spinner"
+                                android:layout_width="90dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="end"
+                                android:backgroundTint="@color/colorgray" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12sp"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:hint="*Commission Amount Unpaid"
+                                android:textColorHint="@color/colorPrimary"
+                                app:boxBackgroundColor="@null"
+                                app:hintTextAppearance="@style/HintText">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/unpaid_comm_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="textCapWords"
+                                    android:text="@={viewmodel.createDealUnpaidCommission}"
+                                    android:textAppearance="@style/TextSize"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="16sp"
+                                    android:textStyle="normal" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <Space android:layout_width="30dp"
+                                android:layout_height="wrap_content"/>
+
+                            <androidx.appcompat.widget.AppCompatSpinner
+                                android:id="@+id/unpaid_spinner"
+                                android:layout_width="90dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="end"
+                                android:backgroundTint="@color/colorgray" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12sp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:hint="*Sold Area"
+                        android:textColorHint="@color/colorPrimary"
+                        app:boxBackgroundColor="@null"
+                        app:hintTextAppearance="@style/HintText">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/sold_area_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:text="@={viewmodel.createDealSoldArea}"
+                            android:textAppearance="@style/TextSize"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp"
+                            android:textStyle="normal" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12sp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:hint="*Commission Rate"
+                            android:textColorHint="@color/colorPrimary"
+                            app:boxBackgroundColor="@null"
+                            app:hintTextAppearance="@style/HintText">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/comm_rate_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="numberDecimal"
+                                android:text="@={viewmodel.createDealCommissionRate}"
+                                android:textAppearance="@style/TextSize"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="16sp"
+                                android:textStyle="normal" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12sp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:hint="*Commission Percentage"
+                            android:paddingBottom="12sp"
+                            android:textColorHint="@color/colorPrimary"
+                            app:boxBackgroundColor="@null"
+                            app:hintTextAppearance="@style/HintText">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/comm_percent_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="numberDecimal"
+                                android:text="@={viewmodel.createDealCommissionPercent}"
+                                android:textAppearance="@style/TextSize"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="16sp"
+                                android:textStyle="normal" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.cardview.widget.CardView>
+
+
+<!--                KYC AND BANK ACCOUNT DETAILS UPDATED UI     -->
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:id="@+id/updateKycDetails"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="55sp"-->
+<!--                android:layout_marginLeft="@dimen/sp_12"-->
+<!--                android:layout_marginTop="18sp"-->
+<!--                app:cardCornerRadius="8dp"-->
+<!--                android:layout_marginRight="@dimen/sp_12"-->
+<!--                app:cardBackgroundColor="@color/colorWhite">-->
+
+<!--            <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--                android:id="@+id/dealKycLayout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:layout_margin="8dp"-->
+<!--                android:paddingStart="16sp"-->
+<!--                android:background="@drawable/round_corner"-->
+<!--                android:backgroundTint="@color/Orange"-->
+<!--                android:paddingEnd="16sp">-->
+
+<!--                <androidx.appcompat.widget.AppCompatTextView-->
+<!--                    android:id="@+id/dealKycText"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:layout_weight="0.5"-->
+<!--                    android:text="KYC needs to be updated"-->
+<!--                    android:textStyle="bold"-->
+<!--                    app:textAllCaps="true"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="16sp" />-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/dealKycImage"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_margin="4dp"-->
+<!--                    android:text="Update"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:src="@drawable/ic_file_upload_24dp"/>-->
+
+<!--            </androidx.appcompat.widget.LinearLayoutCompat>-->
+
+<!--            </androidx.cardview.widget.CardView>-->
+
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:id="@+id/updateBankAccountDetails"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="55sp"-->
+<!--                    android:layout_marginLeft="@dimen/sp_12"-->
+<!--                    android:layout_marginTop="18sp"-->
+<!--                    android:layout_marginBottom="90dp"-->
+<!--                    android:layout_marginRight="@dimen/sp_12"-->
+<!--                    app:cardBackgroundColor="@color/colorWhite">-->
+
+<!--                    <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--                        android:id="@+id/dealBankLayout"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:layout_margin="8dp"-->
+<!--                        android:paddingStart="16sp"-->
+<!--                        android:background="@drawable/round_corner"-->
+<!--                        android:backgroundTint="@color/Orange"-->
+<!--                        android:paddingEnd="16sp">-->
+
+<!--                        <androidx.appcompat.widget.AppCompatTextView-->
+<!--                            android:id="@+id/dealBankText"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_gravity="center_vertical"-->
+<!--                            android:layout_weight="0.5"-->
+<!--                            android:text="Bank Account needs to be updated"-->
+<!--                            android:maxLines="1"-->
+<!--                            android:textStyle="bold"-->
+<!--                            app:textAllCaps="true"-->
+<!--                            android:textColor="@color/white"-->
+<!--                            android:textSize="14sp" />-->
+
+<!--                        <ImageView-->
+<!--                            android:id="@+id/dealBankImage"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:layout_margin="4dp"-->
+<!--                            android:text="Update"-->
+<!--                            android:textColor="@color/white"-->
+<!--                            android:src="@drawable/ic_file_upload_24dp"/>-->
+
+<!--                    </androidx.appcompat.widget.LinearLayoutCompat>-->
+
+<!--                </androidx.cardview.widget.CardView>-->
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.core.widget.NestedScrollView>
+
+
+        <View
+            android:id="@+id/line_bottom_bar_create_deal"
+            android:layout_width="match_parent"
+            android:layout_height="0.5sp"
+            android:background="@color/colorSmoke"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_create_deal" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/bottom_navigation_create_deal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            app:layout_constraintBottom_toBottomOf="@+id/nestedScrollViewCreateDeal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/create_button_create_deal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:background="@color/buttonColor"
+                android:onClick="@{viewmodel::createDealButton}"
+                android:fontFamily="@font/roboto_bold"
+                android:text="CREATE DEAL"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,93 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/click"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/white_button"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:paddingTop="5sp"
+    android:paddingBottom="5sp">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="55sp"
+        android:layout_height="45sp"
+        android:background="@color/background2_color"
+        android:src="@drawable/loader" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10sp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/normal"
+            android:hint="Product Name"
+            android:text="Product Name"
+            android:textColor="@color/graydark"
+            android:textSize="14sp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3sp">
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/medium"
+                android:hint="$000.00"
+                android:includeFontPadding="false"
+
+                android:textColor="@color/graydark"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/medium"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:text="X"
+                android:textColor="@color/graydark"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/quantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/medium"
+                android:gravity="center"
+                android:hint="0"
+                android:includeFontPadding="false"
+
+                android:textColor="@color/graydark"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/item_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/medium"
+                android:gravity="center|end"
+                android:hint="$000.00"
+                android:includeFontPadding="false"
+                android:minWidth="150sp"
+                android:textColor="@color/green"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+

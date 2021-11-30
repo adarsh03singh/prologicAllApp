@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/logo_layout"
+        android:layout_width="match_parent"
+        android:layout_height="370dp"
+        android:background="@drawable/mobile_no_xhdpi"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_margin="20dp"
+        android:hint="Enter mobile number"
+        android:paddingEnd="20sp"
+        android:paddingStart="20sp"
+        android:paddingTop="15sp"
+        android:paddingBottom="15sp"
+        android:inputType="number"
+        android:maxLines="1"
+        android:maxLength="10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/round_background"
+        android:backgroundTint="@null"
+        app:layout_constraintTop_toBottomOf="@+id/logo_layout"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonGetOtp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_margin="20dp"
+        android:text="Get otp"
+        android:textAllCaps="true"
+        android:textSize="15sp"
+        android:paddingEnd="20sp"
+        android:paddingStart="20sp"
+        android:paddingTop="15sp"
+        android:paddingBottom="15sp"
+        android:background="@drawable/round_background"
+        android:backgroundTint="#f2cf41"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etName"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20sp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:src="@drawable/indicator_unselected" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="5sp"
+            android:src="@drawable/indicator_selected" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="5sp"
+            android:src="@drawable/indicator_unselected" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

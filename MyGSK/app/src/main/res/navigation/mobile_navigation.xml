@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="org.gstsuvidhakendra.mygsk.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_service"
+        android:name="org.gstsuvidhakendra.mygsk.ui.gallery.GalleryFragment"
+        android:label="@string/menu_service"
+        tools:layout="@layout/fragment_service" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="org.gstsuvidhakendra.mygsk.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_tools"
+        android:name="org.gstsuvidhakendra.mygsk.ui.tools.ToolsFragment"
+        android:label="@string/menu_tools"
+        tools:layout="@layout/fragment_tools" />
+
+    <fragment
+        android:id="@+id/nav_share"
+        android:name="org.gstsuvidhakendra.mygsk.ui.share.ShareFragment"
+        android:label="@string/menu_share"
+        tools:layout="@layout/fragment_share" />
+
+    <fragment
+        android:id="@+id/nav_send"
+        android:name="org.gstsuvidhakendra.mygsk.ui.send.SendFragment"
+        android:label="@string/menu_send"
+        tools:layout="@layout/fragment_send" />
+    <fragment
+        android:id="@+id/nav_gst"
+        android:name="org.gstsuvidhakendra.mygsk.ui.GstFragment"
+        android:label="GST"
+        tools:layout="@layout/gst_fragment" />
+    <fragment
+        android:id="@+id/nav_tax"
+        android:name="org.gstsuvidhakendra.mygsk.ui.TaxFragment"
+        android:label="Tax"
+        tools:layout="@layout/tax_fragment" />
+    <fragment
+        android:id="@+id/nav_accouting"
+        android:name="org.gstsuvidhakendra.mygsk.ui.AccoutingFragment"
+        android:label="Accouting"
+        tools:layout="@layout/accouting_fragment" />
+    <fragment
+        android:id="@+id/nav_itr"
+        android:name="org.gstsuvidhakendra.mygsk.ui.ItrFragment"
+        android:label="ITR"
+        tools:layout="@layout/itr_fragment" />
+    <fragment
+        android:id="@+id/nav_dsc"
+        android:name="org.gstsuvidhakendra.mygsk.ui.DscFragment"
+        android:label="DSC"
+        tools:layout="@layout/dsc_fragment" />
+    <fragment
+        android:id="@+id/nav_msme"
+        android:name="org.gstsuvidhakendra.mygsk.ui.MsmeFragment"
+        android:label="MSME"
+        tools:layout="@layout/msme_fragment" />
+    <fragment
+        android:id="@+id/nav_company_registration"
+        android:name="org.gstsuvidhakendra.mygsk.ui.CompanyRegistrationFragment"
+        android:label="Company Registration"
+        tools:layout="@layout/company_registration_fragment" />
+    <fragment
+        android:id="@+id/nav_money_transfer"
+        android:name="org.gstsuvidhakendra.mygsk.ui.MoneyTransferFragment"
+        android:label="Money Transfer"
+        tools:layout="@layout/money_transfer_fragment" />
+    <fragment
+        android:id="@+id/nav_travel"
+        android:name="org.gstsuvidhakendra.mygsk.ui.TravelFragment"
+        android:label="Travel"
+        tools:layout="@layout/travel_fragment" />
+    <fragment
+        android:id="@+id/nav_pan"
+        android:name="org.gstsuvidhakendra.mygsk.ui.PanFragment"
+        android:label="Pan"
+        tools:layout="@layout/pan_fragment" />
+    <fragment
+        android:id="@+id/nav_loan"
+        android:name="org.gstsuvidhakendra.mygsk.ui.LoanFragment"
+        android:label="Loan"
+        tools:layout="@layout/loan_fragment" />
+    <fragment
+        android:id="@+id/nav_insurance"
+        android:name="org.gstsuvidhakendra.mygsk.ui.InsuranceFragment"
+        android:label="Insurance"
+        tools:layout="@layout/insurance_fragment" />
+    <fragment
+        android:id="@+id/nav_recharge"
+        android:name="org.gstsuvidhakendra.mygsk.ui.RechargeFragment"
+        android:label="Recharge"
+        tools:layout="@layout/recharge_fragment" />
+    <fragment
+        android:id="@+id/nav_bill_payment"
+        android:name="org.gstsuvidhakendra.mygsk.ui.BillPaymentFragment"
+        android:label="Bill Payment"
+        tools:layout="@layout/bill_payment_fragment" />
+    <fragment
+        android:id="@+id/nav_other"
+        android:name="org.gstsuvidhakendra.mygsk.ui.OtherFragment"
+        android:label="Other"
+        tools:layout="@layout/other_fragment" />
+
+</navigation>

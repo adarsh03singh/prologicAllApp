@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/project_image_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="190dp"
+                    android:foreground="@drawable/gradient_image_background"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/camera_image"
+                    android:layout_width="80sp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="top|left"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_hc_tag" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|left"
+                    android:layout_marginLeft="25sp"
+                    android:layout_marginTop="5sp"
+                    android:gravity="center_horizontal"
+                    android:text="HC"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|left"
+                    android:layout_marginLeft="15sp"
+                    android:layout_marginTop="15sp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="CarerSocially"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="8sp" />
+
+                <TextView
+                    android:id="@+id/banner_projectName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|left"
+                    android:layout_marginBottom="30sp"
+                    android:paddingLeft="20sp"
+                    android:text="Mahagun Marvella"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/banner_projectPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|left"
+                    android:layout_marginBottom="15sp"
+                    android:paddingLeft="20sp"
+                    android:text="12 Lac- 19 Lac"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

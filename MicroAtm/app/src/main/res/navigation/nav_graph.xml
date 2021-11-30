@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/walkthroughNameFragment"
+        android:name="com.prologicwebsolution.microatm.ui.WalkthroughNameFragment"
+        android:label="WalkthroughNameFragment" >
+        <action
+            android:id="@+id/action_walkthroughNameFragment_to_walkthroughNumberFragment"
+            app:destination="@id/walkthroughNumberFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/walkthroughNumberFragment"
+        android:name="com.prologicwebsolution.microatm.ui.WalkthroughNumberFragment"
+        android:label="WalkthroughNumberFragment" >
+        <action
+            android:id="@+id/action_walkthroughNumberFragment_to_walkthroughOtpFragment"
+            app:destination="@id/walkthroughOtpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/walkthroughOtpFragment"
+        android:name="com.prologicwebsolution.microatm.ui.WalkthroughOtpFragment"
+        android:label="WalkthroughOtpFragment" />
+
+
+    <fragment
+        android:id="@+id/transactionDetailFragment"
+        android:name="com.prologicwebsolution.microatm.ui.transaction.TransactionDetailFragment"
+        android:label="Transactions" />
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.prologicwebsolution.microatm.ui.dashboared.DashboardFragment"
+        android:label="Dashboard"
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_dashboardFragment_to_commissionFragment"
+            app:destination="@id/commissionFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_transactionDetailFragment"
+            app:destination="@id/transactionDetailFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_withdrawlFragment"
+            app:destination="@id/withdrawlFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_withdrawlStatusFragment"
+            app:destination="@id/withdrawlStatusFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_connectMicroAtmFragment"
+            app:destination="@id/connectMicroAtmFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/commissionFragment"
+        android:name="com.prologicwebsolution.microatm.ui.commission.CommissionFragment"
+        android:label="Commissions" />
+    <fragment
+        android:id="@+id/withdrawlFragment"
+        android:name="com.prologicwebsolution.microatm.ui.withdrawl.WithdrawlFragment"
+        android:label="Withdrawal" />
+    <fragment
+        android:id="@+id/withdrawlStatusFragment"
+        android:name="com.prologicwebsolution.microatm.ui.withdrawlStatus.WithdrawlStatusFragment"
+        android:label="Withdrawal Status"
+        tools:layout="@layout/fragment_withdrawl_status" />
+    <fragment
+        android:id="@+id/connectMicroAtmFragment"
+        android:name="com.prologicwebsolution.microatm.ui.connectMicroAtm.ConnectMicroAtmFragment"
+        android:label="Connect mATM"
+        tools:layout="@layout/fragment_connect_micro_atm" >
+        <action
+            android:id="@+id/action_connectMicroAtmFragment_to_balanceEnquiryAndWithdrawFragment"
+            app:destination="@id/balanceEnquiryAndWithdrawFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/balanceEnquiryAndWithdrawFragment"
+        android:name="com.prologicwebsolution.microatm.ui.balanceEnquiryAndWithdraw.BalanceEnquiryAndWithdrawFragment"
+        android:label="Balance Enquiry"
+        tools:layout="@layout/fragment_balance_enquiry_and_withdraw" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.prologicwebsolution.microatm.ui.home.HomeFragment"
+        android:label="Home" >
+        <action
+            android:id="@+id/action_homeFragment_to_aepsFragment"
+            app:destination="@id/aepsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aepsFragment"
+        android:name="com.prologicwebsolution.microatm.ui.aepes.AepsFragment"
+        android:label="AEPS"
+        tools:layout="@layout/fragment_aepes" />
+
+</navigation>

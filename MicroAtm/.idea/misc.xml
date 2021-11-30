@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/adarsh.singh/AndroidStudioProjects/MicroAtm/app/src/main/res/drawable-hdpi/custom_trans_button.xml" value="0.2890625" />
+        <entry key="..\:/Users/adarsh.singh/AndroidStudioProjects/MicroAtm/app/src/main/res/drawable-hdpi/edt_bg_selector.xml" value="0.2890625" />
+        <entry key="..\:/Users/adarsh.singh/AndroidStudioProjects/MicroAtm/app/src/main/res/drawable-hdpi/ic_baseline_arrow_back_24.xml" value="0.2890625" />
+        <entry key="..\:/Users/adarsh.singh/AndroidStudioProjects/MicroAtm/app/src/main/res/drawable-hdpi/ic_baseline_cancel_24.xml" value="0.2890625" />
+        <entry key="..\:/Users/adarsh.singh/AndroidStudioProjects/MicroAtm/app/src/main/res/drawable/_2_dp_radius.xml" value="0.2890625" />
+        <entry key="..\:/Users/adarsh.singh/AndroidStudioProjects/MicroAtm/app/src/main/res/drawable/edittext_round_corner.xml" value="0.27870370370370373" />
+        <entry key="..\:/Users/adarsh.singh/AndroidStudioProjects/MicroAtm/app/src/main/res/drawable/micro_atm_debit_card_background.xml" value="0.2846153846153846" />
+        <entry key="..\:/Users/adarsh.singh/AndroidStudioProjects/MicroAtm/app/src/main/res/layout/activity_login.xml" value="0.23981481481481481" />
+        <entry key="..\:/Users/adarsh.singh/AndroidStudioProjects/MicroAtm/app/src/main/res/layout/bank_adp.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/adarsh.singh/AndroidStudioProjects/MicroAtm/app/src/main/res/layout/bank_list_activity.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/adarsh.singh/AndroidStudioProjects/MicroAtm/app/src/main/res/layout/blutooth_paired_items.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/adarsh.singh/AndroidStudioProjects/MicroAtm/app/src/main/res/layout/fragment_aepes.xml" value="0.25925925925925924" />
+        <entry key="..\:/Users/adarsh.singh/AndroidStudioProjects/MicroAtm/app/src/main/res/layout/fragment_commission.xml" value="0.23981481481481481" />
+        <entry key="..\:/Users/adarsh.singh/AndroidStudioProjects/MicroAtm/app/src/main/res/layout/fragment_connect_micro_atm.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/adarsh.singh/AndroidStudioProjects/MicroAtm/app/src/main/res/layout/fragment_dashboard.xml" value="0.26871794871794874" />
+        <entry key="..\:/Users/adarsh.singh/AndroidStudioProjects/MicroAtm/app/src/main/res/layout/fragment_transaction_detail.xml" value="0.23981481481481481" />
+        <entry key="..\:/Users/adarsh.singh/AndroidStudioProjects/MicroAtm/app/src/main/res/layout/fragment_withdrawl.xml" value="0.26296296296296295" />
+        <entry key="..\:/Users/adarsh.singh/AndroidStudioProjects/MicroAtm/app/src/main/res/layout/fragment_withdrawl_status.xml" value="0.26296296296296295" />
+        <entry key="..\:/Users/adarsh.singh/AndroidStudioProjects/MicroAtm/app/src/main/res/layout/transaction_items.xml" value="0.26871794871794874" />
+        <entry key="..\:/Users/adarsh.singh/AndroidStudioProjects/MicroAtm/app/src/main/res/layout/transaction_status_dialog_item.xml" value="0.26871794871794874" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

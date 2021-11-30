@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/ic_verification_orange" android:state_selected="true"/>
+    <item android:drawable="@drawable/ic_verification_black" android:state_single="true"/>
+    <item android:drawable="@drawable/ic_verification_gray" android:state_selected="false"/>
+</selector>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/create_new_lead"
+        android:title="Create Lead"
+        android:icon="@drawable/ic_new_leads"
+        android:visible="false"
+        android:orderInCategory="100"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/get_assign_lead"
+        android:title="Get Assign Lead"
+        android:icon="@drawable/ic_cs_assigned_lead"
+        android:visible="false"
+        android:orderInCategory="100"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/search_menu"
+        android:title="Search"
+        android:icon="@drawable/ic_search"
+        android:visible="false"
+        android:orderInCategory="100"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/action_filter"
+        android:title="Filter"
+        android:icon="@drawable/ic_filter"
+        android:visible="false"
+        android:orderInCategory="100"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/action_share"
+        android:title="Filter"
+        android:icon="@drawable/ic_share"
+        android:visible="false"
+        android:orderInCategory="100"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/action_favorite"
+        android:title="Filter"
+        android:icon="@drawable/ic_bookmark"
+        android:visible="false"
+        android:orderInCategory="100"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/broker_request"
+        app:actionLayout="@layout/broker_menu_action_item_badge"
+        app:showAsAction="always"
+        android:visible="false"
+        android:title="Badge Icon"/>
+
+</menu>

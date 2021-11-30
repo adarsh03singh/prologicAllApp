@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.prologicwebsolution.microatm.ui.aeps_bank.BankListViewModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_color"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/root_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/purple_500">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+
+                    android:gravity="center|start">
+
+                    <ImageView
+                        android:onClick="@{viewModel::back}"
+                        android:id="@+id/back"
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:padding="@dimen/_5sdp"
+                        android:src="@drawable/ic_baseline_arrow_back_24" />
+
+                    <EditText
+                        android:id="@+id/search_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:background="@drawable/_2_dp_radius"
+                        android:fontFamily="@font/medium"
+                        android:hint="Search Bank"
+                        android:paddingLeft="@dimen/_7sdp"
+                        android:textColor="@color/graydark"
+                        android:textColorHint="@color/graylight"
+                        android:textSize="@dimen/_14sdp"
+                        app:addTextChangedListener="@{viewModel.search_et_watcher}" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        </LinearLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

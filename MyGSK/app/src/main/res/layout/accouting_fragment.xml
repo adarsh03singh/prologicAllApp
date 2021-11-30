@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.AccoutingFragment">
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:keepScreenOn="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Accounts and Audit"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Auditing and accounting are essential processes for any successful business. While the two are often conflated, they have equally distinct and important roles. When it comes to financial record keeping, each is indispensable."
+                android:textSize="18sp"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Auditing is similar to accounting, but it looks at records in more depth. It is responsible for assessing the effectiveness of accounting strategies though it is, itself, a type of accounting. The thing to remember is it’s more impartial and it takes a broader look at company practices."
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Accounting is conducted by employees of the business. Audits must be undertaken by an objective individual who has no stake in the company’s future. They are tasked with analysing financial records to confirm all legal requirements have been fulfilled by current accounting procedures."
+                android:textSize="18sp"
+                android:layout_marginBottom="10dp"/>
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Businesses use accounting processes to monitor internal financial transactions (ingoing and outgoing payments). Without them, this is a very time consuming and complex task. By compiling records and documenting transactions as they are happening, a business ensures it always has access to a real-time ‘snapshot’ of its financial health."
+                android:textSize="18sp"
+                android:layout_marginBottom="10dp"/>
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="The financial health of a company is the best indicator of its ability to survive. Therefore, accounting must be a key part of the day to day operations. If there are any aspects of the business that are not performing well, the accounts will show it and suggest reasons why."
+                android:textSize="18sp"
+                android:layout_marginBottom="10dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

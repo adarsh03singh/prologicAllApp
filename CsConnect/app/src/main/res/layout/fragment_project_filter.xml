@@ -1,0 +1,1171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="projFilterViewmodel"
+            type="com.csestateconnect.viewmodel.ProjectsViewModel"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        android:background="#F4F3F3">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#F4F3F3"
+            tools:layout_editor_absoluteY="-62dp"
+            tools:layout_editor_absoluteX="-581dp"
+            android:id="@+id/scrollViewProjectFilter">
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#F4F3F3" tools:ignore="ExtraText"
+                android:orientation="vertical">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:text="Filter By"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/textView1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="@dimen/dp_8"
+                    android:layout_marginStart="8dp" android:paddingTop="8dp" app:fontFamily="@font/roboto_bold"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/sp_16"
+                    android:paddingLeft="@dimen/dp_20"
+                    android:paddingRight="@dimen/dp_20"
+                    android:layout_marginTop="@dimen/dp_8"
+
+                    android:background="#F4F3F3"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:text="Narrow down your search by applying advanced filters"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/textView2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp" app:fontFamily="@font/roboto"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/sp_12"
+                    android:paddingLeft="@dimen/dp_20"
+                    android:paddingRight="@dimen/dp_20"
+                    android:background="#F4F3F3" app:layout_constraintHorizontal_bias="0.0"
+                    android:layout_marginTop="4dp" app:layout_constraintTop_toBottomOf="@+id/textView1"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginRight="@dimen/sp_12"
+                    android:layout_marginLeft="@dimen/sp_12"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2"
+                    android:layout_marginTop="15sp" android:id="@+id/cardView"
+                    tools:layout_editor_absoluteX="12dp"
+                    app:contentPaddingBottom="@dimen/sp_12"
+                    app:cardBackgroundColor="@color/colorWhite">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/sp_16"
+                        android:paddingRight="@dimen/sp_16"
+                        android:orientation="vertical">
+
+
+                        <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="1"
+                            android:layout_marginTop="10sp"
+                            android:orientation="horizontal">
+                            <androidx.appcompat.widget.AppCompatTextView android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.5"
+                                android:text="Property Type"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="15sp"
+                                android:textStyle="bold"/>
+
+
+                            <androidx.appcompat.widget.AppCompatImageButton
+                                android:layout_width="50dp"
+                                android:layout_height="30dp"
+                                android:background="@null"
+                                android:visibility="gone"
+                                android:src="@drawable/ic_drop_close"
+                                android:id="@+id/property_drop_close"
+                                android:layout_weight="0.5"/>
+
+                            <androidx.appcompat.widget.AppCompatImageButton
+                                android:layout_width="50dp"
+                                android:layout_height="match_parent"
+                                android:background="@null"
+                                android:src="@drawable/ic_drop_down_down"
+                                android:id="@+id/proprety_drop_down"
+                                android:layout_weight="0.5"/>
+
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15sp"
+                            android:id="@+id/property_recycler_view_layout"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <View android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/colorSmoke"
+                                android:id="@+id/property_view"/>
+
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/property_type_recycler_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                tools:listitem="@layout/filter_checkbox_item"
+                                android:layout_marginTop="15sp"
+                                app:layout_constraintTop_toBottomOf="@+id/cardView"/>
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/sp_12"
+                    android:layout_marginLeft="@dimen/sp_12"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2"
+                    android:layout_marginTop="15sp" android:id="@+id/cardViewLocation"
+                    tools:layout_editor_absoluteX="12dp"
+                    app:contentPaddingBottom="@dimen/sp_12"
+                    app:cardBackgroundColor="@color/colorWhite">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/sp_16"
+                        android:paddingRight="@dimen/sp_16"
+                        android:orientation="vertical">
+
+
+                        <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="1"
+                            android:layout_marginTop="10sp"
+                            android:orientation="horizontal">
+                            <androidx.appcompat.widget.AppCompatTextView android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.5"
+                                android:text="Location"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="15sp"
+                                android:textStyle="bold"/>
+
+
+                            <androidx.appcompat.widget.AppCompatImageButton
+                                android:layout_width="50dp"
+                                android:layout_height="30dp"
+                                android:background="@null"
+                                android:visibility="gone"
+                                android:src="@drawable/ic_drop_close"
+                                android:id="@+id/location_drop_close"
+                                android:layout_weight="0.5"/>
+
+                            <androidx.appcompat.widget.AppCompatImageButton
+                                android:layout_width="50dp"
+                                android:layout_height="match_parent"
+                                android:background="@null"
+                                android:src="@drawable/ic_drop_down_down"
+                                android:id="@+id/location_drop_down"
+                                android:layout_weight="0.5"/>
+
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                        <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15sp"
+                            android:id="@+id/location_recycler_view_layout"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <View android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/colorSmoke"
+                                android:id="@+id/location_view"/>
+
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/projFilter_location_recycler_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                tools:listitem="@layout/filter_checkbox_item"
+                                android:layout_marginTop="15sp"
+
+                                app:layout_constraintTop_toBottomOf="@+id/cardView"/>
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/sp_12"
+                    android:layout_marginLeft="@dimen/sp_12"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2"
+                    android:layout_marginTop="15sp" android:id="@+id/cardViewUnitPlan"
+                    tools:layout_editor_absoluteX="12dp"
+                    app:contentPaddingBottom="@dimen/sp_12"
+                    app:cardBackgroundColor="@color/colorWhite"
+                    >
+
+                    <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/sp_16"
+                        android:paddingRight="@dimen/sp_16"
+                        android:orientation="vertical">
+
+
+                        <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="1"
+                            android:layout_marginTop="10sp"
+                            android:orientation="horizontal">
+                            <androidx.appcompat.widget.AppCompatTextView android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.5"
+                                android:text="Unit Plan"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="15sp"
+                                android:textStyle="bold"/>
+
+
+                            <androidx.appcompat.widget.AppCompatImageButton
+                                android:layout_width="50dp"
+                                android:layout_height="30dp"
+                                android:background="@null"
+                                android:visibility="gone"
+                                android:src="@drawable/ic_drop_close"
+                                android:id="@+id/unit_plan_drop_close"
+                                android:layout_weight="0.5"/>
+
+                            <androidx.appcompat.widget.AppCompatImageButton
+                                android:layout_width="50dp"
+                                android:layout_height="match_parent"
+                                android:background="@null"
+                                android:src="@drawable/ic_drop_down_down"
+                                android:id="@+id/unit_plan_drop_down"
+                                android:layout_weight="0.5"/>
+
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                        <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15sp"
+                            android:id="@+id/unit_plan_recycler_view_layout"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <View android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/colorSmoke"
+                                android:id="@+id/unit_plan_view"/>
+
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/projFilter_unit_plan_recycler_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                tools:listitem="@layout/filter_checkbox_item"
+                                android:layout_marginTop="15sp"
+                                android:background="@color/colorWhite"
+                                app:layout_constraintTop_toBottomOf="@+id/cardView"/>
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/sp_12"
+                    android:layout_marginLeft="@dimen/sp_12"
+                    android:layout_marginTop="15sp"
+                    android:id="@+id/cardViewProjectStatus"
+                    app:contentPaddingBottom="@dimen/sp_12"
+                    app:cardBackgroundColor="@color/colorWhite">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/sp_16"
+                        android:paddingRight="@dimen/sp_16"
+                        android:orientation="vertical">
+
+
+                        <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="1"
+                            android:layout_marginTop="10sp"
+                            android:orientation="horizontal">
+                            <androidx.appcompat.widget.AppCompatTextView android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.5"
+                                android:text="Project Status"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="15sp"
+                                android:textStyle="bold"/>
+
+
+                            <androidx.appcompat.widget.AppCompatImageButton
+                                android:layout_width="50dp"
+                                android:layout_height="30dp"
+                                android:background="@null"
+                                android:visibility="gone"
+                                android:src="@drawable/ic_drop_close"
+                                android:id="@+id/project_status_drop_close"
+                                android:layout_weight="0.5"/>
+
+                            <androidx.appcompat.widget.AppCompatImageButton
+                                android:layout_width="50dp"
+                                android:layout_height="match_parent"
+                                android:background="@null"
+                                android:src="@drawable/ic_drop_down_down"
+                                android:id="@+id/project_status_drop_down"
+                                android:layout_weight="0.5"/>
+
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                        <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15sp"
+                            android:id="@+id/project_status_recycler_view_layout"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+                            32
+                            <View android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/colorSmoke"
+                                android:id="@+id/project_status_view"/>
+
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/projFilter_status_recycler_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:nestedScrollingEnabled="false"
+                                tools:listitem="@layout/filter_checkbox_item"
+                                android:layout_marginTop="15sp"/>
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/sp_12"
+                    android:layout_marginLeft="@dimen/sp_12"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2"
+                    android:layout_marginTop="15sp" android:id="@+id/cardViewTotalPrice"
+                    tools:layout_editor_absoluteX="12dp"
+                    app:contentPaddingBottom="@dimen/sp_12"
+                    app:cardBackgroundColor="@color/colorWhite">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/sp_16"
+                        android:paddingRight="@dimen/sp_16"
+                        android:orientation="vertical">
+
+
+                        <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="1"
+                            android:layout_marginTop="10sp"
+                            android:orientation="horizontal">
+
+                            <androidx.appcompat.widget.AppCompatTextView android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.4"
+                                android:text="Total Price"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="15sp"
+                                android:textStyle="bold"/>
+
+
+                            <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="right"
+                                android:layout_weight="0.6"
+                                android:paddingTop="3sp"
+                                android:orientation="horizontal" >
+                                <androidx.appcompat.widget.AppCompatTextView android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="INR"
+                                    android:layout_weight="0.3"
+                                    android:gravity="right"
+                                    android:textColor="@color/colorAccent"
+                                    android:textSize="12sp"
+
+                                    />
+                                <androidx.appcompat.widget.AppCompatTextView android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Dollar"
+                                    android:layout_weight="0.3"
+                                    android:gravity="right"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="12sp"
+
+                                    />
+                                <androidx.appcompat.widget.AppCompatTextView android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Euro"
+                                    android:gravity="right"
+                                    android:layout_weight="0.3"
+                                    android:paddingLeft="18sp"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="12sp"/>
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <View android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorSmoke"
+                            android:id="@+id/my_view_2"
+                            android:layout_marginTop="10sp"
+                            android:layout_marginBottom="15sp"/>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="0sp"
+                            android:layout_marginStart="0sp"
+                            android:layout_marginLeft="0sp">
+
+
+                            <androidx.appcompat.widget.AppCompatTextView android:textSize="15.0sp"
+                                android:textColor="@color/colorPrimary"
+                                android:gravity="left"
+                                android:id="@+id/currency_symbol_total_price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="\u20B9"
+                                android:textStyle="normal"
+                                android:layout_marginLeft="2sp"
+                                android:layout_marginStart="2sp"
+                                />
+
+                            <androidx.appcompat.widget.AppCompatTextView android:textSize="15.0sp"
+                                android:textColor="@color/colorPrimary"
+                                android:gravity="left"
+                                android:id="@+id/selected_min_total_price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="start"
+                                android:layout_marginLeft="3sp"
+
+
+
+                                />
+                            <androidx.appcompat.widget.AppCompatTextView android:textSize="15.0sp"
+                                android:textColor="@color/colorPrimary"
+                                android:gravity="left"
+                                android:id="@+id/dash_total_price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="  -  "
+                                android:textStyle="normal"
+
+                                android:paddingLeft="2sp"
+                                />
+
+
+                            <androidx.appcompat.widget.AppCompatTextView android:textSize="15.0sp"
+                                android:textColor="@color/colorPrimary"
+                                android:gravity="right"
+                                android:id="@+id/selected_max_total_price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="end"
+
+                                android:paddingLeft="2sp"/>
+
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <com.appyvet.materialrangebar.RangeBar
+                            android:id="@+id/filter_total_price_rangebar"
+                            app:mrb_pinPadding="1sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="65sp"
+                            app:mrb_connectingLineColor="@color/colorAccent"
+                            app:mrb_pinColor="@color/colorAccent"
+                            app:mrb_pinMaxFont="14sp"
+                            app:mrb_pinMinFont="12sp"
+                            app:mrb_pinRadius="16dp"
+                            app:mrb_pinTextColor="@color/whiteColor"
+                            app:mrb_rangeBar="true"
+                            app:mrb_rangeBarPaddingBottom="30dp"
+                            app:mrb_rangeBar_rounded="true"
+                            app:mrb_selectorBoundaryColor="@color/colorAccent"
+                            app:mrb_selectorBoundarySize="2dp"
+                            app:mrb_selectorColor="@color/colorWhite"
+                            app:mrb_selectorSize="10dp"
+                            app:mrb_temporaryPins="true"
+                            app:mrb_tickDefaultLabel="label"
+                            app:mrb_tickEnd="100000000"
+                            app:mrb_tickHeight="0dp"
+                            app:mrb_tickInterval="100000"
+                            app:mrb_tickLabelColor="@color/colorAccent"
+                            app:mrb_tickLabelSelectedColor="@color/colorAccent"
+                            app:mrb_tickLabelSize="4sp"
+                            app:mrb_tickStart="1000000"
+                            app:mrb_rangeBarColor="#F6F4F5"
+                            app:mrb_barWeight="7sp"
+                            android:layout_marginLeft="0sp"
+                            android:layout_marginRight="0sp"
+                            android:paddingBottom="2sp"
+
+
+
+                            />
+                        <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="1.0"
+                            android:layout_marginTop="-18sp">
+                            <androidx.appcompat.widget.AppCompatTextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Min"  android:layout_weight="0.5"
+                                android:textColor="@color/colorPrimaryDark" android:paddingLeft="2sp"
+                                android:textSize="10sp"/>
+
+                            <androidx.appcompat.widget.AppCompatTextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Max" android:layout_weight="0.5"  android:gravity="end"
+                                android:textColor="@color/colorPrimaryDark" android:paddingRight="2sp"
+                                android:textSize="10sp"/>
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent" android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:weightSum="1"
+                            android:layout_marginTop="15sp">
+                            <View android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/colorSmoke"
+                                android:id="@+id/my_view_three_total_price"
+                                android:layout_weight="0.5"
+
+                                />
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/medium_volume"
+                                android:layout_width="25sp"
+                                android:layout_height="25sp"
+                                android:layout_alignTop="@+id/large_volume"
+                                android:layout_toRightOf="@+id/large_volume"
+                                android:background="@drawable/circle"
+                                android:gravity="center"
+                                android:text="OR"
+                                android:textColor="#000000"
+                                android:textSize="10dp"/>
+
+                            <View android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/colorSmoke"
+                                android:id="@+id/my_view_four_total_price"
+                                android:layout_weight="0.5"
+                                />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                        <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginTop="15sp">
+                            <androidx.appcompat.widget.AppCompatTextView android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:layout_gravity="left"
+                                android:text="Enter Price"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:layout_marginBottom="8sp"/>
+
+                            <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                                android:layout_height="35sp"
+                                android:orientation="horizontal"
+                                android:weightSum="1.0">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/min_price_edittext"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/edit_text_border"
+                                    android:layout_weight="0.3"
+                                    android:hint="Minimum Price"
+                                    android:textColorHint="@color/colorPrimaryDark"
+                                    android:textSize="12sp"
+                                    android:paddingLeft="10sp"
+                                    android:layout_gravity="center_vertical"
+                                    android:cursorVisible="true"
+                                    android:textColor="@color/colorPrimaryDark"/>
+
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/max_price_edittext"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/edit_text_border"
+                                    android:layout_weight="0.3"
+                                    android:layout_marginLeft="10sp"
+                                    android:hint="Maximum Price"
+                                    android:textColorHint="@color/colorPrimaryDark"
+                                    android:textSize="12sp"
+                                    android:paddingLeft="10sp"
+                                    android:layout_gravity="center_vertical"
+                                    android:cursorVisible="true"
+                                    android:textColor="@color/colorPrimaryDark"/>
+
+                                <androidx.appcompat.widget.AppCompatButton android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:text="GO"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/whiteColor"
+                                    android:layout_weight="0.4"
+                                    android:layout_marginLeft="5sp"
+                                    android:background="@drawable/go_button"
+                                    android:textSize="12sp"
+                                    />
+
+
+
+
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/sp_12"
+                    android:layout_marginLeft="@dimen/sp_12"
+                    android:layout_marginTop="15sp" android:id="@+id/cardViewPerSqFootPrice"
+                    tools:layout_editor_absoluteX="12dp"
+                    app:contentPaddingBottom="@dimen/sp_12"
+                    app:cardBackgroundColor="@color/colorWhite">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/sp_16"
+                        android:paddingRight="@dimen/sp_16"
+                        android:orientation="vertical">
+
+
+                        <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="1"
+                            android:layout_marginTop="10sp"
+                            android:orientation="horizontal">
+                            <androidx.appcompat.widget.AppCompatTextView android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.4"
+                                android:text="Per Square Foot Price"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="15sp"
+                                android:textStyle="bold"/>
+
+
+                            <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="right"
+                                android:layout_weight="0.6"
+                                android:paddingTop="3sp"
+                                android:orientation="horizontal"
+                                >
+                                <androidx.appcompat.widget.AppCompatTextView android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="INR"
+                                    android:layout_weight="0.3"
+                                    android:gravity="right"
+                                    android:textColor="@color/colorAccent"
+                                    android:textSize="12sp"
+
+                                    />
+                                <androidx.appcompat.widget.AppCompatTextView android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Dollar"
+                                    android:layout_weight="0.3"
+                                    android:gravity="right"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="12sp"
+
+                                    />
+                                <androidx.appcompat.widget.AppCompatTextView android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Euro"
+                                    android:gravity="right"
+                                    android:layout_weight="0.3"
+                                    android:paddingLeft="18sp"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="12sp"/>
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <View android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorSmoke"
+                            android:id="@+id/line_per_foot_price"
+                            android:layout_marginTop="10sp"
+                            android:layout_marginBottom="15sp"/>
+
+                        <!--<io.apptik.widget.MultiSlider-->
+                        <!--android:id="@+id/range_slider5"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--app:thumbNumber="2"-->
+                        <!--app:stepsThumbsApart="5"-->
+                        <!--app:drawThumbsApart="true"-->
+                        <!--android:thumb="@drawable/ic_drop_down"-->
+                        <!--android:outlineAmbientShadowColor="@color/colorAccent"-->
+                        <!--android:outlineSpotShadowColor="@color/colorAccent"-->
+                        <!--app:rangeColor="@color/colorAccent"-->
+                        <!--app:trackColor="@color/colorAccent"/>-->
+                        <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="0sp"
+                            android:layout_marginStart="0sp"
+                            android:layout_marginLeft="0sp"
+
+                            >
+
+
+                            <androidx.appcompat.widget.AppCompatTextView android:textSize="15.0sp"
+                                android:textColor="@color/colorPrimary"
+                                android:gravity="left"
+                                android:id="@+id/currency_symbol_per_sq_foot_price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="\u20B9"
+                                android:textStyle="normal"
+                                android:layout_marginLeft="2sp"
+                                android:layout_marginStart="2sp"
+                                />
+
+                            <androidx.appcompat.widget.AppCompatTextView android:textSize="15.0sp"
+                                android:textColor="@color/colorPrimary"
+                                android:gravity="left"
+                                android:id="@+id/selected_min_per_sq_foot_price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Start"
+                                android:layout_marginLeft="3sp"
+
+
+
+                                />
+                            <androidx.appcompat.widget.AppCompatTextView android:textSize="15.0sp"
+                                android:textColor="@color/colorPrimary"
+                                android:gravity="left"
+                                android:id="@+id/square_foot_dash_per_sq_foot_price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Sq. Ft.  -  "
+                                android:textStyle="normal"
+
+                                android:paddingLeft="2sp"
+                                />
+
+
+                            <androidx.appcompat.widget.AppCompatTextView android:textSize="15.0sp"
+                                android:textColor="@color/colorPrimary"
+                                android:gravity="right"
+                                android:id="@+id/selected_max_per_sq_foot_price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="End"
+
+                                android:paddingLeft="2sp"/>
+
+                            <androidx.appcompat.widget.AppCompatTextView android:textSize="15.0sp"
+                                android:textColor="@color/colorPrimary"
+                                android:gravity="left"
+                                android:id="@+id/square_foot_two_per_sq_foot_price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Sq. Ft."
+                                android:textStyle="normal"
+                                android:layout_marginLeft="3sp"
+                                android:paddingLeft="2sp"
+                                />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <com.appyvet.materialrangebar.RangeBar
+                            android:id="@+id/per_sq_foot_price_rangebar"
+                            app:mrb_pinPadding="1sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="65sp"
+                            app:mrb_connectingLineColor="@color/colorAccent"
+                            app:mrb_pinColor="@color/colorAccent"
+                            app:mrb_pinMaxFont="12sp"
+                            app:mrb_pinMinFont="10sp"
+                            app:mrb_pinRadius="15sp"
+                            app:mrb_pinTextColor="@color/whiteColor"
+                            app:mrb_rangeBar="true"
+                            app:mrb_rangeBarPaddingBottom="30dp"
+                            app:mrb_rangeBar_rounded="true"
+                            app:mrb_selectorBoundaryColor="@color/colorAccent"
+                            app:mrb_selectorBoundarySize="2dp"
+                            app:mrb_selectorColor="@color/colorWhite"
+                            app:mrb_selectorSize="10dp"
+                            app:mrb_temporaryPins="true"
+                            app:mrb_tickDefaultLabel="label"
+                            app:mrb_tickEnd="10000"
+                            app:mrb_tickHeight="0dp"
+                            app:mrb_tickInterval="100"
+                            app:mrb_tickLabelColor="@color/colorAccent"
+                            app:mrb_tickLabelSelectedColor="@color/colorAccent"
+                            app:mrb_tickLabelSize="4sp"
+                            app:mrb_tickStart="100"
+                            app:mrb_rangeBarColor="#F6F4F5"
+                            app:mrb_barWeight="7sp"
+                            android:layout_marginLeft="0sp"
+                            android:layout_marginRight="0sp"
+                            android:paddingBottom="2sp"
+
+                            />
+                        <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="1.0"
+                            android:layout_marginTop="-18sp"
+                            >
+                            <androidx.appcompat.widget.AppCompatTextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Min"  android:layout_weight="0.5"
+                                android:textColor="@color/colorPrimaryDark" android:paddingLeft="2sp"
+                                android:textSize="10sp"/>
+
+                            <androidx.appcompat.widget.AppCompatTextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Max" android:layout_weight="0.5"  android:gravity="end"
+                                android:textColor="@color/colorPrimaryDark" android:paddingRight="2sp"
+                                android:textSize="10sp"/>
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/sp_12"
+                    android:layout_marginLeft="@dimen/sp_12"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2"
+                    android:layout_marginTop="15sp" android:id="@+id/cardViewBuiltUpArea"
+                    tools:layout_editor_absoluteX="12dp"
+                    app:contentPaddingBottom="@dimen/sp_12"
+                    app:cardBackgroundColor="@color/colorWhite">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/sp_16"
+                        android:paddingRight="@dimen/sp_16"
+                        android:orientation="vertical">
+
+
+                        <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="1"
+                            android:layout_marginTop="10sp"
+                            android:orientation="horizontal">
+
+                            <androidx.appcompat.widget.AppCompatTextView android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.4"
+                                android:text="Builtup Area"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="15sp"
+                                android:textStyle="bold"/>
+
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <View android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/colorSmoke"
+                            android:id="@+id/line_built_up_area"
+                            android:layout_marginTop="10sp"
+                            android:layout_marginBottom="15sp"/>
+
+
+                        <androidx.appcompat.widget.AppCompatTextView android:textSize="15.0sp"
+                            android:textColor="@color/colorPrimary"
+                            android:gravity="left"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Square Feet"
+                            android:textStyle="normal"
+                            android:layout_marginLeft="2sp"
+                            android:layout_marginStart="2sp"
+                            />
+
+
+
+                        <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginTop="15sp">
+
+
+                            <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                                android:layout_height="35sp"
+                                android:orientation="horizontal"
+                                android:weightSum="1.0">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/builtUp_min_edittext"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/edit_text_border"
+                                    android:layout_weight="0.5"
+                                    android:hint="Minimum Sq. Ft."
+                                    android:textColorHint="@color/colorPrimaryDark"
+                                    android:text="@={projFilterViewmodel.builtUp_min_edittext}"
+                                    android:textSize="12sp"
+                                    android:paddingLeft="10sp"
+                                    android:inputType="number"
+                                    android:layout_gravity="center_vertical"
+                                    android:cursorVisible="true"
+                                    android:textColor="@color/colorPrimaryDark"/>
+
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/builtUp_max_edittext"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/edit_text_border"
+                                    android:layout_weight="0.5"
+                                    android:inputType="number"
+                                    android:text="@={projFilterViewmodel.builtUp_max_edittext}"
+                                    android:layout_marginLeft="10sp"
+                                    android:hint="Maximum Sq. Ft."
+                                    android:textColorHint="@color/colorPrimaryDark"
+                                    android:textSize="12sp"
+                                    android:paddingLeft="10sp"
+                                    android:layout_gravity="center_vertical"
+                                    android:cursorVisible="true"
+                                    android:textColor="@color/colorPrimaryDark"/>
+
+                                <androidx.appcompat.widget.AppCompatButton android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:text="GO"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/whiteColor"
+                                    android:layout_weight="0.4"
+                                    android:visibility="gone"
+                                    android:layout_marginLeft="5sp"
+                                    android:background="@drawable/go_button"
+                                    android:textSize="12sp"
+                                    />
+
+
+
+
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/sp_12"
+                    android:layout_marginLeft="@dimen/sp_12"
+                    android:layout_marginBottom="100sp"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2"
+                    android:layout_marginTop="15sp" android:id="@+id/cardViewAmenities"
+                    tools:layout_editor_absoluteX="12dp"
+                    app:contentPaddingBottom="@dimen/sp_12"
+                    app:cardBackgroundColor="@color/colorWhite">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/sp_16"
+                        android:paddingRight="@dimen/sp_16"
+                        android:orientation="vertical">
+
+
+                        <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="1"
+                            android:layout_marginTop="10sp"
+                            android:orientation="horizontal">
+                            <androidx.appcompat.widget.AppCompatTextView android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.5"
+                                android:text="Amenities"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+
+
+                                />
+
+
+                            <androidx.appcompat.widget.AppCompatImageButton
+                                android:layout_width="50dp"
+                                android:layout_height="30dp"
+                                android:background="@null"
+                                android:visibility="gone"
+                                android:src="@drawable/ic_drop_close"
+                                android:id="@+id/amenities_drop_close"
+                                android:layout_weight="0.5"/>
+
+                            <androidx.appcompat.widget.AppCompatImageButton
+                                android:layout_width="50dp"
+                                android:layout_height="match_parent"
+                                android:background="@null"
+                                android:src="@drawable/ic_drop_down_down"
+                                android:id="@+id/amenities_drop_down"
+                                android:layout_weight="0.5"/>
+
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15sp"
+                            android:id="@+id/amenities_recycler_view_layout"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <View android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/colorSmoke"
+                                android:id="@+id/amenities_view"/>
+
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/projFilter_amenities_recycler_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:nestedScrollingEnabled="false"
+                                tools:listitem="@layout/filter_checkbox_item"
+                                android:layout_marginTop="15sp"
+                                app:layout_constraintTop_toBottomOf="@+id/cardView"/>
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </ScrollView>
+
+        <View android:layout_width="match_parent"
+            android:layout_height="0.5sp"
+            android:background="@color/colorSmoke"
+            android:id="@+id/line_botttom_bar"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_project_filter"/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1.0"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/bottom_navigation_project_filter"
+            app:layout_constraintBottom_toBottomOf="@+id/scrollViewProjectFilter"
+            >
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Clear"
+                android:background="@color/colorWhite"
+                android:textColor="@color/colorPrimary"
+                android:textSize="13sp"
+                android:onClick="@{projFilterViewmodel::clearData}"
+                android:enabled="@{projFilterViewmodel.clearButtonEnabled}"
+                android:textStyle="bold"
+                android:id="@+id/clear_button_project_filter"/>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:text="Apply Filter"
+                android:textSize="13sp"
+                android:enabled="@{projFilterViewmodel.applyButtonEnabled}"
+                android:onClick="@{projFilterViewmodel::filterProjectApplyButton}"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:layout_weight="0.5"
+                android:id="@+id/apply_button_project_filter"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#80000000"
+            android:visibility="@{projFilterViewmodel.progressBarFilter}">
+
+            <androidx.core.widget.ContentLoadingProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                style="?android:attr/progressBarStyleLarge"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

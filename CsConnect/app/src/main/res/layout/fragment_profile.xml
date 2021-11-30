@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.csestateconnect.viewmodel.ProfileViewModel" />
+        <variable
+            name="mContext"
+            type="com.csestateconnect.ui.navdrawer.ProfileFragment" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.navdrawer.ProfileFragment">
+
+        <ScrollView android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+<!--                <include-->
+<!--                    layout="@layout/app_bar_home_acticity"-->
+<!--                    android:id="@+id/include"/>-->
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15sp"
+                    android:layout_marginLeft="12sp"
+                    android:layout_marginRight="12sp"
+                    app:cardCornerRadius="3sp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center_vertical"
+                        android:padding="20sp"
+                        android:gravity="bottom">
+
+                        <LinearLayout android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                app:cardCornerRadius="5sp"
+                                android:layout_gravity="center_vertical">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    app:srcCompat="@drawable/ic_person_black_24dp"
+                                    android:focusedByDefault="true"
+                                    android:scaleType="centerCrop"
+                                    app:imageUrl="@{viewmodel.profileImgeView}"
+                                    android:onClick="@{viewmodel::image_click}"
+                                    android:id="@+id/profile_imageView"/>
+
+                            </com.google.android.material.card.MaterialCardView>
+
+
+                            <LinearLayout android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20sp"
+                                android:paddingStart="10sp"
+                                android:layout_marginTop="18sp"
+                                android:layout_gravity="top"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/profile_username"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/colorPrimary"
+                                    android:paddingTop="8sp"
+                                    android:maxLength="30"
+                                    android:text="@{viewmodel.username}"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{viewmodel.userCreatedAt}"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:id="@+id/textView"/>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15sp"
+                    android:layout_marginLeft="12sp"
+                    android:layout_marginRight="12sp"
+                    app:cardCornerRadius="3sp">
+
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="1"
+                        android:orientation="vertical">
+
+                        <LinearLayout android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="20sp"
+                            android:paddingEnd="20sp"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="10sp">
+
+                            <TextView android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="Personal Details"
+                                android:layout_weight="0.8"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="13sp"
+                                android:textStyle="bold"/>
+
+                            <ImageView android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:onClick="@{viewmodel::goToProfileInfo}"
+                                android:layout_weight="0.2"
+                                android:src="@drawable/ic_edit_black_24dp"/>
+
+                        </LinearLayout>
+
+                        <View android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="8sp"
+                            android:background="@color/colorSmoke"/>
+
+                        <TextView android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Address"
+                            android:paddingStart="20sp"
+                            android:layout_marginTop="22sp"
+                            android:layout_weight="0.8"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="10sp"/>
+
+                        <TextView android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewmodel.userAddress}"
+                            android:paddingStart="20sp"
+                            android:layout_weight="0.8"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="13sp"/>
+
+                        <TextView android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Email Id"
+                            android:paddingStart="20sp"
+                            android:layout_marginTop="15sp"
+                            android:layout_weight="0.8"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="10sp"/>
+
+                        <TextView android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewmodel.userEmailId}"
+                            android:paddingStart="20sp"
+                            android:layout_weight="0.8"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="13sp"/>
+
+                        <TextView android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Mobile No."
+                            android:paddingStart="20sp"
+                            android:layout_marginTop="15sp"
+                            android:layout_weight="0.8"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="10sp"/>
+
+                        <TextView android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewmodel.userMobile}"
+                            android:paddingStart="20sp"
+                            android:layout_marginBottom="22sp"
+                            android:layout_weight="0.8"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="13sp"/>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/accout_detail_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:layout_marginTop="15sp"
+                    android:layout_marginLeft="12sp"
+                    android:layout_marginRight="12sp"
+                    app:cardCornerRadius="3sp">
+
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="1"
+                        android:orientation="vertical">
+
+                        <LinearLayout android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="20sp"
+                            android:paddingEnd="20sp"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="10sp">
+
+                            <TextView android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="Account Details"
+                                android:layout_weight="0.8"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="13sp"
+                                android:textStyle="bold"/>
+
+                            <ImageView android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.2"
+                                android:clickable="true"
+                                android:onClick="@{viewmodel::goToAccountDetails}"
+                                android:src="@drawable/ic_edit_black_24dp"/>
+
+                        </LinearLayout>
+
+                        <View android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="8sp"
+                            android:background="@color/colorSmoke"/>
+
+                        <TextView android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="A/C Holder Name"
+                            android:paddingStart="20sp"
+                            android:layout_marginTop="22sp"
+                            android:layout_weight="0.8"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="10sp"/>
+
+                        <TextView android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewmodel.account_holder_name}"
+                            android:paddingStart="20sp"
+                            android:layout_weight="0.8"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="13sp"/>
+
+                        <LinearLayout android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="1"
+                            android:layout_marginTop="15sp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="20sp"
+                                android:layout_weight="0.4"
+                                android:orientation="vertical"
+                                android:layout_marginTop="10sp">
+
+                                <TextView android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Bank &amp; Branch Name"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="10sp"/>
+
+                                <TextView android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{viewmodel.bankWithbranch_name}"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="13sp"/>
+
+
+                            </LinearLayout>
+
+                            <LinearLayout android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="20sp"
+                                android:paddingEnd="20sp"
+                                android:layout_weight="0.6"
+                                android:orientation="vertical"
+                                android:layout_marginTop="10sp">
+
+                                <TextView android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="IFSC Code"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="10sp"/>
+
+                                <TextView android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{viewmodel.ifsc_code}"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="13sp"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="1"
+                            android:layout_marginTop="15sp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="20sp"
+                                android:layout_weight="0.4"
+                                android:orientation="vertical"
+                                android:layout_marginTop="10sp">
+
+                                <TextView android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Account Number"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="10sp"/>
+
+                                <TextView android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{viewmodel.account_number}"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="13sp"/>
+
+
+                            </LinearLayout>
+
+                            <LinearLayout android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="20sp"
+                                android:paddingEnd="20sp"
+                                android:layout_weight="0.6"
+                                android:orientation="vertical"
+                                android:layout_marginTop="10sp">
+
+                                <TextView android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Pan Card Number"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="10sp"/>
+
+                                <TextView android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{viewmodel.pan_card_number}"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="13sp"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="20sp"
+                            android:paddingEnd="20sp"
+                            android:layout_marginBottom="15sp"
+                            android:layout_weight="0.6"
+                            android:orientation="vertical"
+                            android:layout_marginTop="15sp">
+
+                            <TextView android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Correspondence Address"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="10sp"/>
+
+                            <TextView android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@{viewmodel.correspondence_address}"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="13sp"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/accout_detailChequeImg_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:layout_marginTop="15sp"
+                    android:layout_marginLeft="12sp"
+                    android:layout_marginRight="12sp"
+                    app:cardCornerRadius="3sp">
+
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="1"
+                        android:orientation="vertical">
+
+                        <LinearLayout android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="20sp"
+                            android:paddingEnd="20sp"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="10sp">
+
+                            <TextView android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="Cancelled Cheque"
+                                android:textAllCaps="true"
+                                android:layout_weight="0.8"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="11sp"
+                                android:textStyle="bold"/>
+
+
+                        </LinearLayout>
+
+                        <View android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="8sp"
+                            android:layout_marginLeft="20sp"
+                            android:layout_marginRight="20sp"
+                            android:background="@color/colorSmoke"/>
+
+                        <LinearLayout android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="1"
+                            android:layout_marginBottom="15sp"
+                            android:layout_marginTop="15sp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.5"
+                                android:layout_marginLeft="20sp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="10sp"
+                                    android:textColor="@color/colorPrimary"
+                                    android:text="Verified on"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{viewmodel.accountVerifiedOn}"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold"/>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="10sp"
+                                    android:layout_marginTop="15sp"
+                                    android:textColor="@color/colorPrimary"
+                                    android:text="Verified Status"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{viewmodel.accountVerifiedStatus}"
+                                    android:textColor="@android:color/holo_green_dark"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold"/>
+
+
+                            </LinearLayout>
+
+                            <LinearLayout android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical|right"
+                                android:layout_weight="0.5">
+
+                                <com.google.android.material.card.MaterialCardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50sp"
+                                    app:cardCornerRadius="5sp">
+
+                                    <ImageView
+                                        android:id="@+id/cancelCheque_image"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:scaleType="fitXY"
+                                        app:srcCompat="@drawable/cancelled_cheque_image"
+                                        android:focusedByDefault="true"
+                                        />
+
+                                </com.google.android.material.card.MaterialCardView>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/accout_detailPanImg_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginTop="15sp"
+                    android:layout_marginLeft="12sp"
+                    android:layout_marginRight="12sp"
+                    app:cardCornerRadius="3sp">
+
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="1"
+                        android:orientation="vertical">
+
+                        <LinearLayout android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="20sp"
+                            android:paddingEnd="20sp"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="10sp">
+
+                            <TextView android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="Pan Card"
+                                android:textAllCaps="true"
+                                android:layout_weight="0.5"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="11sp"
+                                android:textStyle="bold"/>
+
+                            <TextView android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.5"
+                                android:gravity="right"
+                                android:text="Upload New"
+                                android:onClick="@{viewmodel::goToAccountDetailByPan}"
+                                android:background="@null"
+                                android:textSize="10sp"
+                                android:textColor="@color/colorAccent"/>
+
+
+                        </LinearLayout>
+
+                        <View android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="8sp"
+                            android:layout_marginLeft="20sp"
+                            android:layout_marginRight="20sp"
+                            android:background="@color/colorSmoke"/>
+
+                        <LinearLayout android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="1"
+                            android:layout_marginBottom="15sp"
+                            android:layout_marginTop="15sp"
+                            android:layout_marginLeft="20sp"
+                            android:layout_marginRight="20sp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.3"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="10sp"
+                                    android:textColor="@color/colorPrimary"
+                                    android:text="Verified on"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{viewmodel.accountVerifiedOn}"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold"/>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="10sp"
+                                    android:layout_marginTop="15sp"
+                                    android:textColor="@color/colorPrimary"
+                                    android:text="Verified Status"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{viewmodel.accountVerifiedStatus}"
+                                    android:textColor="@android:color/holo_green_dark"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold"/>
+
+                                <LinearLayout android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="15sp"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="10sp"
+                                        android:textColor="@color/colorPrimary"
+                                        android:text="Reason"
+                                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@{viewmodel.accountVerifiedReason}"
+                                        android:textColor="@color/colorPrimary"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold"/>
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                            <LinearLayout android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right"
+                                android:layout_weight="0.7">
+
+                                <com.google.android.material.card.MaterialCardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="70dp"
+                                    app:cardCornerRadius="5sp">
+
+                                    <ImageView
+                                        android:id="@+id/panCard_img"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:scaleType="fitXY"
+                                        app:srcCompat="@drawable/pancard_images"
+                                        android:focusedByDefault="true"
+                                        />
+
+                                </com.google.android.material.card.MaterialCardView>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/verification_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginBottom="10sp"
+                    android:layout_marginTop="15sp"
+                    android:layout_marginLeft="12sp"
+                    android:layout_marginRight="12sp"
+                    app:cardCornerRadius="3sp">
+
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="1"
+                        android:orientation="vertical">
+
+                        <LinearLayout android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="20sp"
+                            android:paddingEnd="20sp"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="10sp">
+
+                            <TextView android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="ID Proof"
+                                android:textAllCaps="true"
+                                android:layout_weight="0.5"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="11sp"
+                                android:textStyle="bold"/>
+
+
+                        </LinearLayout>
+
+                        <View android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="8sp"
+                            android:layout_marginLeft="20sp"
+                            android:layout_marginRight="20sp"
+                            android:background="@color/colorSmoke"/>
+
+                        <LinearLayout android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="1"
+                            android:layout_marginBottom="15sp"
+                            android:layout_marginTop="15sp"
+                            android:layout_marginLeft="20sp"
+                            android:layout_marginRight="20sp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.3"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="10sp"
+                                    android:textColor="@color/colorPrimary"
+                                    android:text="Verified on"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{viewmodel.verifiedOn}"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold"/>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="10sp"
+                                    android:layout_marginTop="15sp"
+                                    android:textColor="@color/colorPrimary"
+                                    android:text="Verified Status"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{viewmodel.verifiedData}"
+                                    android:textColor="@android:color/holo_green_dark"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right"
+                                android:layout_weight="0.7">
+
+                                <com.google.android.material.card.MaterialCardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="70dp"
+                                    app:cardCornerRadius="5sp">
+
+                                    <ImageView
+                                        android:id="@+id/verify_idProogImg"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:clickable="true"
+                                        android:scaleType="fitXY"
+                                        android:onClick="@{viewmodel::goToVerification}"
+                                        app:srcCompat="@drawable/adhar_card_images"
+                                        android:focusedByDefault="true"
+                                        />
+
+                                </com.google.android.material.card.MaterialCardView>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+            </LinearLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

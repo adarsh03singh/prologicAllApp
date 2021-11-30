@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="withdrawlViewModel"
+            type="com.prologicwebsolution.microatm.ui.withdrawl.WithdrawlViewModel"/>
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.withdrawl.WithdrawlFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvwithdrawhead"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Available For Withdraw"
+        android:layout_marginTop="30sp"
+        android:gravity="center"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvwithdrawItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="@{withdrawlViewModel.totalAmountValue}"
+        android:layout_marginTop="15sp"
+        android:gravity="center"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/tvwithdrawhead"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24sp"
+        android:text="Amount :"
+        android:textColor="@color/gray_dark"
+        android:layout_marginTop="70sp"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/tvwithdrawItem"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24sp"
+        android:layout_marginTop="30sp"
+        android:textColor="@color/black"
+        android:padding="15sp"
+        android:inputType="number"
+        android:maxLines="1"
+        android:hint="Enter amount"
+        android:text="@={withdrawlViewModel.amountValue}"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:background="@drawable/withdraw_amount_gray_background"
+        app:layout_constraintTop_toTopOf="@+id/tvAmount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvWithdrowMethod"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24sp"
+        android:text="Withdraw method :"
+        android:textColor="@color/gray_dark"
+        android:layout_marginTop="70sp"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@+id/etAmount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/withdraw_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24sp"
+        android:layout_marginTop="30sp"
+        app:layout_constraintTop_toTopOf="@+id/tvWithdrowMethod"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/impsLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5sp"
+            android:gravity="center"
+            android:paddingTop="8sp"
+            android:paddingBottom="8sp"
+            android:paddingStart="8sp"
+            android:layout_weight="1"
+            android:background="@drawable/withdraw_amount_gray_background"
+            app:layout_constraintTop_toTopOf="@+id/tvAmount" >
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/impsRadioButton"
+                android:layout_width="5dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:clickable="false"
+                android:focusable="false"
+                android:buttonTint="@color/blue" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvImps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="IMPS"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:textStyle="italic|bold"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Charges 5.0"
+                    android:textSize="10sp"
+                    android:textColor="@color/gray_dark"
+                    android:textStyle="italic|bold"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/neftLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5sp"
+            android:gravity="center"
+            android:paddingTop="8sp"
+            android:paddingBottom="8sp"
+            android:paddingStart="8sp"
+            android:layout_weight="1"
+            android:background="@drawable/withdraw_amount_gray_background"
+            app:layout_constraintTop_toTopOf="@+id/tvAmount" >
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/neftradiobutton"
+                android:layout_width="5dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:clickable="false"
+                android:focusable="false"
+                android:buttonTint="@color/blue"/>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvNeft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NEFT"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:textStyle="italic|bold"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Charges 5.0"
+                    android:textSize="10sp"
+                    android:textColor="@color/gray_dark"
+                    android:textStyle="italic|bold"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+      android:layout_marginTop="50sp"
+        android:layout_marginStart="24sp"
+        android:layout_marginEnd="24sp"
+        android:text="Send Request"
+        android:textColor="@color/white"
+        android:onClick="@{withdrawlViewModel::callWithdrawPayoutApi}"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        android:backgroundTint="@color/blue"
+        android:background="@drawable/withdraw_amount_gray_background"
+        app:layout_constraintTop_toBottomOf="@+id/withdraw_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

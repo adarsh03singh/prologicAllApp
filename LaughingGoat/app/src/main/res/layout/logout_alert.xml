@@ -1,0 +1,74 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55sp"
+        android:background="@drawable/_2_dp_radius"
+        android:orientation="vertical"
+        android:padding="10sp">
+
+
+        <TextView
+            android:id="@+id/msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44sp"
+            android:fontFamily="@font/medium"
+            android:gravity="center"
+            android:lineSpacingExtra="2sp"
+            android:maxLines="10"
+            android:text="Are you sure you want to logout?"
+            android:textColor="@color/graydark"
+            android:textSize="15sp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp">
+
+            <Button
+                android:id="@+id/noClick"
+                android:layout_width="90sp"
+                android:layout_height="35sp"
+                android:layout_gravity="start"
+                android:layout_margin="5sp"
+                android:background="@drawable/circle_red_button"
+                android:fontFamily="@font/bold"
+                android:includeFontPadding="false"
+                android:text="No"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/yesClick"
+                android:layout_width="90sp"
+                android:layout_height="35sp"
+                android:layout_gravity="end"
+                android:layout_margin="5sp"
+                android:background="@drawable/circle_green_button"
+                android:fontFamily="@font/bold"
+                android:includeFontPadding="false"
+                android:text="Logout"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+        </FrameLayout>
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/topView"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:layout_gravity="center|top"
+        android:background="@drawable/white_circle"
+
+        android:src="@drawable/ic_logout" />
+
+
+</FrameLayout>

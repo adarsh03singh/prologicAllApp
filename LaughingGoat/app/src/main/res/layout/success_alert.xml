@@ -1,0 +1,55 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80sp"
+        android:background="@drawable/_2_dp_radius"
+        android:orientation="vertical"
+        android:padding="10sp">
+
+
+        <TextView
+            android:id="@+id/msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40sp"
+            android:fontFamily="@font/medium"
+            android:gravity="center"
+            android:lineSpacingExtra="2sp"
+            android:maxLines="10"
+            android:text="No Internet connection. Make sure WI-Fi or cellular data is turned on, then try again."
+            android:textColor="@color/graydark"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/ok"
+            android:layout_width="120sp"
+            android:layout_height="50sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="25sp"
+            android:layout_marginBottom="7sp"
+            android:background="@drawable/circle_green_button"
+            android:fontFamily="@font/bold"
+            android:includeFontPadding="false"
+            android:text="OK"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/topView"
+        android:layout_width="120sp"
+        android:layout_height="120sp"
+        android:layout_gravity="center|top"
+        android:background="@drawable/white_circle"
+        android:padding="5sp"
+        android:src="@drawable/ic_success" />
+
+
+</FrameLayout>

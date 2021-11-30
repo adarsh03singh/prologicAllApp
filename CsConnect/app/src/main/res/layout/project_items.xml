@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+         <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:layout_marginStart="15sp"
+                android:layout_marginEnd="15sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:id="@+id/project_parentLayout"
+            android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical">
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical">
+
+
+                <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
+
+                    <ImageView
+                            android:id="@+id/project_image_icon"
+                            android:layout_width="match_parent"
+                            android:foreground="@drawable/gradient_image_background"
+                            android:layout_height="160dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/img"
+                    />
+
+                    <ImageView
+                        android:id="@+id/highCommisionViewId"
+                            android:layout_width="80sp"
+                            android:layout_height="35dp"
+                            android:scaleType="fitXY"
+                            android:layout_gravity="top|left"
+                            android:src="@drawable/ic_exclusive_hc"/>
+
+                    <TextView
+                        android:id="@+id/reraRegisteredViewId"
+                        android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_gravity="bottom|left"
+                              android:textColor="@color/colorAccent"
+                              android:textSize="10sp"
+                              android:paddingLeft="20sp"
+                              android:layout_marginBottom="10sp"
+                              android:text="RERA Registerd"/>
+
+
+                    <TextView android:id="@+id/project_price_lowToHigh"
+                        android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_gravity="bottom|right"
+                              android:textColor="@color/colorAccent"
+                              android:textSize="12sp"
+                              android:textStyle="bold"
+                              android:textAllCaps="true"
+                              android:paddingRight="15sp"
+                              android:layout_marginBottom="10sp" />
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:weightSum="1"
+                          android:orientation="horizontal">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:orientation="vertical"
+                        android:paddingBottom="10sp"
+                        android:layout_marginTop="10sp"
+                        android:layout_marginLeft="10sp"
+                        android:layout_marginRight="10sp">
+
+                    <TextView android:id="@+id/project_name"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxEms="13"
+                        android:maxLines="1"
+                              android:textSize="18sp"
+                              android:textStyle="bold"
+                              android:textColor="@android:color/black"
+                    />
+
+                    <TextView
+                        android:id="@+id/prjoect_location"
+                        android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:layout_marginTop="5sp"
+                              android:textSize="14sp"
+                        android:ellipsize="end"
+                        android:maxEms="13"
+                        android:maxLines="1"
+                              android:textColor="@color/colorPrimary"
+                              android:drawableLeft="@drawable/ic_location"
+                              android:drawablePadding="5sp"
+                    />
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="0.5"
+                        android:paddingBottom="10sp"
+                        android:layout_marginTop="10sp"
+                        android:layout_marginLeft="10sp"
+                        android:layout_marginRight="10sp">
+
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                        android:id="@+id/project_bhkType"
+                              android:paddingTop="5sp"
+                              android:layout_gravity="right"
+                              android:textColor="@color/colorPrimary"
+                              android:textSize="10sp" />
+
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                        android:id="@+id/project_status"
+                              android:layout_marginTop="10sp"
+                              android:inputType="textPersonName"
+                              android:layout_gravity="right"
+                        android:gravity="center"
+                        android:padding="5sp"
+                              android:textColor="@color/colorWhite"
+                              android:textSize="10sp"
+                              android:textStyle="bold"
+                              android:drawablePadding="5sp"
+                              android:background="#098F2C"
+                              android:text="Ready To Move" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View android:layout_width="match_parent"
+                  android:layout_height="1dp"
+            android:background="@color/colorSmoke"></View>
+
+        </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

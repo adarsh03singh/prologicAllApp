@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/adarsh.singh/Prologic-Web-solutions/LaughingGoat/app/src/main/res/drawable/_2_dp_radius.xml" value="0.2846153846153846" />
+        <entry key="..\:/Users/adarsh.singh/Prologic-Web-solutions/LaughingGoat/app/src/main/res/drawable/color_cursor.xml" value="0.2846153846153846" />
+        <entry key="..\:/Users/adarsh.singh/Prologic-Web-solutions/LaughingGoat/app/src/main/res/drawable/ic_search_.xml" value="0.2846153846153846" />
+        <entry key="..\:/Users/adarsh.singh/Prologic-Web-solutions/LaughingGoat/app/src/main/res/layout/search_adapter.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/adarsh.singh/Prologic-Web-solutions/LaughingGoat/app/src/main/res/layout/search_dialog.xml" value="0.27291666666666664" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

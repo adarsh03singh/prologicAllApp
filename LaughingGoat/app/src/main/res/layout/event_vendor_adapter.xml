@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.prologic.laughinggoat.model.event_vendor.EventVendorItem" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/click"
+        android:layout_width="150sp"
+        android:layout_height="match_parent"
+        android:layout_margin="5sp"
+        android:background="@drawable/_2_border_button"
+        android:orientation="vertical"
+        android:padding="1sp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="200sp"
+            android:background="@color/background_color"
+            android:scaleType="fitXY"
+            android:src="@drawable/loader"
+            app:imageTitle="@{item.title}"
+            app:showImage="@{item.image_url}"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize1Percent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="3sp">
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/medium"
+                android:gravity="center"
+                android:hint="Product Namegrtyrbyy6ybyb6v"
+                android:padding="0dp"
+                android:text="@{item.title}"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+
+            <TextView
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/normal"
+                android:gravity="center"
+                android:hint="1 Session every week"
+                android:htmlText="@{item.content}"
+                android:padding="0dp"
+                android:textColor="@color/graydark"
+                android:textColorLink="@color/blue"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</layout>

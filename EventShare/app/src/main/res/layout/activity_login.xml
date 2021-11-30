@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="loginViewModel"
+            type="com.prologicwebsolution.eventshare.ui.login.LoginViewModel"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/emailEditTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="228dp"
+            android:layout_marginStart="20sp"
+            android:layout_marginEnd="20sp"
+            android:hint="Email"
+            android:text="@={loginViewModel.userEmail}"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:paddingStart="8sp"
+            android:paddingEnd="8sp"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/passwordEditTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:layout_marginStart="20sp"
+            android:layout_marginEnd="20sp"
+            android:text="@={loginViewModel.password}"
+            android:maxLines="1"
+            android:inputType="textPassword"
+            android:paddingStart="8sp"
+            android:paddingEnd="8sp"
+            android:layout_marginTop="30dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/emailEditTxt" />
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="20sp"
+            android:layout_marginEnd="20sp"
+            android:onClick="@{loginViewModel::callLoginApiAfterCheckInternet}"
+            android:text="Login"
+            android:enabled="@{loginViewModel.buttonEabled ? false : true}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/passwordEditTxt"
+            app:layout_constraintVertical_bias="0.241"
+            tools:ignore="UsingOnClickInXml" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#80000000"
+            android:visibility="@{loginViewModel.progressBar}">
+
+            <androidx.core.widget.ContentLoadingProgressBar
+                android:id="@+id/progress_bar_gen"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                style="?android:attr/progressBarStyleLarge"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

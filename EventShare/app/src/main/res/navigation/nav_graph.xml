@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:id="@+id/nav_graph"
+    app:startDestination="@id/imageListfragment">
+
+
+    <fragment
+        android:id="@+id/imageListfragment"
+        android:name="com.prologicwebsolution.eventshare.ui.imageList.ImageListfragment"
+        android:label="Image List" >
+        <action
+            android:id="@+id/action_imageListfragment_to_festivalImageFragment"
+            app:destination="@id/festivalImageFragment" />
+        <action
+            android:id="@+id/action_imageListfragment_to_imageShareFragment"
+            app:destination="@id/imageShareFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/festivalImageFragment"
+        android:name="com.prologicwebsolution.eventshare.ui.festivalsImages.FestivalImageFragment"
+        android:label="Festival Images" />
+
+    <fragment
+        android:id="@+id/imageShareFragment"
+        android:name="com.prologicwebsolution.eventshare.ui.imageShare.ImageShareFragment"
+        android:label="Image Share" />
+</navigation>

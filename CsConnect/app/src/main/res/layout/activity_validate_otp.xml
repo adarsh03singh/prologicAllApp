@@ -1,0 +1,167 @@
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodelVal"
+            type="com.csestateconnect.viewmodel.AuthViewModel" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/validate_constraint"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30sp"
+        android:layout_marginRight="30sp"
+        android:layout_marginTop="90dp"
+        android:text=" Code Verification"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30sp"
+        android:layout_marginRight="30sp"
+        android:layout_marginTop="84dp"
+        android:gravity="center"
+        android:text="Enter OTP recieved on your mobile number"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.585"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <com.mukesh.OtpView
+        android:id="@+id/valotp_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:backgroundTint="#80BEBEBE"
+        android:gravity="center"
+        android:inputType="number"
+        app:itemCount="6"
+        android:theme="@style/OtpWidget.OtpView"
+        android:windowSoftInputMode="stateVisible"
+        android:maxLength="6"
+        android:text="@={viewmodelVal.otpView}"
+        app:lineColor="#80BEBEBE"
+        app:viewType="line"
+        android:hint="@string/otpHint"
+        android:textColorHint="#80BEBEBE"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/view_timer"
+        android:layout_width="match_parent"
+        android:layout_height="18dp"
+        android:layout_marginEnd="30sp"
+        android:layout_marginStart="30dp"
+        android:text="@{viewmodelVal.timer}"
+        android:textColor="@color/buttonColor"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.053"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="30sp"
+        android:layout_marginRight="30sp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/otp_verify_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/didnt_code_txt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:textStyle="normal"
+            android:gravity="left"
+            android:text="Didn't get code yet?"
+            android:textColor="@{viewmodelVal.canRestartTime? @color/whiteColor : @color/smokeColor}" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/resend_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:enabled="@{viewmodelVal.canRestartTime? true : false}"
+            android:layout_weight="0.3"
+            android:background="@null"
+            android:gravity="right"
+            android:textStyle="normal"
+            android:text="Resend Code"
+            android:textAllCaps="false"
+            android:onClick="@{viewmodelVal::restartTimer}"
+            android:textColor="@{viewmodelVal.canRestartTime? @color/buttonColor : @color/smokeColor}" />
+
+    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/otp_verify_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30sp"
+        android:layout_marginLeft="30sp"
+        android:layout_marginRight="30sp"
+        android:backgroundTint="@{viewmodelVal.otpView.length() > 5 ? @color/buttonColor : @color/smokeColor}"
+        android:enabled="@{viewmodelVal.otpView.length() > 5 ? true : false}"
+        android:textColor="@{viewmodelVal.otpView.length() > 5 ? @color/whiteColor : @color/smokeColor}"
+        android:text="Verify"
+        android:onClick="@{viewmodelVal::AuthOtpValidate}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:visibility="@{viewmodelVal.progressBarVal}">
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/progress_bar_val"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            style="?android:attr/progressBarStyleLarge"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="updateReimburseViewmodel"
+            type="com.csestateconnect.viewmodel.ReimbursementViewModel"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/scrollView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fillViewport="true">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="16sp"
+                    android:paddingEnd="16sp"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20sp"
+                        android:backgroundTint="@color/colorgray"
+                        android:hint="Amount"
+                        android:textColorHint="@color/colorPrimary"
+                        app:boxBackgroundColor="@null"
+                        app:hintTextAppearance="@style/HintText">
+
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPostalAddress"
+                            android:text="@={updateReimburseViewmodel.editAmount}"
+                            android:textAppearance="@style/TextSize"
+                            android:textColor="@color/colorPrimary"
+                            android:paddingStart="10sp"
+                            android:textStyle="normal" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/NoActionBarMaterial"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_marginTop="20sp"
+                        android:backgroundTint="@color/colorgray"
+                        android:hint="Type"
+                        android:textColorHint="@color/colorPrimary"
+                        app:boxBackgroundColor="@null"
+                        app:hintTextAppearance="@style/HintText">
+
+
+                        <AutoCompleteTextView
+                            android:id="@+id/remburseType_dropDown"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@={updateReimburseViewmodel.editType}"
+                            android:focusable="false"
+                            android:inputType="none"
+                            android:paddingStart="10sp"
+                            android:textSize="14sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.core.widget.NestedScrollView>
+
+            <Button
+                android:id="@+id/register_button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:onClick="@{updateReimburseViewmodel.checkfieldsForEditReimburse}"
+                android:enabled="@{updateReimburseViewmodel.cancelablebutton}"
+                android:text="Save"
+                android:textSize="17dp"
+                android:backgroundTint="@color/buttonColor"
+                android:textColor="@color/whiteColor"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#80000000"
+            android:visibility="@{updateReimburseViewmodel.progressBar}">
+
+            <androidx.core.widget.ContentLoadingProgressBar
+                android:id="@+id/progress_bar_gen"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                style="?android:attr/progressBarStyleLarge"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

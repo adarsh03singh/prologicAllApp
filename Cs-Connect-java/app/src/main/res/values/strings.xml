@@ -1,0 +1,95 @@
+<resources>
+    <string name="app_name">CS Connect</string>
+    <string name="cs_connect">CS Connect</string>
+    <string name="cs_tagline">Real Estate Platform By</string>
+    <string name="largest_real_estate_aggregator">Largest Real Estate Aggregator</string>
+    <string name="cs_logo_image_desc">CS logo</string>
+    <string name="exclusive_projects">● Exclusive Projects</string>
+    <string name="best_comission_slabs_by_promoter">● Best Comission Slabs By Promoter</string>
+    <string name="get_free_verified_buyer_leads">● Get Free Verified Buyer Leads</string>
+    <string name="clear_payout_process">● Clear Payout process</string>
+    <string name="instant_rm_connect">● Instant RM Connect</string>
+    <string name="cs_connect_button_text">CS CONNECT</string>
+    <string name="become_our_channel_partner_text">Become Our Channel Partner</string>
+    <string name="get_otp_text">Get Otp</string>
+    <string name="api_domain">https://api.csestateconnect.com</string>
+    <string name="locations_api_path">/appapi/read_only/countries</string>
+    <string name="update_profile_api_path">/appapi/profile/update</string>
+    <string name="create_account_api_path">/appapi/bank_account/create</string>
+    <string name="update_account_api_path">/appapi/bank_account/update</string>
+    <string name="get_profile_api_path">/appapi/profile</string>
+    <string name="remove_profile_image_api_path">/appapi/profile/reset_image</string>
+    <string name="update_profileImage_api_path">/appapi/profile/update_image</string>
+    <string name="upload_deal_cheque_image">/appapi/deal_cheque_image</string>
+    <string name="get_feedback_api_path">/appapi/leads/</string>
+    <string name="update_deal_api_path">/appapi/deals/</string>
+
+    <string name="create_lead_api_path">/appapi/leads</string>
+    <string name="create_deal_api_path">/appapi/deals</string>
+    <string name="create_interaction_dates_api_path">/appapi/lead_interaction_dates/create/</string>
+    <string name="create_interaction_activities_api_path">/appapi/lead_activities/create/</string>
+    <string name="get_status_api_path">//appapi/read_only/lead_statuses</string>
+    <string name="get_deal_status_api_path">//appapi/read_only/deal_statuses</string>
+    <string name="create_kyc_api_path">/appapi/kyc/create</string>
+    <string name="update_kyc_api_path">/appapi/kyc/update</string>
+    <string name="kyc_detail_api_path">/appapi/kyc</string>
+    <string name="account_detail_api_path">/appapi/bank_account</string>
+    <string name="locations_data_key">LOCATIONS_DATA</string>
+    <string name="token_data_key">token</string>
+    <string name="rm_number_data">RmNumber</string>
+    <string name="rm_email_data">RmEmail</string>
+    <string name="ac_verification_value">verification_bank_Ac</string>
+    <string name="kyc_verification_value">verification_kyc_Ac</string>
+    <string name="phonenumber_data">phone_number</string>
+    <string name="locations_default_empty_value">[]</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="login_text">Enter Your Number</string>
+    <string name="generate_otp_api_path">/auth/generate_otp</string>
+    <string name="validate_otp_api_path">/auth/validate_otp</string>
+    <string name="resend_otp">Resend OTP</string>
+    <string name="enter_otp_text">Enter OTP</string>
+    <string name="otp_screen_instruction">We have sent you a One Time Password(OTP) to verify your number.</string>
+    <string name="otp_verify_headline">Verification</string>
+    <string name="support_headline">Support</string>
+    <string name="did_not_recieved_otp_question">Not recieved One Time Password(OTP)yet?</string>
+    <string name="verify_button_text">Verify</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="loading">Loading...</string>
+    <string name="shared_preference_key">LocalStorage</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="projects_search_path">/search</string>
+    <string name="projects_commission_path">/appapi/user_project_commission_slab_details_per_project</string>
+    <string name="top_projects_city_search_path">/appapi/top_five_projects_by_city</string>
+    <string name="get_homeData_path">/appapi/app_home_data</string>
+    <string name="information_we_collect"><![CDATA[During the signing process, CS Connect may collect personal data and other information as described below: We may collect personal data from the members during registration process. By voluntarily providing us with their personal data, users are consenting to CareerSocially to use it in accordance with the privacy policy. When users interact through the application, we also receive and store personally non-identifiable information. The stored information cannot be used to specifically identify a member. CareerSocially may store such information in databases owned and maintained by CareerSocially affiliates or service providers. CareerSocially may use the information to track, for example, the total number of visitors, the number of visitors to each page of our website, the domain names of our visitors & internet service providers and how our users use and interact with the application. To serve the users of the application in a better way, CareerSocially may conduct research on user’s demographics, interests and behavior based on the personal data provided to us. CareerSocially may share this information with its affiliates, agents and business partners, but this information does not identify a user personally. We may also disclose aggregated user statistics in order to describe our services to current and prospective business partners, and to other third parties for other lawful purposes. CareerSocially may also use cookies that helps to provide additional functionality to the application and help us analyze application usage more accurately. For instance, our program may set a cookie on your browser that allows you to access the program without remembering the password. We will collect data through cookies with your prior permission.]]></string>
+    <string name="personal_data_and_other_information">CareerSocially uses personal data as per the privacy policy. If you provide personal data for a particular reason, we may use the personal data with the reason for which it is provided. For instance, if you contact us by email, we will use the personal data you provide to answer your question or resolve your problem. CareerSocially and its subsidiaries and affiliates may also use your personal data and other non-identifiable information to improve the content and functionality of the program, to better understand our users, and to improve the CS Connect application. We may also contact you in the future to tell you about services we believe will be of interest to you. If CareerSocially intends to use any personal data in any manner that is not consistent with the privacy policy, then you will be informed before use or at the time of data collection.</string>
+    <string name="personal_data_disclosure">Our Disclosure of Your Personal Data and Other Information CareerSocially will not sell your personal information. Instead, we consider this information as a vital part of our relationship with application users. However, we may share your personal data with third parties without any prior notice to you, as set forth below –</string>
+    <string name="agents_and_consultants">We may share your personal data with other agents and consultants that are hired to perform certain business related functions. For instance, to send emails and SMS messages, maintaining databases, offering and developing certain features of the application, and maintenance and security.</string>
+    <string name="leagal_requirements">CareerSocially may disclose your personal data if required to do so by law or in the good faith belief that such action is necessary to comply with a legal obligation or assist government enforcement agencies, protect and defend the rights or property of CareerSocially or our users, act in urgent circumstances to protect the personal safety of users of the services or the public and protect against legal liability. We do not share your personal data for marketing or promotional use without your consent except as part of a specific or feature for which you will have the ability to opt-out.</string>
+    <string name="exclusions">The Privacy Policy does not apply to any Personal Data collected by CareerSocially other than personal data collected through the application. This includes, but is not limited to, information posted to any public areas of the services, such as public forums etc. This Privacy Policy shall not apply to any unsolicited information you provide to CareerSocially through the Program or any other means. All Unsolicited Information shall be deemed to be non-confidential and CareerSocially shall be free to reproduce, use, disclose, distribute and exploit such unsolicited Information without limitation or attribution.</string>
+    <string name="security">CareerSocially takes necessary steps to protect personal data provided by you from loss, misuse and unauthorized access. However, transmission through internet is not fully secure, so you should take special care in deciding what information you should submit via electronic transmission.</string>
+    <string name="change_rights">CareerSocially reserves the right to update or modify the privacy policy at any time without prior notice. Please review this policy periodically and especially before you provide any personal data.</string>
+    <string name="definations">CS Connect shall mean a smartphone app owned and operated by CAREER SOCIALLY that can be used on Smartphone device(s). It should be used by CS Connect Application User who has signed up for the CS Connect program and has downloaded the application. CarrerSocially’s corporate office is at 920, Wave Silver Tower, Noida Sector 18, Uttar Pradesh, 201301.</string>
+    <string name="enrollment_usage">CS Connect user should share the correct details at the time of enrolling into the program. If it is found that given details are incomplete or incorrect, then enrolment to the application may be refused without assigning any reasons. CS Connect team shall reserve the right to offer the application by invitation to any prospective CS Connect users as it may deem fit. The data relating to CS Connect shall be protected and used as per the policy indicated in CS Connect Privacy Policy.</string>
+    <string name="termination_of_membership">The membership may be terminated in three conditions: First, if user uninstalls the application; second, if a user acts in a manner inconsistent with any central/state/local laws, statutes or ordinances and third, the user may be disqualified to use the app, arising out of his/her misconduct, fraud and misuse of the application.</string>
+    <string name="intellectual_property">CS Connect user acknowledges and agrees that the membership may contain content that is protected by copyright, patent, trademark, trade secret or other proprietary rights and laws. He/she further agrees not to copy, modify, rent, lease, distribute or sell the membership or the content, in a whole or in part. In connection with the use of the membership user shall not engage in or use any data mining, robots, scraping or similar data gathering or extraction methods. The software is the sole property of CareerSocially. You agree not to copy, modify, reverse engineer or other attempts to discover any source code in order to sell, rent or sublicense to any other third person.</string>
+    <string name="miscellaneous">All the settlement of disputes shall be governed by the laws of India only and shall be attempted to be resolved through negotiations. Only in case, such negotiations are unsuccessful, the member shall resort to legal recourse, which shall be subject to the exclusive jurisdiction of the competent courts in New Delhi only. All the claims and disputes should be notified to CareerSocially within 15 working days from the date of event, after that no CS Connect user shall have any claim against CareerSocially. CareerSocially shall have the right to transfer, assign and sell, in whole or in part, the CS Connect App to any third party without any reference or intimation to the CS Connect users. All logos and trademarks are the sole property of CareerSocially.</string>
+    <string name="disclaimer_of_warranties">The use of the membership is at the user’s sole risk. CareerSocially expressly disclaims all warranties of any kind, whether express, implied or statutory, but not limited to the implied warranties of merchantability, fitness for a particular purpose, title and non-infringement. CareerSocially makes no warranty that the membership will adhere to member’s requirement, the membership will be uninterrupted, timely, secure, error free, and the results obtained from the use of membership will be accurate or reliable.</string>
+    <string name="limitation_of_liability">CS Connect users should understand and agree that CareerSocially shall not be liable for any indirect, incidental or exemplary damages for loss of profits, goodwill, data or other intangible loss resulting from the inability to use the service, conduct of any third party on the service, unauthorized access to member’s transmissions or data or any other matter relating to the service.</string>
+    <string name="faqs_path">/api/faqs?page_size=100</string>
+    <string name="leads_list_path">/appapi/leads/</string>
+    <string name="filterleads_bycreated_date_list_path">/appapi/leads/?created_at=</string>
+    <string name="deals_list_path">/appapi/deals/</string>
+    <string name="totalSum">commission_amount_total__sum</string>
+
+    <string name="about_us">CS CONNECT is a unique and effective real estate platform for real estate brokers and independent agents looking to earn higher revenue, commissions, and growth in their business. CS CONNECT showcases a large catalogue of real estate properties across India and beyond, that they can access from their mobile to achieve greater heights through free leads, marketing support, and other business opportunities. Through this exquisite platform, Real estate agents get to view exclusively derived deals from all the renowned and well-known real estate developers to further approach the booking’s closure and payments with absolute transparency and convenience. This equipped mobile platform offers them a market which is way more than their current territory of work that would help them in getting higher potential remuneration. This platform boasts of a dashboard with precise and complete details of gathered deals, transactions, and bookings with a smooth communication of every basic change in their standings. A great and skilled prospect of the distribution network of ultimate real estates around, CS CONNECT with an excellent and committed CRM help desk will ensure a straightforward and effortless functioning without any direct communication with the developers. A dedicated platform for large real estate product dispersal and substantial growth of revenue, CS Connect is a delectable situation for both developers and real estate brokers to carry out an obvious, immediate and elegant working capital cycle.</string>
+
+</resources>

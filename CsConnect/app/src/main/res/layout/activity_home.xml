@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.csestateconnect.viewmodel.HomeViewModel" />
+
+        <variable
+            name="mContext"
+            type="com.csestateconnect.ui.home.HomeActivity" />
+    </data>
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context=".ui.home.HomeActivity"
+        tools:openDrawer="start">
+
+        <include
+            layout="@layout/app_bar_home_acticity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <fragment
+                android:id="@+id/nav_host_fragment"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="55dp"
+                app:defaultNavHost="true"
+                app:navGraph="@navigation/nav_graph" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="55dp"
+                android:background="#ffffff"
+                android:visibility="@{viewmodel.progressBarHomeLoad}">
+
+                <androidx.core.widget.ContentLoadingProgressBar
+                    android:id="@+id/progress_bar_gen"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    style="?android:attr/progressBarStyleLarge"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:id="@+id/bottomNavLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="0dp"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/bottom_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="0dp"
+                    app:itemIconTint="@drawable/tabselected_textverify"
+                    app:itemTextColor="@drawable/tabselected_textverify"
+                    android:background="?android:attr/windowBackground"
+                    app:labelVisibilityMode="labeled"
+                    app:menu="@menu/homemenu"
+                    />
+
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/floating_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="130dp"
+                    android:backgroundTint="@color/colorAccent"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:visibility="gone"
+                    android:onClick="@{viewmodel::getRmNumber}"
+                    android:layout_marginBottom="23dp"
+                    android:clickable="true"
+                    android:src="@drawable/floating_call_icon"
+                    app:elevation="8dp" />
+
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        </RelativeLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navViewDrawer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:id="@id/header_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:background="@drawable/bg_splash"
+                    android:gravity="bottom"
+                    android:orientation="horizontal"
+                    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="30sp"
+                        android:layout_marginTop="40sp">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_vertical"
+                            app:cardCornerRadius="5sp">
+
+                            <ImageView
+                                android:id="@+id/header_imageView"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                app:imageUrl="@{viewmodel.headerImgeView}"
+                                android:scaleType="centerCrop" />
+
+                        </androidx.cardview.widget.CardView>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:orientation="vertical"
+                            android:paddingLeft="10sp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="8dp"
+                                android:maxLength="15"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:layout_marginEnd="10sp"
+                                android:text="@{viewmodel.username}"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                android:textColor="@android:color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                                        <TextView
+                                            android:id="@+id/textView"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="View &amp; Edit Profile"
+                                            android:textColor="@color/colorAccent"
+                                            android:textSize="10sp" />
+
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20sp"
+                                android:orientation="vertical"
+                                android:paddingLeft="30sp"
+                                android:paddingRight="20sp">
+
+                                <TextView
+                                    android:id="@id/nav_bcp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:clickable="true"
+                                    android:text="Become Channel Partner"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_marginTop="20sp"
+                                    android:background="#80BEBEBE" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="15sp"
+                                    android:text="My Space"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/nav_notify"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="12sp"
+                                    android:text="Notifications" />
+
+                                <TextView
+                                    android:id="@id/nav_favorites"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="12sp"
+                                    android:text="Favorites" />
+
+                                <TextView
+                                  android:id="@+id/nav_clients"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="12sp"
+                                    android:text="Clients" />
+
+                                <TextView
+                                    android:id="@+id/nav_events"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="12sp"
+                                    android:text="Events" />
+
+                                <TextView
+                                    android:id="@+id/nav_reimbursements"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="12sp"
+                                    android:text="Reimbursements" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_marginTop="20sp"
+                                    android:background="#80BEBEBE" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="15sp"
+                                    android:text="Supports"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@id/nav_faq"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="12sp"
+                                    android:text="FAQ" />
+
+                                <TextView
+                                    android:id="@+id/nav_get_touch"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="12sp"
+                                    android:text="Get In Touch" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_marginTop="20sp"
+                                    android:background="#80BEBEBE" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10sp"
+                                    android:text="CS Connect"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@id/nav_about_us"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="12sp"
+                                    android:text="About Us" />
+
+                                <TextView
+                                    android:id="@id/nav_terms_conditions"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="12sp"
+                                    android:text="Terms &amp; Conditions" />
+
+                                <TextView
+                                    android:id="@id/nav_privacy_policy"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="12sp"
+                                    android:text="Privacy Policy" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_marginTop="20sp"
+                                    android:background="#80BEBEBE" />
+
+                                <TextView
+                                    android:id="@+id/nav_log_out"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="20sp"
+                                    android:layout_marginBottom="20sp"
+                                    android:drawableStart="@drawable/ic_logout"
+                                    android:drawablePadding="5sp"
+                                    android:text="Logout"
+                                    android:textColor="@color/colorAccent"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+            <!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical">-->
+
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/header_view"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="140dp"-->
+<!--                    android:background="@drawable/bg_splash"-->
+<!--                    android:gravity="bottom"-->
+<!--                    android:onClick="@{viewmodel::goToProfileActivity}"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:theme="@style/ThemeOverlay.AppCompat.Dark">-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_marginLeft="30sp"-->
+<!--                        android:layout_marginTop="40sp">-->
+
+<!--                        <androidx.cardview.widget.CardView-->
+<!--                            android:layout_width="60dp"-->
+<!--                            android:layout_height="60dp"-->
+<!--                            android:layout_gravity="center_vertical"-->
+<!--                            app:cardCornerRadius="5sp">-->
+
+<!--                            <ImageView-->
+<!--                                android:id="@+id/imageView"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:contentDescription="@string/nav_header_desc"-->
+<!--                                android:scaleType="fitXY"-->
+<!--                                app:srcCompat="@drawable/win_diesel" />-->
+
+<!--                        </androidx.cardview.widget.CardView>-->
+
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_gravity="center_vertical"-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:paddingLeft="10sp">-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:paddingTop="8dp"-->
+<!--                                android:maxLength="15"-->
+<!--                                android:ellipsize="end"-->
+<!--                                android:maxLines="1"-->
+<!--                                android:layout_marginEnd="10sp"-->
+<!--                                android:text="@{viewmodel.username}"-->
+<!--                                android:textAppearance="@style/TextAppearance.AppCompat.Body1"-->
+<!--                                android:textColor="@android:color/white"-->
+<!--                                android:textSize="16sp"-->
+<!--                                android:textStyle="bold" />-->
+
+<!--                            <TextView-->
+<!--                                android:id="@+id/textView"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:onClick="@{viewmodel::goToProfileActivity}"-->
+<!--                                android:text="View &amp; Edit Profile"-->
+<!--                                android:textColor="@color/colorAccent"-->
+<!--                                android:textSize="10sp" />-->
+
+<!--                        </LinearLayout>-->
+<!--                    </LinearLayout>-->
+
+<!--                </LinearLayout>-->
+
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="20sp"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:paddingLeft="30sp"-->
+<!--                    android:paddingRight="20sp">-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/nav_channel_partner"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:clickable="true"-->
+<!--                        android:onClick="@{viewmodel::goToBCPActivity}"-->
+<!--                        android:text="Become Channel Partner"-->
+<!--                        android:textColor="@android:color/black"-->
+<!--                        android:textSize="18sp"-->
+<!--                        android:textStyle="bold" />-->
+
+<!--                    <View-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="1dp"-->
+<!--                        android:layout_marginTop="20sp"-->
+<!--                        android:background="#80BEBEBE" />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="20sp"-->
+<!--                        android:text="My Space"-->
+<!--                        android:textColor="@android:color/black"-->
+<!--                        android:textSize="18sp"-->
+<!--                        android:textStyle="bold" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/nav_notification"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="10sp"-->
+<!--                        android:text="Notifications" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/nav_favorites"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="10sp"-->
+<!--                        android:onClick="@{viewmodel::goToFavoritwsActivity}"-->
+<!--                        android:text="Favorites" />-->
+
+<!--                    <View-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="1dp"-->
+<!--                        android:layout_marginTop="20sp"-->
+<!--                        android:background="#80BEBEBE" />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="20sp"-->
+<!--                        android:text="Supports"-->
+<!--                        android:textColor="@android:color/black"-->
+<!--                        android:textSize="18sp"-->
+<!--                        android:textStyle="bold" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/nav_faq"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="10sp"-->
+<!--                        android:onClick="@{viewmodel::goToFaqsActivity}"-->
+<!--                        android:text="FAQ" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/nav_get_touch"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="10sp"-->
+<!--                        android:onClick="@{viewmodel::goToGetInTouchActivity}"-->
+<!--                        android:text="Get In Touch" />-->
+
+<!--                    <View-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="1dp"-->
+<!--                        android:layout_marginTop="20sp"-->
+<!--                        android:background="#80BEBEBE" />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="10sp"-->
+<!--                        android:text="CS Connect"-->
+<!--                        android:textColor="@android:color/black"-->
+<!--                        android:textSize="18sp"-->
+<!--                        android:textStyle="bold" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/nav_about_us"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="10sp"-->
+<!--                        android:onClick="@{viewmodel::goToAboutUsActivity}"-->
+<!--                        android:text="About Us" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/nav_terms_conditions"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="10sp"-->
+<!--                        android:onClick="@{viewmodel::goToTermsConditionActivity}"-->
+<!--                        android:text="Terms &amp; Conditions" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/nav_privacy_policy"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="10sp"-->
+<!--                        android:onClick="@{viewmodel::goToPrivacyPolicyActivity}"-->
+<!--                        android:text="Privacy Policy" />-->
+
+<!--                    <View-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="1dp"-->
+<!--                        android:layout_marginTop="20sp"-->
+<!--                        android:background="#80BEBEBE" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/nav_log_out"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="20sp"-->
+<!--                        android:drawableLeft="@drawable/ic_logout"-->
+<!--                        android:drawablePadding="5sp"-->
+<!--                        android:text="Logout"-->
+<!--                        android:textColor="@color/colorAccent"-->
+<!--                        android:textSize="18sp"-->
+<!--                        android:textStyle="bold" />-->
+
+
+<!--                </LinearLayout>-->
+<!--            </LinearLayout>-->
+        </com.google.android.material.navigation.NavigationView>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+
+</layout>
+

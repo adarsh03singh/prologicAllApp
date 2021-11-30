@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:layout_margin="10dp"
+    app:layout_constraintCircleRadius="8dp"
+    android:layout_width="match_parent"
+    android:background="#F4F3F3"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/zero_assigned_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Found 0 Assigned Projects"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:padding="10dp"
+        android:visibility="gone"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/projectNameRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:visibility="visible"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/btndialog"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/Orange"
+        android:padding="12dp"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        android:text="Cancel"/>
+
+</LinearLayout>

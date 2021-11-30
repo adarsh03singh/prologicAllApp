@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="5sp"
+            app:cardElevation="1sp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="5sp"
+                android:paddingLeft="16sp">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.6"
+                    android:background="@color/colorSmoke"
+                    android:gravity="center_horizontal|center_vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/document_image"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:scaleType="fitXY"
+                        android:background="@drawable/pdf_icon" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20sp"
+                    android:layout_weight="0.4"
+                    android:orientation="vertical"
+                    android:paddingStart="10sp">
+
+
+                 <!--   <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="true"
+                        android:layout_marginEnd="5sp"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />-->
+
+                    <TextView
+                        android:id="@+id/document_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10sp"
+                        android:ellipsize="end"
+                        android:maxEms="20"
+                        android:maxLines="2"
+                        android:hint=" Name"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="12sp" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:layout_marginTop="10sp"
+                        android:orientation="horizontal"
+                        android:paddingStart="10sp">
+
+                        <TextView
+                            android:id="@+id/view_doc_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5sp"
+                            android:background="@drawable/edit_text_border"
+                            android:hint="View"
+                            android:layout_marginEnd="10sp"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/update_doc_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5sp"
+                            android:background="@drawable/edit_text_border"
+                            android:hint="Update"
+                            android:layout_marginEnd="10sp"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/doc_delete_item"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10sp"
+                            android:padding="5sp"
+                            android:background="@drawable/edit_text_border"
+                            android:hint="Delete"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="14sp" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.cardview.widget.CardView>
+
+   <!-- <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginTop="1sp"
+        android:layout_marginStart="1sp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="1dp"
+        app:cardElevation="0dp">
+
+        <LinearLayout
+            android:id="@+id/comm_parentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.6"
+                android:background="@color/colorSmoke"
+                android:gravity="center_horizontal|center_vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/id_proofImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_upload"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+           &lt;!&ndash; <ImageView
+                android:id="@+id/document_image"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10sp"
+                android:scaleType="fitXY"
+                android:background="@drawable/pdf_icon" />
+&ndash;&gt;
+            <TextView
+                android:id="@+id/document_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5sp"
+                android:layout_marginBottom="5sp"
+                android:layout_marginStart="2sp"
+                android:layout_marginEnd="5sp"
+                android:ellipsize="end"
+                android:maxEms="20"
+                android:maxLines="2"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="Brochure"
+                android:textColor="@android:color/black"/>
+
+
+        </LinearLayout>
+       &lt;!&ndash; <ImageView
+            android:id="@+id/doc_delete_item"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="10sp"
+            android:layout_gravity="right"
+            android:scaleType="fitXY"
+            android:background="@drawable/ic_baseline_delete_24" />&ndash;&gt;
+    </androidx.cardview.widget.CardView>-->
+</LinearLayout>

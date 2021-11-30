@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="addClientViewmodel"
+            type="com.csestateconnect.viewmodel.ClientsViewModel"/>
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="16sp"
+                android:paddingEnd="16sp"
+                android:orientation="vertical">
+
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/first_name_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10sp"
+                    android:backgroundTint="@color/colorgray"
+                    android:hint="Name"
+                    android:textColorHint="@color/colorPrimary"
+                    app:boxBackgroundColor="@null"
+                    app:hintEnabled="true"
+                    app:hintTextAppearance="@style/HintText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/first_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={addClientViewmodel.clientName}"
+                        android:inputType="textPersonName"
+                        android:textAppearance="@style/TextSize"
+                        android:textColor="@color/colorPrimary"
+                        android:paddingStart="10sp"
+                        android:textStyle="normal" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20sp"
+                    android:backgroundTint="@color/colorgray"
+                    android:hint="Mobile Number"
+                    android:textColorHint="@color/colorPrimary"
+                    app:boxBackgroundColor="@null"
+                    app:hintTextAppearance="@style/HintText">
+
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/email_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={addClientViewmodel.clientMobile}"
+                        android:inputType="number"
+                        android:textAppearance="@style/TextSize"
+                        android:textColor="@color/colorPrimary"
+                        android:paddingStart="10sp"
+                        android:textStyle="normal" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20sp"
+                    android:backgroundTint="@color/colorgray"
+                    android:hint="Email"
+                    android:textColorHint="@color/colorPrimary"
+                    app:boxBackgroundColor="@null"
+                    app:hintTextAppearance="@style/HintText">
+
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/branch_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:text="@={addClientViewmodel.clientEmailId}"
+                        android:lines="3"
+                        android:textAppearance="@style/TextSize"
+                        android:textColor="@color/colorPrimary"
+                        android:paddingStart="10sp"
+                        android:textStyle="normal" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20sp"
+                    android:backgroundTint="@color/colorgray"
+                    android:hint="Address"
+                    android:textColorHint="@color/colorPrimary"
+                    app:boxBackgroundColor="@null"
+                    app:hintTextAppearance="@style/HintText">
+
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPostalAddress"
+                        android:text="@={addClientViewmodel.clientAddress}"
+                        android:textAppearance="@style/TextSize"
+                        android:textColor="@color/colorPrimary"
+                        android:paddingStart="10sp"
+                        android:textStyle="normal" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/NoActionBarMaterial"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_marginTop="20sp"
+                    android:backgroundTint="@color/colorgray"
+                    android:hint="Country"
+                    android:textColorHint="@color/colorPrimary"
+                    app:boxBackgroundColor="@null"
+                    app:hintTextAppearance="@style/HintText">
+
+
+                    <AutoCompleteTextView
+                        android:id="@+id/country_autocompleteView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={addClientViewmodel.clientCountry}"
+                        android:focusable="false"
+                        android:inputType="none"
+                        android:paddingStart="10sp"
+                        android:textSize="14sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/NoActionBarMaterial"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_marginTop="20sp"
+                    android:backgroundTint="@color/colorgray"
+                    android:hint="City"
+                    android:textColorHint="@color/colorPrimary"
+                    app:boxBackgroundColor="@null"
+                    app:hintTextAppearance="@style/HintText">
+
+
+                    <AutoCompleteTextView
+                        android:id="@+id/city_autocompleteView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={addClientViewmodel.clientCity}"
+                        android:focusable="false"
+                        android:inputType="none"
+                        android:paddingStart="10sp"
+                        android:textSize="14sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/NoActionBarMaterial"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_marginTop="20sp"
+                    android:layout_marginBottom="20sp"
+                    android:backgroundTint="@color/colorgray"
+                    android:hint="Location"
+                    android:textColorHint="@color/colorPrimary"
+                    app:boxBackgroundColor="@null"
+                    app:hintTextAppearance="@style/HintText">
+
+
+                    <AutoCompleteTextView
+                        android:id="@+id/location_autocompleteView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={addClientViewmodel.clientLocation}"
+                        android:focusable="false"
+                        android:inputType="none"
+                        android:paddingStart="10sp"
+                        android:textSize="14sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.core.widget.NestedScrollView>
+
+        <Button
+            android:id="@+id/register_button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:onClick="@{addClientViewmodel::checkfields}"
+            android:enabled="@{addClientViewmodel.cancelablebutton}"
+            android:text="Save"
+            android:textSize="17dp"
+            android:backgroundTint="@color/buttonColor"
+            android:textColor="@color/whiteColor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:visibility="@{addClientViewmodel.progressBar}">
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/progress_bar_gen"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            style="?android:attr/progressBarStyleLarge"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

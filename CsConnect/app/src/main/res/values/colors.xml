@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ff000000</color> <!--#292929-->
+    <color name="colorPrimaryDark">#424646</color>
+    <color name="colorAccent">#f4a20c</color>
+    <color name="buttonColor">#f4a20c</color>
+    <color name="smokeColor">#80BEBEBE</color>
+    <color name="colorSmoke">#80BEBEBE</color>
+    <color name="whiteColor">#FFFFFF</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorchery">#D14919</color>
+    <color name="colorBackground">#F4F3F3</color>
+    <color name="Orange">#D57C16</color>
+    <color name="DarkGrey">#A9A9A9</color>
+    <color name="colorgray">#804E4C4C</color>
+    <color name="black">#000000</color>
+    <color name="Green">#32CD32</color>
+</resources>

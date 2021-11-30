@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/logout_menu"
+        android:title="Logout"
+        android:icon="@drawable/ic_baseline_logout_24"
+        android:visible="false"
+        android:orderInCategory="100"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/withdrawl_history_menu"
+        android:title="Get Assign Lead"
+        android:icon="@drawable/ic_withdrawl_history_icon"
+        android:visible="false"
+        android:orderInCategory="100"
+        app:showAsAction="always"/>
+
+</menu>

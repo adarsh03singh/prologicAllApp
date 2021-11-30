@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.prologic.laughinggoat.model.category.CategoryItem" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/click"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5sp"
+        android:background="@drawable/_2_border_button"
+        android:gravity="center"
+
+        android:orientation="vertical"
+      >
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="110sp"
+            android:scaleType="fitXY"
+            android:layout_margin="1sp"
+            android:src="@drawable/loader"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize2Percent"
+            app:loadImage="@{item.image.src}" />
+
+        <TextView android:padding="3sp"
+            android:id="@+id/name"
+            android:layout_marginBottom="2sp"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/medium"
+            android:gravity="center"
+            android:hint="Category Name"
+            android:includeFontPadding="false"
+            android:text="@{item.name}"
+            android:textColor="@color/graydark"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</layout>

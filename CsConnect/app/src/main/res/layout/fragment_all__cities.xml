@@ -1,0 +1,937 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="cityViewmodel"
+            type="com.csestateconnect.viewmodel.HomeViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f4f4f4">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/city_Buttons_Layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{cityViewmodel::citiesRecyclerViewVisibility}"
+                android:layout_marginRight="@dimen/sp_12"
+                android:layout_marginLeft="@dimen/sp_12"
+                android:layout_marginTop="15sp"
+                tools:layout_editor_absoluteX="12dp"
+                app:cardBackgroundColor="@color/colorWhite">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/sp_12"
+                    android:layout_marginBottom="@dimen/sp_12"
+                    android:paddingLeft="@dimen/sp_16"
+                    android:paddingRight="@dimen/sp_16"
+                    android:orientation="horizontal">
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/city_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:text="@{cityViewmodel.cityTxt}"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15sp"
+                        android:textStyle="bold"/>
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@null"
+                        android:src="@drawable/ic_drop_close"
+                        android:visibility="@{cityViewmodel.city_drop_down}"
+                        android:id="@+id/city_drop_down"
+                        android:layout_weight="0.5"/>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@null"
+                        android:src="@drawable/ic_drop_down_down"
+                        android:visibility="@{cityViewmodel.city_drop_up}"
+                        android:id="@+id/city_drop_up"
+                        android:layout_weight="0.5"/>
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.cardview.widget.CardView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cities_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{cityViewmodel.cities_recyclerView}"
+                    android:layout_marginRight="12sp"
+                    android:layout_marginLeft="12sp"
+                    android:layout_marginTop="3sp"
+                    app:cardElevation="1dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingRight="10sp"
+                        android:paddingLeft="10sp">
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/allCity_recyclerView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:listitem="@layout/all_cities_items"
+                            android:layout_marginTop="15sp"
+                            android:layout_marginBottom="15sp"
+                            />
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:layout_marginTop="15sp"
+                    android:orientation="vertical">
+
+                    <androidx.core.widget.NestedScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="90dp"
+                                android:layout_marginTop="30sp"
+                                android:visibility="@{cityViewmodel.brokersLayout}"
+                                android:layout_marginStart="12sp"
+                                android:layout_marginEnd="12sp"
+                                android:id="@+id/brokers_cardView">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="20sp"
+                                    android:weightSum="3"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:weightSum="3"
+                                        android:orientation="horizontal">
+
+                                        <LinearLayout
+                                            android:layout_width="100dp"
+                                            android:layout_height="120dp"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical"
+                                            android:layout_marginEnd="8dp"
+                                            android:layout_marginTop="65dp"
+                                            android:layout_marginStart="8dp">
+
+                                            <FrameLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
+                                                android:layout_marginEnd="8dp"
+                                                android:layout_marginStart="8dp">
+
+                                                <de.hdodenhof.circleimageview.CircleImageView
+                                                    android:id="@+id/broker_second"
+                                                    android:layout_width="70dp"
+                                                    android:layout_height="70dp"
+                                                    android:layout_gravity="bottom|center_horizontal"
+                                                    android:src="@drawable/richard_pic"
+                                                    app:civ_border_color="#FF000000"/>
+
+                                            </FrameLayout>
+
+                                            <TextView
+                                                android:id="@+id/broker_second_name"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="@={cityViewmodel.brokerName1}"
+                                                android:textColor="@color/colorPrimary"
+                                                android:textSize="13sp"
+                                                android:layout_gravity="center"
+                                                tools:layout_editor_absoluteY="242dp"
+                                                tools:layout_editor_absoluteX="175dp"/>
+
+                                            <androidx.appcompat.widget.AppCompatRatingBar
+                                                style="@style/Widget.AppCompat.RatingBar.Small"
+                                                android:id="@+id/ratingBar2"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:scaleX="0.7"
+                                                android:scaleY="0.7"
+                                                android:numStars="5"
+                                                android:rating="5"
+                                                android:max="5"
+                                                android:layout_gravity="center"
+                                                android:clickable="false"/>
+
+                                        </LinearLayout>
+
+
+                                        <LinearLayout
+                                            android:layout_width="120dp"
+                                            android:layout_height="150dp"
+                                            android:orientation="vertical"
+                                            android:layout_weight="1"
+                                            android:layout_gravity="center_horizontal"
+                                            android:id="@+id/linearLayout2">
+
+                                            <FrameLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center">
+
+                                                <de.hdodenhof.circleimageview.CircleImageView
+                                                    android:id="@+id/broker_first"
+                                                    android:layout_width="95dp"
+                                                    android:layout_height="95dp"
+                                                    android:layout_gravity="bottom|center_horizontal"
+                                                    android:src="@drawable/david_john"
+                                                    app:civ_border_color="#FF000000"/>
+
+                                                <de.hdodenhof.circleimageview.CircleImageView
+                                                    android:id="@+id/camera_image"
+                                                    android:layout_width="40dp"
+                                                    android:layout_height="40dp"
+                                                    android:layout_gravity="center_vertical|left"
+                                                    android:src="@drawable/ic_top_performer"
+                                                    app:civ_border_color="#FF000000"/>
+
+                                            </FrameLayout>
+
+                                            <TextView
+                                                android:id="@+id/broker_first_name"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="@={cityViewmodel.brokerName2}"
+                                                android:textSize="13sp"
+                                                android:textColor="@color/colorPrimary"
+                                                android:layout_gravity="center"
+                                                tools:layout_editor_absoluteY="242dp"
+                                                tools:layout_editor_absoluteX="175dp"/>
+
+                                            <androidx.appcompat.widget.AppCompatRatingBar
+                                                style="@style/Widget.AppCompat.RatingBar.Small"
+                                                android:id="@+id/ratingBar"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
+                                                android:isIndicator="true"
+                                                android:scaleX="0.7"
+                                                android:scaleY="0.7"
+                                                android:max="5"
+                                                android:numStars="5"
+                                                android:rating="5"
+                                                android:clickable="false"/>
+
+                                        </LinearLayout>
+
+
+                                        <LinearLayout
+                                            android:layout_width="100dp"
+                                            android:layout_height="120dp"
+                                            android:orientation="vertical"
+                                            android:layout_weight="1"
+                                            android:layout_marginStart="8sp"
+                                            android:layout_marginEnd="8dp"
+                                            android:id="@+id/linearLayout"
+                                            android:layout_marginTop="65dp">
+
+                                            <FrameLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
+                                                android:layout_marginEnd="8dp"
+                                                android:layout_marginStart="8dp">
+
+                                                <de.hdodenhof.circleimageview.CircleImageView
+                                                    android:id="@+id/broker_third"
+                                                    android:layout_width="70dp"
+                                                    android:layout_height="70dp"
+                                                    android:layout_gravity="bottom|center_horizontal"
+                                                    android:src="@drawable/gorge_pic"
+                                                    app:civ_border_color="#FF000000"/>
+
+                                            </FrameLayout>
+
+                                            <TextView
+                                                android:id="@+id/broker_third_name"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="@={cityViewmodel.brokerName3}"
+                                                android:textColor="@color/colorPrimary"
+                                                android:textSize="13sp"
+                                                android:layout_gravity="center"
+                                                tools:layout_editor_absoluteY="242dp"
+                                                tools:layout_editor_absoluteX="175dp"/>
+
+                                            <androidx.appcompat.widget.AppCompatRatingBar
+                                                style="@style/Widget.AppCompat.RatingBar.Small"
+                                                android:id="@+id/ratingBar4"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:scaleX="0.7"
+                                                android:scaleY="0.7"
+                                                android:numStars="5"
+                                                android:max="5"
+                                                android:rating="5"
+                                                android:layout_gravity="center"/>
+
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+                                    <LinearLayout android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="20sp"
+                                        android:layout_marginBottom="5sp"
+                                        android:orientation="vertical">
+
+                                        <View android:layout_width="match_parent"
+                                            android:layout_height="1dp"
+                                            android:background="#80BEBEBE"/>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            android:layout_marginLeft="8sp"
+                                            android:layout_marginRight="8sp"
+                                            android:orientation="horizontal">
+
+
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:padding="5dp"
+                                                android:layout_marginLeft="5sp"
+                                                android:layout_weight="1"
+                                                android:orientation="horizontal">
+
+                                                <de.hdodenhof.circleimageview.CircleImageView
+                                                    android:id="@+id/broker_fourth"
+                                                    android:layout_width="50dp"
+                                                    android:layout_height="50dp"
+                                                    android:layout_gravity="center_vertical"
+                                                    android:src="@drawable/david_john"
+                                                    app:civ_border_color="#FF000000"/>
+
+
+                                                <TextView
+                                                    android:id="@+id/broker_forth_name"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="@={cityViewmodel.brokerName4}"
+                                                    android:textColor="@color/colorPrimary"
+                                                    android:textSize="13sp"
+                                                    android:paddingLeft="20sp"
+                                                    android:layout_gravity="center"
+                                                    tools:layout_editor_absoluteY="242dp"
+                                                    tools:layout_editor_absoluteX="175dp"/>
+
+                                            </LinearLayout>
+
+
+                                            <androidx.appcompat.widget.AppCompatRatingBar
+                                                style="@style/Widget.AppCompat.RatingBar.Small"
+                                                android:id="@+id/ratingBar3"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginRight="10sp"
+                                                android:scaleX="0.7"
+                                                android:scaleY="0.7"
+                                                android:numStars="5"
+                                                android:max="5"
+                                                android:rating="5"
+                                                android:layout_gravity="center"/>
+
+
+                                        </LinearLayout>
+
+                                        <View android:layout_width="match_parent"
+                                            android:layout_height="1dp"
+                                            android:background="#80BEBEBE"/>
+
+
+                                        <View android:layout_width="match_parent"
+                                            android:layout_height="1dp"
+                                            android:layout_marginTop="5sp"
+                                            android:background="#80BEBEBE"/>
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="8sp"
+                                            android:layout_marginRight="8sp"
+                                            android:orientation="horizontal">
+
+
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:padding="5dp"
+                                                android:layout_marginLeft="5sp"
+                                                android:layout_weight="1"
+                                                android:orientation="horizontal">
+
+                                                <de.hdodenhof.circleimageview.CircleImageView
+                                                    android:id="@+id/profile_fifth"
+                                                    android:layout_width="50dp"
+                                                    android:layout_height="50dp"
+                                                    android:layout_gravity="center_vertical"
+                                                    android:src="@drawable/win_diesel"
+                                                    app:civ_border_color="#FF000000"/>
+
+
+                                                <TextView
+                                                    android:id="@+id/broker_fifth_name"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="@={cityViewmodel.brokerName5}"
+                                                    android:textColor="@color/colorPrimary"
+                                                    android:textSize="13sp"
+                                                    android:paddingLeft="20sp"
+                                                    android:layout_gravity="center"
+                                                    tools:layout_editor_absoluteY="242dp"
+                                                    tools:layout_editor_absoluteX="175dp"/>
+
+                                            </LinearLayout>
+
+
+                                            <androidx.appcompat.widget.AppCompatRatingBar
+                                                style="@style/Widget.AppCompat.RatingBar.Small"
+                                                android:id="@+id/ratingBar5"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginRight="10sp"
+                                                android:scaleX="0.7"
+                                                android:scaleY="0.7"
+                                                android:numStars="5"
+                                                android:max="5"
+                                                android:rating="5"
+                                                android:layout_gravity="center"/>
+
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/projects_cardView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="90dp"
+                                android:layout_marginEnd="@dimen/sp_12"
+                                android:layout_marginStart="@dimen/sp_12"
+                                android:layout_marginTop="30sp"
+                                android:background="#F5F5F5"
+                                android:backgroundTint="#ffffff"
+                                android:visibility="@{cityViewmodel.projectsLayout}">
+
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:id="@+id/layout_delhi"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="24dp"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/citiesTabLay1">
+
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/mainBuilding"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        app:cardElevation="0dp"
+                                        app:layout_constraintTop_toTopOf="@+id/layout_delhi">
+
+                                        <LinearLayout
+                                            android:id="@+id/mainLinear"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:orientation="vertical">
+
+                                            <ImageView
+                                                android:id="@+id/centerBuildProjects"
+                                                android:layout_width="250dp"
+                                                android:layout_height="110dp"
+                                                android:layout_gravity="center"
+                                                app:url="@{cityViewmodel.projectsIcons1}"
+                                                android:layout_marginTop="16dp"
+                                                android:scaleType="centerCrop"
+                                                app:srcCompat="@drawable/gallery_9" />
+
+                                            <TextView
+                                                android:id="@+id/projectNameMain"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
+                                                android:layout_marginTop="12dp"
+                                                android:text="@={cityViewmodel.projectName1}"
+                                                android:textColor="#000000"
+                                                android:textSize="16sp"
+                                                android:textStyle="bold" />
+
+                                            <TextView
+                                                android:id="@+id/projectAddressMain"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
+                                                android:layout_marginTop="4dp"
+                                                android:text="@={cityViewmodel.projectLocationTxt1}"
+                                                android:textColor="#000000"
+                                                android:textSize="14sp" />
+
+                                            <androidx.appcompat.widget.AppCompatRatingBar
+                                                style="@style/Widget.AppCompat.RatingBar.Small"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
+                                                android:layout_marginTop="5dp"
+                                                android:layout_marginBottom="10dp"
+                                                android:clickable="false"
+                                                android:max="5"
+                                                android:rating="5"
+                                                android:scaleX="0.7"
+                                                android:scaleY="0.7" />
+
+                                            <View
+                                                android:layout_width="match_parent"
+                                                android:layout_height="0.5dp"
+                                                android:layout_marginTop="5dp"
+                                                android:background="#80BEBEBE" />
+                                        </LinearLayout>
+                                    </androidx.cardview.widget.CardView>
+
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/secondCard"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        app:cardElevation="0dp"
+                                        app:layout_constraintTop_toBottomOf="@id/mainBuilding">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical">
+
+                                            <androidx.constraintlayout.widget.ConstraintLayout
+                                                android:id="@+id/consView2"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal">
+
+                                                <androidx.cardview.widget.CardView
+                                                    android:id="@+id/cardView2"
+                                                    android:layout_width="100dp"
+                                                    android:layout_height="65dp"
+                                                    android:layout_marginStart="12dp"
+                                                    android:layout_marginTop="12dp"
+                                                    android:layout_marginBottom="12dp"
+                                                    android:elevation="2dp"
+                                                    app:cardCornerRadius="4dp"
+                                                    app:layout_constraintBottom_toBottomOf="@id/consView2"
+                                                    app:layout_constraintStart_toStartOf="parent"
+                                                    app:layout_constraintTop_toTopOf="@+id/consView2">
+
+                                                    <ImageView
+                                                        android:id="@+id/imageView2"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="match_parent"
+                                                        app:url="@{cityViewmodel.projectsIcons2}"
+                                                        android:scaleType="centerCrop"
+                                                        app:srcCompat="@drawable/gallery_9" />
+
+                                                </androidx.cardview.widget.CardView>
+
+                                                <TextView
+                                                    android:id="@+id/projectName2"
+                                                    android:layout_width="170dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginStart="16dp"
+                                                    android:layout_marginTop="14dp"
+                                                    android:text="@={cityViewmodel.projectName2}"
+                                                    android:textColor="#000000"
+                                                    android:textSize="14sp"
+                                                    android:textStyle="bold"
+                                                    app:layout_constraintStart_toEndOf="@id/cardView2"
+                                                    app:layout_constraintTop_toTopOf="@+id/consView2" />
+
+                                                <TextView
+                                                    android:id="@+id/projectAddress2"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginStart="16dp"
+                                                    android:layout_marginTop="8dp"
+                                                    android:text="@={cityViewmodel.projectLocationTxt2}"
+                                                    android:textColor="#000000"
+                                                    android:textSize="14sp"
+                                                    app:layout_constraintStart_toEndOf="@id/cardView2"
+                                                    app:layout_constraintTop_toBottomOf="@+id/projectName2" />
+
+                                                <RatingBar
+                                                    android:id="@+id/projectratingBar2"
+                                                    style="?android:attr/ratingBarStyleSmall"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginTop="20dp"
+                                                    android:layout_marginEnd="8dp"
+                                                    android:clickable="false"
+                                                    android:numStars="5"
+                                                    android:rating="5"
+                                                    android:scaleX="0.7"
+                                                    android:scaleY="0.7"
+                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                            <View
+                                                android:layout_width="match_parent"
+                                                android:layout_height="0.5dp"
+                                                android:background="#80BEBEBE" />
+
+                                        </LinearLayout>
+                                    </androidx.cardview.widget.CardView>
+
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/thirdCard"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        app:cardElevation="0dp"
+                                        app:layout_constraintTop_toBottomOf="@id/secondCard">
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0.5dp"
+                                            android:background="#80BEBEBE" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical">
+
+                                            <androidx.constraintlayout.widget.ConstraintLayout
+                                                android:id="@+id/consView3"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal">
+
+                                                <androidx.cardview.widget.CardView
+                                                    android:id="@+id/cardView3"
+                                                    android:layout_width="100dp"
+                                                    android:layout_height="65dp"
+                                                    android:layout_marginStart="12dp"
+                                                    android:layout_marginTop="12dp"
+                                                    android:layout_marginBottom="12dp"
+                                                    android:elevation="2dp"
+                                                    app:cardCornerRadius="4dp"
+                                                    app:layout_constraintBottom_toBottomOf="@id/consView3"
+                                                    app:layout_constraintStart_toStartOf="parent"
+                                                    app:layout_constraintTop_toTopOf="@+id/consView3">
+
+                                                    <ImageView
+                                                        android:id="@+id/imageView3"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="match_parent"
+                                                        app:url="@{cityViewmodel.projectsIcons3}"
+                                                        android:scaleType="centerCrop"
+                                                        app:srcCompat="@drawable/gallery_9" />
+
+                                                </androidx.cardview.widget.CardView>
+
+                                                <TextView
+                                                    android:id="@+id/projectName3"
+                                                    android:layout_width="170dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginStart="16dp"
+                                                    android:layout_marginTop="16dp"
+                                                    android:text="@={cityViewmodel.projectName3}"
+                                                    android:textColor="#000000"
+                                                    android:textSize="14sp"
+                                                    android:textStyle="bold"
+                                                    app:layout_constraintStart_toEndOf="@id/cardView3"
+                                                    app:layout_constraintTop_toTopOf="@+id/consView3" />
+
+                                                <TextView
+                                                    android:id="@+id/projectAddress3"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginStart="16dp"
+                                                    android:layout_marginTop="8dp"
+                                                    android:text="@={cityViewmodel.projectLocationTxt3}"
+                                                    android:textColor="#000000"
+                                                    android:textSize="14sp"
+                                                    app:layout_constraintStart_toEndOf="@id/cardView3"
+                                                    app:layout_constraintTop_toBottomOf="@+id/projectName3" />
+
+                                                <RatingBar
+                                                    android:id="@+id/projectsRatingBar3"
+                                                    style="?android:attr/ratingBarStyleSmall"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginTop="20dp"
+                                                    android:layout_marginEnd="8dp"
+                                                    android:clickable="false"
+                                                    android:numStars="5"
+                                                    android:rating="5"
+                                                    android:scaleX="0.7"
+                                                    android:scaleY="0.7"
+                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                            <View
+                                                android:layout_width="match_parent"
+                                                android:layout_height="0.5dp"
+                                                android:background="#80BEBEBE" />
+
+                                        </LinearLayout>
+
+                                    </androidx.cardview.widget.CardView>
+
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/fourthCard"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        app:cardElevation="0dp"
+                                        app:layout_constraintTop_toBottomOf="@id/thirdCard">
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0.5dp"
+                                            android:background="#80BEBEBE" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical">
+
+                                            <androidx.constraintlayout.widget.ConstraintLayout
+                                                android:id="@+id/consView4"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal">
+
+                                                <androidx.cardview.widget.CardView
+                                                    android:id="@+id/cardView4"
+                                                    android:layout_width="100dp"
+                                                    android:layout_height="65dp"
+                                                    android:layout_marginStart="12dp"
+                                                    android:layout_marginTop="12dp"
+                                                    android:layout_marginBottom="12dp"
+                                                    android:elevation="2dp"
+                                                    app:cardCornerRadius="4dp"
+                                                    app:layout_constraintBottom_toBottomOf="@id/consView4"
+                                                    app:layout_constraintStart_toStartOf="parent"
+                                                    app:layout_constraintTop_toTopOf="@+id/consView4">
+
+                                                    <ImageView
+                                                        android:id="@+id/imageView4"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="match_parent"
+                                                        app:url="@{cityViewmodel.projectsIcons4}"
+                                                        android:scaleType="centerCrop"
+                                                        app:srcCompat="@drawable/gallery_9" />
+
+                                                </androidx.cardview.widget.CardView>
+
+                                                <TextView
+                                                    android:id="@+id/projectName4"
+                                                    android:layout_width="170dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginStart="16dp"
+                                                    android:layout_marginTop="16dp"
+                                                    android:text="@={cityViewmodel.projectName4}"
+                                                    android:textColor="#000000"
+                                                    android:textSize="14sp"
+                                                    android:textStyle="bold"
+                                                    app:layout_constraintStart_toEndOf="@id/cardView4"
+                                                    app:layout_constraintTop_toTopOf="@+id/consView4" />
+
+                                                <TextView
+                                                    android:id="@+id/projectAddress4"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginStart="16dp"
+                                                    android:layout_marginTop="8dp"
+                                                    android:text="@={cityViewmodel.projectLocationTxt4}"
+                                                    android:textColor="#000000"
+                                                    android:textSize="14sp"
+                                                    app:layout_constraintStart_toEndOf="@id/cardView4"
+                                                    app:layout_constraintTop_toBottomOf="@+id/projectName4" />
+
+                                                <RatingBar
+                                                    android:id="@+id/projectsRatingBar4"
+                                                    style="?android:attr/ratingBarStyleSmall"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginTop="20dp"
+                                                    android:layout_marginEnd="8dp"
+                                                    android:numStars="5"
+                                                    android:rating="5"
+                                                    android:scaleX="0.7"
+                                                    android:scaleY="0.7"
+                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                            <View
+                                                android:layout_width="match_parent"
+                                                android:layout_height="0.5dp"
+                                                android:background="#80BEBEBE" />
+
+                                        </LinearLayout>
+
+                                    </androidx.cardview.widget.CardView>
+
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/fifthCard"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        app:cardElevation="0dp"
+                                        app:layout_constraintTop_toBottomOf="@id/fourthCard">
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="0.5dp"
+                                            android:background="#80BEBEBE" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical">
+
+                                            <androidx.constraintlayout.widget.ConstraintLayout
+                                                android:id="@+id/consView5"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal">
+
+                                                <androidx.cardview.widget.CardView
+                                                    android:id="@+id/cardView5"
+                                                    android:layout_width="100dp"
+                                                    android:layout_height="65dp"
+                                                    android:layout_marginStart="12dp"
+                                                    android:layout_marginTop="12dp"
+                                                    android:layout_marginBottom="12dp"
+                                                    android:elevation="2dp"
+                                                    app:cardCornerRadius="4dp"
+                                                    app:layout_constraintBottom_toBottomOf="@id/consView5"
+                                                    app:layout_constraintStart_toStartOf="parent"
+                                                    app:layout_constraintTop_toTopOf="@+id/consView5">
+
+                                                    <ImageView
+                                                        android:id="@+id/imageView5"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="match_parent"
+                                                        app:url="@{cityViewmodel.projectsIcons5}"
+                                                        android:scaleType="centerCrop"
+                                                        app:srcCompat="@drawable/gallery_9" />
+
+                                                </androidx.cardview.widget.CardView>
+
+                                                <TextView
+                                                    android:id="@+id/projectName5"
+                                                    android:layout_width="170dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginStart="16dp"
+                                                    android:layout_marginTop="16dp"
+                                                    android:text="@={cityViewmodel.projectName5}"
+                                                    android:textColor="#000000"
+                                                    android:textSize="14sp"
+                                                    android:textStyle="bold"
+                                                    app:layout_constraintStart_toEndOf="@id/cardView5"
+                                                    app:layout_constraintTop_toTopOf="@+id/consView5" />
+
+                                                <TextView
+                                                    android:id="@+id/projectAddress5"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginStart="16dp"
+                                                    android:layout_marginTop="8dp"
+                                                    android:text="@={cityViewmodel.projectLocationTxt5}"
+                                                    android:textColor="#000000"
+                                                    android:textSize="14sp"
+                                                    app:layout_constraintStart_toEndOf="@id/cardView5"
+                                                    app:layout_constraintTop_toBottomOf="@+id/projectName5" />
+
+                                                <RatingBar
+                                                    android:id="@+id/projectsRatingBar5"
+                                                    style="?android:attr/ratingBarStyleSmall"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginTop="20dp"
+                                                    android:layout_marginEnd="8dp"
+                                                    android:numStars="5"
+                                                    android:rating="5"
+                                                    android:scaleX="0.7"
+                                                    android:scaleY="0.7"
+                                                    app:layout_constraintEnd_toEndOf="parent"
+                                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                            <View
+                                                android:layout_width="match_parent"
+                                                android:layout_height="0.5dp"
+                                                android:background="#80BEBEBE" />
+
+                                        </LinearLayout>
+
+                                    </androidx.cardview.widget.CardView>
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </LinearLayout>
+                    </androidx.core.widget.NestedScrollView>
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

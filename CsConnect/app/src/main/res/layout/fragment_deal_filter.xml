@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="dealVM"
+            type="com.csestateconnect.viewmodel.DealsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.home.deal_Frags.DealFilterFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            tools:layout_editor_absoluteY="100dp"
+            android:id="@+id/linearLayout4">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10sp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20sp"
+                        android:layout_marginTop="10sp"
+                        android:text="Filter By"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5sp"
+                        android:layout_marginLeft="20sp"
+                        android:text="Narrow down your search by applying advance filters"
+                        android:textColor="@android:color/black" />
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15sp"
+                        app:cardElevation="1dp"
+                        android:layout_marginLeft="20sp"
+                        android:layout_marginRight="20sp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingRight="15sp"
+                            android:paddingLeft="15sp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:focusable="true"
+                                android:focusableInTouchMode="true"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="10sp">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_gravity="center_vertical"
+                                    android:focusable="true"
+                                    android:text="Status"
+                                    android:textColor="@android:color/black"
+                                    android:textStyle="bold" />
+
+                                <ImageView
+                                    android:id="@+id/dealstatus_down_arrow"
+                                    android:layout_width="40sp"
+                                    android:layout_height="35sp"
+                                    android:visibility="gone"
+                                    android:src="@drawable/down_arrow_icon" />
+
+                                <ImageView
+                                    android:id="@+id/dealstatus_up_arrow"
+                                    android:layout_width="40sp"
+                                    android:layout_height="35sp"
+                                    android:visibility="visible"
+                                    android:src="@drawable/up_arrow_icon" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/dealstatus_recycler_view_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:visibility="visible"
+                                android:orientation="vertical">
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:paddingLeft="10sp"
+                                    android:background="#80BEBEBE" />
+
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/dealstatus_recycler_view"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="15sp"
+                                    android:layout_marginBottom="15sp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="1dp"
+                        android:layout_marginTop="15sp"
+                        android:layout_marginLeft="20sp"
+                        android:layout_marginRight="20sp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingRight="15sp"
+                            android:paddingLeft="15sp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="10sp">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Created Date"
+                                    android:textColor="@android:color/black"
+                                    android:textStyle="bold" />
+
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:paddingLeft="10sp"
+                                android:background="#80BEBEBE"
+                                android:layout_marginTop="10sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:weightSum="1"
+                                android:orientation="horizontal"
+                                android:layout_marginBottom="15sp"
+                                android:layout_marginTop="15sp">
+
+                                <EditText
+                                    android:id="@+id/dealstart_date_text"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:maxLength="10"
+                                    android:backgroundTint="#80BEBEBE"
+                                    android:hint="@string/start_date_hint"
+                                    android:text="@={dealVM.filterDealCreatedStart}"
+                                    android:inputType="none"
+                                    android:focusable="false"
+                                    android:editable="false"
+                                    android:textColorHint="@color/colorPrimary" />
+
+                                <Space
+                                    android:layout_width="30dp"
+                                    android:layout_height="match_parent" />
+
+                                <EditText
+                                    android:id="@+id/dealend_date_text"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:maxLength="10"
+                                    android:text="@={dealVM.filterDealCreatedEnd}"
+                                    android:backgroundTint="#80BEBEBE"
+                                    android:hint="@string/end_date_hint"
+                                    android:inputType="none"
+                                    android:focusable="false"
+                                    android:editable="false"
+                                    android:textColorHint="@color/colorPrimary" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="1dp"
+                        android:layout_marginBottom="80sp"
+                        android:layout_marginTop="15sp"
+                        android:layout_marginLeft="20sp"
+                        android:layout_marginRight="20sp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingRight="15sp"
+                            android:paddingLeft="15sp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="10sp">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Modified Date"
+                                    android:textColor="@android:color/black"
+                                    android:textStyle="bold" />
+
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:paddingLeft="10sp"
+                                android:background="#80BEBEBE"
+                                android:layout_marginTop="10sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:weightSum="1"
+                                android:orientation="horizontal"
+                                android:layout_marginBottom="15sp"
+                                android:layout_marginTop="15sp">
+
+                                <EditText
+                                    android:id="@+id/dealmodified_start_date"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:backgroundTint="#80BEBEBE"
+                                    android:maxLength="10"
+                                    android:text="@={dealVM.filterDealModifiedStart}"
+                                    android:hint="@string/start_date_hint"
+                                    android:inputType="none"
+                                    android:focusable="false"
+                                    android:editable="false"
+                                    android:textColorHint="@color/colorPrimary" />
+
+                                <Space
+                                    android:layout_width="30dp"
+                                    android:layout_height="match_parent" />
+
+                                <EditText
+                                    android:id="@+id/dealmodified_end_date"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:backgroundTint="#80BEBEBE"
+                                    android:text="@={dealVM.filterDealModifiedEnd}"
+                                    android:hint="@string/end_date_hint"
+                                    android:maxLength="10"
+                                    android:inputType="none"
+                                    android:focusable="false"
+                                    android:editable="false"
+                                    android:textColorHint="@color/colorPrimary" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:backgroundTint="@color/colorWhite"
+                android:enabled="@{dealVM.clearButtonEnabled}"
+                android:text="Clear"
+                android:onClick="@{dealVM::filterDealsClearButton}"
+                android:textColor="@color/black"
+                android:textAllCaps="true"
+                android:textStyle="bold" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:backgroundTint="@color/colorAccent"
+                android:enabled="@{dealVM.applyButtonEnabled}"
+                android:text="Apply Filter"
+                android:onClick="@{dealVM::filterDealsApplyButton}"
+                android:textAllCaps="true"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

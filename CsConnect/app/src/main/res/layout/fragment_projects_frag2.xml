@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="projViewmodel"
+            type="com.csestateconnect.viewmodel.ProjectsViewModel"/>
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.projects_ui.ProjectsFrag2">
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/projectSearch_cardView_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:layout_marginRight="15sp"
+            android:layout_marginLeft="15sp"
+            android:layout_marginTop="15sp"
+            app:cardElevation="1dp">
+
+            <LinearLayout
+                android:id="@+id/project_citySearch_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:paddingRight="10sp"
+                android:paddingLeft="10sp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="horizontal"
+                android:layout_marginTop="5sp">
+
+                    <TextView
+                        android:id="@+id/project_city_text"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:drawableLeft="@drawable/ic_location"
+                        android:drawablePadding="12sp"
+                        android:textSize="14sp"
+                        android:focusable="true"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold"
+                        />
+
+                    <ImageView
+                        android:id="@+id/project_city_down_arrow"
+                        android:layout_width="40sp"
+                        android:layout_height="35sp"
+                        android:visibility="visible"
+                        android:src="@drawable/down_arrow_icon"/>
+
+                    <ImageView
+                        android:id="@+id/project_city_up_arrow"
+                        android:layout_width="40sp"
+                        android:layout_height="35sp"
+                        android:visibility="gone"
+                        android:src="@drawable/up_arrow_icon"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/project_city_recycler_card_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginRight="15sp"
+                android:layout_marginLeft="15sp"
+                android:layout_marginTop="3sp"
+                app:cardElevation="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10sp"
+                    android:paddingLeft="10sp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/project_city_recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:listitem="@layout/project_search_location_item"
+                        android:layout_marginTop="15sp"
+                        android:layout_marginBottom="15sp"
+                        />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/project_progressLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#80000000"
+                android:visibility="@{projViewmodel.project_progressBarLayout}">
+
+                <androidx.core.widget.ContentLoadingProgressBar
+                    android:id="@+id/progress_bar_val"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    style="?android:attr/progressBarStyleLarge"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/project_recycler_view"
+                android:clipToPadding="false"
+                android:paddingBottom="90dp"
+                android:layout_marginTop="15sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/project_items">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

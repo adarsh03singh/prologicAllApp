@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navigation_home">
+
+    <!--    Bottom Navigation-->
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.csestateconnect.ui.home.HomeFrag1"
+        android:label="CS Connect"
+        tools:layout="@layout/fragment_home_frag1" >
+        <action
+            android:id="@+id/action_navigation_home_to_projectDetailFragment"
+            app:destination="@id/projectDetailFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+        <action
+            android:id="@+id/action_navigation_home_to_all_CitiesFragment"
+            app:destination="@id/all_CitiesFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_projects"
+        android:name="com.csestateconnect.ui.home.projects_ui.ProjectsFrag2"
+        android:label="Projects"
+        tools:layout="@layout/fragment_projects_frag2" >
+        <action
+            android:id="@+id/action_navigation_projects_to_projectDetailFragment"
+            app:destination="@id/projectDetailFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+        <action
+            android:id="@+id/action_navigation_projects_to_projectFilterFragment"
+            app:destination="@id/projectFilterFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_comission"
+        android:name="com.csestateconnect.ui.home.deal_Frags.DealFrag5"
+        android:label="Deals"
+        tools:layout="@layout/fragment_deal_frag5" >
+        <action
+            android:id="@+id/action_navigation_comission_to_dealDetailsFragment"
+            app:destination="@id/dealDetailsFragment" />
+        <action
+            android:id="@+id/action_navigation_comission_to_navigation_assigned_leads"
+            app:destination="@id/navigation_assigned_leads" />
+    </fragment>
+
+    <!--    Lead Tabs-->
+    <fragment
+        android:id="@+id/navigation_assigned_leads"
+        android:name="com.csestateconnect.ui.home.lead_Frags.CsAssignLeadFragment"
+        android:label="CS Assign Leads"
+        tools:layout="@layout/fragment_cs_assign_lead" >
+        <action
+            android:id="@+id/action_navigation_assigned_leads_to_lead2TabFragment"
+            app:destination="@id/lead2TabFragment" />
+
+        <action
+            android:id="@+id/action_navigation_assigned_leads_to_leadDetailsFragment"
+            app:destination="@id/leadDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lead2TabFragment"
+        android:name="com.csestateconnect.ui.home.lead_Frags.MyLeadsFragment"
+        android:label="My Leads"
+        tools:layout="@layout/fragment_my_leads" >
+        <action
+            android:id="@+id/action_lead2TabFragment_to_navigation_assigned_leads"
+            app:destination="@id/navigation_assigned_leads" />
+
+        <action
+            android:id="@+id/action_lead2TabFragment_to_leadDetailsFragment"
+            app:destination="@id/leadDetailsFragment" />
+        <action
+            android:id="@+id/action_lead2TabFragment_to_createLeadFragment"
+            app:destination="@+id/createLeadFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/leadFilterFragment"
+        android:name="com.csestateconnect.ui.home.lead_Frags.LeadFilterFragment"
+        android:label="Filter"
+        tools:layout="@layout/fragment_lead_filter"/>
+    <fragment
+        android:id="@+id/dealDetailsFragment"
+        android:name="com.csestateconnect.ui.home.deal_Frags.DealDetailsFragment"
+        android:label="Deal Details"
+        tools:layout="@layout/fragment_deal_details" >
+        <action
+            android:id="@+id/action_dealDetailsFragment_to_dealUploadDocFragment"
+            app:destination="@id/dealUploadDocFragment" />
+    </fragment>
+
+    <!--    Drawer Navigation-->
+    <fragment
+        android:id="@+id/header_view"
+        android:name="com.csestateconnect.ui.navdrawer.ProfileFragment"
+        android:label="My Profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_header_view_to_personalInfoFragment"
+            app:destination="@id/personalInfoFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+        <action
+            android:id="@+id/action_header_view_to_verificationFragment"
+            app:destination="@id/verificationFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+        <action
+            android:id="@+id/action_header_view_to_accountDetailsFragment"
+            app:destination="@id/accountDetailsFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/nav_bcp"
+        android:name="com.csestateconnect.ui.navdrawer.bcp.BecomeChannelPartnerFragment"
+        android:label="Become Our Channel Partner"
+        tools:layout="@layout/fragment_become_channel_partner" >
+        <action
+            android:id="@+id/action_nav_bcp_to_personalInfoFragment"
+            app:destination="@id/personalInfoFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/nav_favorites"
+        android:name="com.csestateconnect.ui.navdrawer.FavoritesFragment"
+        android:label="Favorites"
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_nav_favorites_to_projectDetailFragment"
+            app:destination="@id/projectDetailFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@id/nav_notification"
+        android:name="com.csestateconnect.ui.navdrawer.NotificationsFragment"
+        android:label="Notifications"
+        tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@id/nav_faq"
+        android:name="com.csestateconnect.ui.navdrawer.FaqFragment"
+        android:label="FAQs"
+        tools:layout="@layout/fragment_faq" />
+    <fragment
+        android:id="@+id/navigation_get_touch"
+        android:name="com.csestateconnect.ui.navdrawer.GetInTouchFragment"
+        android:label="Get In Touch"
+        tools:layout="@layout/fragment_get_in_touch" >
+        <action
+            android:id="@+id/action_nav_get_touch_to_concernTicketsListFragment"
+            app:destination="@id/concernTicketsListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_about_us"
+        android:name="com.csestateconnect.ui.navdrawer.AboutUsFragment"
+        android:label="About Us"
+        tools:layout="@layout/fragment_about_us" />
+    <fragment
+        android:id="@+id/nav_terms_conditions"
+        android:name="com.csestateconnect.ui.navdrawer.TermsAndConditionsFragment"
+        android:label="Terms &amp; Conditions"
+        tools:layout="@layout/fragment_terms_and_conditions" />
+    <fragment
+        android:id="@+id/nav_privacy_policy"
+        android:name="com.csestateconnect.ui.navdrawer.PrivacyPolicyFragment"
+        android:label="Privacy Policy"
+        tools:layout="@layout/fragment_privacy_policy" />
+    <fragment
+        android:id="@+id/personalInfoFragment"
+        android:name="com.csestateconnect.ui.navdrawer.bcp.PersonalInfoFragment"
+        android:label="Become Our Channel Partner"
+        tools:layout="@layout/fragment_personal_info">
+        <action
+            android:id="@+id/action_personalInfoFragment_to_verificationFragment"
+            app:destination="@id/verificationFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+        <action
+            android:id="@+id/action_personalInfoFragment_to_header_view"
+            app:destination="@id/header_view"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/verificationFragment"
+        android:name="com.csestateconnect.ui.navdrawer.bcp.VerificationFragment"
+        android:label="Become Our Channel Partner"
+        tools:layout="@layout/fragment_verification">
+        <action
+            android:id="@+id/action_verificationFragment_to_accountDetailsFragment"
+            app:destination="@id/accountDetailsFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+        <action
+            android:id="@+id/action_verificationFragment_to_header_view"
+            app:destination="@id/header_view"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/accountDetailsFragment"
+        android:name="com.csestateconnect.ui.navdrawer.bcp.AccountDetailsFragment"
+        android:label="Become Our Channel Partner"
+        tools:layout="@layout/fragment_account_details">
+        <action
+            android:id="@+id/action_accountDetailsFragment_to_header_view"
+            app:destination="@id/header_view"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/projectDetailFragment"
+        android:name="com.csestateconnect.ui.home.projects_ui.ProjectDetailFragment"
+        android:label="Project Detail" >
+
+        <action
+            android:id="@+id/action_projectDetailFragment_to_projectImagesFragment"
+            app:destination="@id/projectImagesFragment"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"/>
+        <action
+            android:id="@+id/action_projectDetailFragment_to_unitPlanDetailFragment"
+            app:destination="@id/unitPlanDetailFragment"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"/>
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/projectImagesFragment"
+        android:name="com.csestateconnect.ui.home.projects_ui.ProjectVerticalImagesFragment"
+        android:label="Project Images">
+        <action
+            android:id="@+id/action_projectImagesFragment_to_projectHorizontalImagesFragment"
+            app:destination="@id/projectHorizontalImagesFragment"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"/>
+    </fragment>
+    <fragment
+        android:id="@+id/projectHorizontalImagesFragment"
+        android:name="com.csestateconnect.ui.home.projects_ui.ProjectHorizontalImagesFragment"
+        android:label="Project Images" >
+       <!-- <action
+            android:id="@+id/action_projectHorizontalImagesFragment_to_projectImagesFragment"
+            app:destination="@id/projectImagesFragment"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"/>-->
+    </fragment>
+
+    <fragment
+        android:id="@+id/leadDetailsFragment"
+        android:name="com.csestateconnect.ui.home.lead_Frags.LeadDetailsFragment"
+        android:label="Lead Details"
+        tools:layout="@layout/fragment_lead_details" >
+
+        <action
+            android:id="@+id/action_leadDetailsFragment_to_createDealFragment"
+            app:destination="@id/createDealFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createLeadFragment"
+        android:name="com.csestateconnect.ui.home.lead_Frags.CreateLeadFragment"
+        android:label="Create Lead"
+        tools:layout="@layout/fragment_create_lead">
+
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.csestateconnect.ui.home.projects_ui.SearchFragment"
+        android:label="Search" >
+        <action
+            android:id="@+id/action_searchFragment_to_projectDetailFragment"
+            app:destination="@id/projectDetailFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+        <action
+            android:id="@+id/action_searchFragment_to_navigation_projects"
+            app:destination="@id/navigation_projects"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/unitPlanDetailFragment"
+        android:name="com.csestateconnect.ui.home.projects_ui.UnitPlanDetailFragment"
+        android:label="Units" />
+
+    <fragment
+        android:id="@+id/dealFilterFragment"
+        android:name="com.csestateconnect.ui.home.deal_Frags.DealFilterFragment"
+        android:label="Filter"
+        tools:layout="@layout/fragment_deal_filter" />
+    <fragment
+        android:id="@+id/dealUploadDocFragment"
+        android:name="com.csestateconnect.ui.home.deal_Frags.DealUploadDocFragment"
+        android:label="Upload Document"
+        tools:layout="@layout/fragment_deal_upload_doc" >
+        <action
+            android:id="@+id/action_dealUploadDocFragment_to_dealDetailsFragment"
+            app:destination="@id/dealDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/projectFilterFragment"
+        android:name="com.csestateconnect.ui.home.projects_ui.ProjectFilterFragment"
+        android:label="Filter" >
+        <action
+            android:id="@+id/action_projectFilterFragment_to_navigation_projects"
+            app:destination="@id/navigation_projects"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/createDealFragment"
+        android:name="com.csestateconnect.ui.home.deal_Frags.CreateDealFragment"
+        android:label="Create Deal" >
+        <action
+            android:id="@+id/action_createDealFragment_to_verificationFragment"
+            app:destination="@id/verificationFragment" />
+        <action
+            android:id="@+id/action_createDealFragment_to_accountDetailsFragment"
+            app:destination="@id/accountDetailsFragment" />
+        <action
+            android:id="@+id/action_createDealFragment_to_dealDetailsFragment"
+            app:destination="@id/dealDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/concernTicketsListFragment"
+        android:name="com.csestateconnect.ui.home.ConcernTicketsListFragment"
+        android:label="View Tickets"
+        tools:layout="@layout/fragment_concern_tickets_list" >
+        <action
+            android:id="@+id/action_concernTicketsListFragment_to_concernTicketDetailsFragment"
+            app:destination="@id/concernTicketDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/concernTicketDetailsFragment"
+        android:name="com.csestateconnect.ui.home.ConcernTicketDetailsFragment"
+        android:label="Ticket Details"
+        tools:layout="@layout/fragment_concern_ticket_details" />
+    <fragment
+        android:id="@+id/brokersFragment"
+        android:name="com.csestateconnect.ui.navdrawer.brokers.BrokersFragment"
+        android:label="BrokersFragment" />
+    <fragment
+        android:id="@+id/all_CitiesFragment"
+        android:name="com.csestateconnect.ui.home.All_CitiesFragment"
+        android:label="All Cities"
+        tools:layout="@layout/fragment_all__cities" />
+
+    <fragment
+        android:id="@+id/clients_detailFragment"
+        android:name="com.csestateconnect.ui.navdrawer.clients.ClientsDetailFragment"
+        android:label="Clients"
+        tools:layout="@layout/fragment_clients_detail" />
+
+    <fragment
+        android:id="@+id/add_clientsFragment"
+        android:name="com.csestateconnect.ui.navdrawer.clients.AddClientsFragment"
+        android:label="Add Client"
+        tools:layout="@layout/fragment_add_clients" />
+
+    <fragment
+        android:id="@+id/edit_clientFragment"
+        android:name="com.csestateconnect.ui.navdrawer.clients.EditClientsDetailFragment"
+        android:label="Edit Client"
+        tools:layout="@layout/fragment_edit_clients_detail" />
+
+    <fragment
+        android:id="@+id/client_listFragment"
+        android:name="com.csestateconnect.ui.navdrawer.clients.ClientsListFragment"
+        android:label="Clients"
+        tools:layout="@layout/fragment_edit_clients_detail" />
+
+    <fragment
+        android:id="@+id/pdfFragment"
+        android:name="com.csestateconnect.ui.navdrawer.clients.PdfFragment"
+        android:label="Clients"
+        tools:layout="@layout/fragment_pdf" />
+    <fragment
+        android:id="@+id/addDocument"
+        android:name="com.csestateconnect.ui.navdrawer.clients.AddDocumentFragment"
+        android:label="Add Document"
+        tools:layout="@layout/fragment_add_document" />
+
+    <fragment
+        android:id="@+id/updateDocument"
+        android:name="com.csestateconnect.ui.navdrawer.clients.UpdateDocumentFragment"
+        android:label="Update Document"
+        tools:layout="@layout/fragment_update_document" />
+    <fragment
+        android:id="@+id/horizontalCalenderFragment"
+        android:name="com.csestateconnect.ui.navdrawer.calenderEvents.EventListFragment"
+        android:label="Events"
+        tools:layout="@layout/fragment_event_list" />
+    <fragment
+        android:id="@+id/addEventFragment"
+        android:name="com.csestateconnect.ui.navdrawer.calenderEvents.AddEventsFragment"
+        android:label="Add Event"
+        tools:layout="@layout/fragment_add_events" />
+
+    <fragment
+        android:id="@+id/editEventFragment"
+        android:name="com.csestateconnect.ui.navdrawer.calenderEvents.EditEventFragment"
+        android:label="Update Event"
+        tools:layout="@layout/fragment_add_events" />
+    <fragment
+        android:id="@+id/createReimbursementFragment"
+        android:name="com.csestateconnect.ui.navdrawer.reimbursements.CreateReimbursementFragment"
+        android:label="Create Reimbursement" />
+    <fragment
+        android:id="@+id/reimbursementListFragment"
+        android:name="com.csestateconnect.ui.navdrawer.reimbursements.ReimbursementListFragment"
+        android:label="Reimbursement List" />
+    <fragment
+        android:id="@+id/reimbursementDetailFragment"
+        android:name="com.csestateconnect.ui.navdrawer.reimbursements.ReimbursementDetailFragment"
+        android:label="Reimbursement Detail" />
+    <fragment
+        android:id="@+id/createReimbureDocumentFragment"
+        android:name="com.csestateconnect.ui.navdrawer.reimbursements.CreateReimbureDocumentFragment"
+        android:label="Add Document"
+        tools:layout="@layout/fragment_create_reimbure_document" />
+    <fragment
+        android:id="@+id/updateReimbursementFragment"
+        android:name="com.csestateconnect.ui.navdrawer.reimbursements.UpdateReimbursementFragment"
+        android:label="Update Reimbursement" />
+    <fragment
+        android:id="@+id/updateReimbursementDocsFragment"
+        android:name="com.csestateconnect.ui.navdrawer.reimbursements.UpdateReimbursementDocsFragment"
+        android:label="Update Document"
+        tools:layout="@layout/fragment_update_reimbursement_docs" />
+
+    <fragment
+        android:id="@+id/projectOffersFragment"
+        android:name="com.csestateconnect.ui.home.projects_ui.ProjectOffersFragment"
+        android:label="Offers"
+        tools:layout="@layout/fragment_update_reimbursement_docs" />
+
+    <fragment
+        android:id="@+id/projectInventoryFragment"
+        android:name="com.csestateconnect.ui.home.projects_ui.ProjectInventoryFragment"
+        android:label="Inventory"
+        tools:layout="@layout/fragment_update_reimbursement_docs" />
+
+    <fragment
+        android:id="@+id/projectInventoryFloorFragment"
+        android:name="com.csestateconnect.ui.home.projects_ui.ProjectInventoryFloorFragment"
+        android:label="Inventory"
+        tools:layout="@layout/fragment_update_reimbursement_docs" />
+
+
+    <!--    <fragment-->
+<!--        android:id="@+id/all_cityFragment"-->
+<!--        android:name="com.csestateconnect.ui.home.All_cityFragment"-->
+<!--        android:label="All_cityFragment" />-->
+
+
+</navigation>

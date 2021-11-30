@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="dashboardViewModel"
+            type="com.prologicwebsolution.microatm.ui.dashboared.DashboardViewModel"/>
+    </data>
+
+       <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+           android:id="@+id/sw_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+           app:refreshing="@{dashboardViewModel._isLoading}">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="229dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/suvidha_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/tabs_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        app:cardCornerRadius="2sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoImageView">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#ffffff">
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:id="@+id/tvMatmServices"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Micro ATM"
+               android:textSize="14sp"
+               android:textStyle="bold"
+               android:layout_marginTop="10sp"
+               android:layout_marginStart="10sp"
+               app:layout_constraintTop_toTopOf="parent"
+               android:textColor="@color/black" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@+id/tvMatmServices">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="start"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imageViewTransaction"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/transmission_icons_hdpi" />
+
+                    <TextView
+                        android:id="@+id/cityNameText1"
+                        android:gravity="center"
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="Micro ATM Transactions"
+                        android:textColor="@color/black"
+                        android:textSize="10sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imageViewCommission"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/commission_icon_hdpi" />
+
+                    <TextView
+                        android:id="@+id/cityNameText2"
+                        android:gravity="center"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="Transaction Commission"
+                        android:textColor="@color/black"
+                        android:textSize="10sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:gravity="end"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imageViewWithdrawlStatus"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/transaction_status_hdpi" />
+
+                    <TextView
+                        android:id="@+id/cityNameText3"
+                        android:gravity="center"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="Payout Status"
+                        android:textColor="@color/black"
+                        android:textSize="10sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvEarnings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Earnings"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginTop="30sp"
+        android:layout_marginStart="25sp"
+        app:layout_constraintTop_toBottomOf="@+id/tabs_view"
+        android:textColor="@color/black" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/commission_tab_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15sp"
+        android:layout_marginStart="15sp"
+        android:layout_marginEnd="15sp"
+        android:padding="10dp"
+        app:cardCornerRadius="2sp"
+        android:backgroundTint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEarnings">
+
+
+
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="1"
+                    android:layout_marginBottom="10sp"
+                    android:layout_marginTop="10sp"
+                    android:layout_marginStart="10sp"
+                    android:orientation="horizontal">
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="60dp"
+                            android:layout_weight="0.2"
+                            app:cardCornerRadius="5sp">
+
+                            <LinearLayout android:layout_width="wrap_content"
+                                android:layout_height="60dp"
+                                android:padding="10sp"
+                                android:background="@color/gray">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/verify_idProogImg"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:src="@drawable/ic_atm_card_icon"
+                                android:scaleType="centerInside"
+                                android:focusedByDefault="true" />
+
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8sp"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.5"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="10sp"
+                            android:textColor="@color/black"
+                            android:text="Total Micro ATM Commission"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+
+                        <TextView
+                            android:id="@+id/tvWalletbalance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5sp"
+                            android:text="@{dashboardViewModel.walletText}"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:textStyle="bold"/>
+
+
+                    </LinearLayout>
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/buttonWithdraw"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5sp"
+                            android:layout_weight="0.3"
+                            android:textAllCaps="false"
+                            android:text="Withdraw"/>
+
+
+
+
+
+                </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+  <!--  <androidx.cardview.widget.CardView
+        android:id="@+id/aeps_commission_tab_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15sp"
+        android:layout_marginStart="15sp"
+        android:layout_marginEnd="15sp"
+        android:padding="10dp"
+        app:cardCornerRadius="2sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/commission_tab_view">
+
+
+
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:layout_marginBottom="10sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginStart="10sp"
+            android:orientation="horizontal">
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="0.2"
+                app:cardCornerRadius="5sp">
+
+                <LinearLayout android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:padding="10sp"
+                    android:background="@color/gray">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:scaleType="centerInside"
+                        app:srcCompat="@drawable/adhar_card_images"
+                        android:focusedByDefault="true" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8sp"
+                android:layout_gravity="center"
+                android:layout_weight="0.5"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:textColor="@color/black"
+                    android:text="Total AEPS Commission"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10sp"
+                    android:text="$ 500"
+                    android:textColor="@color/black"
+                    android:textSize="10sp"
+                    android:textStyle="bold"/>
+
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+               android:layout_marginTop="10sp"
+                android:layout_weight="0.3"
+                android:textAllCaps="false"
+                android:text="Withdraw"/>
+
+
+
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>-->
+
+  <!--  <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dashboardWallet_recyrView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:clipToPadding="false"
+        android:paddingBottom="40dp"
+        tools:listitem="@layout/wallet_balance_items"
+        app:layout_constraintTop_toBottomOf="@+id/tvEarnings"/>
+-->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/microATMImageButton"
+        android:layout_width="368dp"
+        android:layout_height="84dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/app_atm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</layout>

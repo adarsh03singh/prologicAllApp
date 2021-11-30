@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="1dp">
+
+
+    <LinearLayout
+        android:id="@+id/roads_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+
+        <CheckBox
+            android:id="@+id/roads_list_radioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/colorButton"
+            android:paddingRight="5sp"
+            android:layout_marginLeft="12sp"
+            android:paddingStart="10sp"
+            android:text="Aurobindo Marg" />
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

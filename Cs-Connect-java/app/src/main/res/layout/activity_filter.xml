@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FilterActivity">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/filter_left_side_bar_button"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/left_side_bar_icon"
+                android:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/gotham_rnd_bold"
+                android:text="Filter By"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+
+    <ScrollView
+        android:id="@+id/filter_menu_scroll_view"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:background="@color/white_smoke"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <LinearLayout
+            android:layout_width="104dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white_smoke"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <Button
+                android:id="@+id/filter_bhk_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8sp"
+                android:background="@android:color/white"
+                android:drawableTop="@drawable/ic_home"
+                android:drawableTint="@color/brown_color"
+                android:text="BHK"
+                style="?android:attr/borderlessButtonStyle"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/filter_price_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8sp"
+                android:background="@color/white_smoke"
+                android:drawableTop="@drawable/ic_attach_money_black_24dp"
+                android:drawableTint="@color/brown_color"
+                android:text="Price"
+                style="?android:attr/borderlessButtonStyle"
+                android:textAllCaps="false" />
+
+
+            <Button
+                android:id="@+id/filter_area_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8sp"
+                android:background="@color/white_smoke"
+                android:drawableTop="@drawable/ic_area_small_black_24dp"
+                android:drawableTint="@color/brown_color"
+                android:text="Builtup Area "
+                style="?android:attr/borderlessButtonStyle"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/filter_status_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8sp"
+                android:background="@color/white_smoke"
+                android:drawableTop="@drawable/ic_project_status"
+                android:drawableTint="@color/brown_color"
+                android:text="Project Status"
+                style="?android:attr/borderlessButtonStyle"
+                android:textAllCaps="false" />
+
+
+            <Button
+                android:id="@+id/filter_amenities_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8sp"
+                android:background="@color/white_smoke"
+                android:drawableTop="@drawable/units_icon"
+                android:text="Amenities"
+                style="?android:attr/borderlessButtonStyle"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/filter_locations_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8sp"
+                android:background="@color/white_smoke"
+                android:drawableTop="@drawable/ic_location_on_black_24dp"
+                android:text="Locations"
+                android:drawableTint="@color/brown_color"
+                style="?android:attr/borderlessButtonStyle"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/filter_bsp_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8sp"
+                android:background="@color/white_smoke"
+                android:drawableTop="@drawable/ic_bsp"
+                android:drawableTint="@color/brown_color"
+                android:text="Per SQFT Price"
+                style="?android:attr/borderlessButtonStyle"
+                android:textAllCaps="false" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/filter_bhk_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/filter_submit_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/filter_menu_scroll_view"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/filter_bhk_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/filter_price_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/filter_submit_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/filter_menu_scroll_view"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="Indian Rupees"
+            android:gravity="center"/>
+
+        <com.appyvet.materialrangebar.RangeBar xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/filter_price_rangebar"
+            mrb_pinPadding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:mrb_connectingLineColor="@color/colorPrimary"
+            app:mrb_pinColor="@color/colorAccent"
+            app:mrb_pinMaxFont="15sp"
+            app:mrb_pinMinFont="12sp"
+            app:mrb_pinRadius="20dp"
+            app:mrb_pinTextColor="@color/white_smoke"
+            app:mrb_rangeBar="true"
+            app:mrb_rangeBarPaddingBottom="30dp"
+            app:mrb_rangeBar_rounded="true"
+            app:mrb_selectorBoundaryColor="@color/colorAccent"
+            app:mrb_selectorBoundarySize="5dp"
+            app:mrb_selectorColor="@color/colorPrimary"
+            app:mrb_selectorSize="10dp"
+            app:mrb_temporaryPins="true"
+            app:mrb_tickDefaultLabel="label"
+            app:mrb_tickEnd="100000000"
+            app:mrb_tickHeight="0dp"
+            app:mrb_tickInterval="100000"
+            app:mrb_tickLabelColor="@color/colorAccent"
+            app:mrb_tickLabelSelectedColor="@color/colorAccent"
+            app:mrb_tickLabelSize="4sp"
+            app:mrb_tickStart="1000000" />
+
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip">
+            <TextView android:textSize="15.0sp"
+                android:textColor="@color/colorPrimary"
+                android:gravity="left"
+                android:id="@+id/filter_price_selected_min_cost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="start"
+                android:layout_weight="1.0" />
+            <TextView android:textSize="15.0sp"
+                android:textColor="@color/colorPrimary"
+                android:gravity="right"
+                android:id="@+id/filter_price_selected_max_cost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="end"
+                android:layout_weight="1.0"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/filter_area_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/filter_submit_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/filter_menu_scroll_view"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="Square Feet"
+            android:gravity="center"/>
+
+        <com.appyvet.materialrangebar.RangeBar xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/filter_area_rangebar"
+            mrb_pinPadding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:mrb_connectingLineColor="@color/colorPrimary"
+            app:mrb_pinColor="@color/colorAccent"
+            app:mrb_pinMaxFont="15sp"
+            app:mrb_pinMinFont="12sp"
+            app:mrb_pinRadius="20dp"
+            app:mrb_pinTextColor="@color/white_smoke"
+            app:mrb_rangeBar="true"
+            app:mrb_rangeBarPaddingBottom="30dp"
+            app:mrb_rangeBar_rounded="true"
+            app:mrb_selectorBoundaryColor="@color/colorAccent"
+            app:mrb_selectorBoundarySize="5dp"
+            app:mrb_selectorColor="@color/colorPrimary"
+            app:mrb_selectorSize="10dp"
+            app:mrb_temporaryPins="true"
+            app:mrb_tickDefaultLabel="label"
+            app:mrb_tickEnd="10000"
+            app:mrb_tickHeight="0dp"
+            app:mrb_tickInterval="100"
+            app:mrb_tickLabelColor="@color/colorAccent"
+            app:mrb_tickLabelSelectedColor="@color/colorAccent"
+            app:mrb_tickLabelSize="4sp"
+            app:mrb_tickStart="100" />
+
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip">
+            <TextView android:textSize="15.0sp"
+                android:textColor="@color/colorPrimary"
+                android:gravity="left"
+                android:id="@+id/filter_area_selected_min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="start"
+                android:layout_weight="1.0" />
+            <TextView android:textSize="15.0sp"
+                android:textColor="@color/colorPrimary"
+                android:gravity="right"
+                android:id="@+id/filter_area_selected_max"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="end"
+                android:layout_weight="1.0"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/filter_status_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/filter_submit_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/filter_menu_scroll_view"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/filter_status_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/filter_amenities_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/filter_submit_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/filter_menu_scroll_view"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/filter_amenities_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/filter_locations_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/filter_menu_scroll_view"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/filter_locations_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/filter_bsp_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/filter_submit_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/filter_menu_scroll_view"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="INR per SQFT"
+            android:gravity="center"/>
+
+        <com.appyvet.materialrangebar.RangeBar xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/filter_bsp_rangebar"
+            mrb_pinPadding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:mrb_connectingLineColor="@color/colorPrimary"
+            app:mrb_pinColor="@color/colorAccent"
+            app:mrb_pinMaxFont="15sp"
+            app:mrb_pinMinFont="12sp"
+            app:mrb_pinRadius="20dp"
+            app:mrb_pinTextColor="@color/white_smoke"
+            app:mrb_rangeBar="true"
+            app:mrb_rangeBarPaddingBottom="30dp"
+            app:mrb_rangeBar_rounded="true"
+            app:mrb_selectorBoundaryColor="@color/colorAccent"
+            app:mrb_selectorBoundarySize="5dp"
+            app:mrb_selectorColor="@color/colorPrimary"
+            app:mrb_selectorSize="10dp"
+            app:mrb_temporaryPins="true"
+            app:mrb_tickDefaultLabel="label"
+            app:mrb_tickEnd="10000"
+            app:mrb_tickHeight="0dp"
+            app:mrb_tickInterval="100"
+            app:mrb_tickLabelColor="@color/colorAccent"
+            app:mrb_tickLabelSelectedColor="@color/colorAccent"
+            app:mrb_tickLabelSize="4sp"
+            app:mrb_tickStart="100" />
+
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip">
+            <TextView android:textSize="15.0sp"
+                android:textColor="@color/colorPrimary"
+                android:gravity="left"
+                android:id="@+id/filter_bsp_selected_min_cost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="start"
+                android:layout_weight="1.0" />
+            <TextView android:textSize="15.0sp"
+                android:textColor="@color/colorPrimary"
+                android:gravity="right"
+                android:id="@+id/filter_bsp_selected_max_cost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="end"
+                android:layout_weight="1.0"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/filter_clear_button"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/white_smoke"
+        android:text="Clear"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/filter_submit_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorButton"
+        android:text="Apply"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/filter_clear_button" />
+
+
+
+</android.support.constraint.ConstraintLayout>

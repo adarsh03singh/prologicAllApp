@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.csestateconnect.viewmodel.ProfileViewModel" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/createProfile_constraintView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:layout_weight="1"
+        android:id="@+id/scrollView2">
+
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="60sp"
+                android:paddingStart="20sp"
+                android:paddingEnd="20sp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Create Account"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="25sp"
+                    android:textStyle="normal"/>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/first_name_layout"
+                    app:hintTextAppearance="@style/HintText"
+                    android:layout_marginTop="20sp"
+                    android:hint="First Name *"
+                    app:hintEnabled="true"
+                    app:boxBackgroundColor="@null"
+                    android:textColorHint="@color/colorAccent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/first_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="1dp"
+                        android:text="@={viewmodel.firstname}"
+                        android:textAppearance="@style/TextSize"
+                        android:textStyle="normal"
+                        android:inputType="textPersonName"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintTextAppearance="@style/HintText"
+                    android:layout_marginTop="10sp"
+                    android:hint="Last Name"
+                    app:hintEnabled="true"
+                    app:boxBackgroundColor="@null"
+                    android:textColorHint="@color/colorAccent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/last_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="1dp"
+                        android:textAppearance="@style/TextSize"
+                        android:textStyle="normal"
+                        android:text="@={viewmodel.lastname}"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/colorPrimary" />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+              <!--  <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10sp"
+                    android:weightSum="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/country_code_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.8"
+                        app:boxBackgroundColor="@null"
+                        app:hintTextAppearance="@style/HintText"
+                        android:textColorHint="@color/colorAccent"
+                        android:hint="+91">
+
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/country_code_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="0dp"
+                            android:maxLength="3"
+                            android:text="@={viewmodel.numberprefix}"
+                            android:textAppearance="@style/TextSize"
+                            android:textStyle="normal"
+                            android:inputType="phone"
+                            android:textColor="@color/colorPrimary" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/phone_no_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20sp"
+                        android:layout_weight="0.2"
+                        app:boxBackgroundColor="@null"
+                        app:hintTextAppearance="@style/HintText"
+                        android:textColorHint="@color/colorAccent">
+
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/phone_no_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="0dp"
+                            android:textAppearance="@style/TextSize"
+                            android:text="@={viewmodel.phonenumber}"
+                            android:textStyle="normal"
+                            android:maxLength="10"
+                            android:inputType="number"
+                            android:textColor="@color/colorPrimary"
+                            android:hint="Mobile Number"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>-->
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintTextAppearance="@style/HintText"
+                    android:layout_marginTop="10sp"
+                    app:boxBackgroundColor="@null"
+                    android:textColorHint="@color/colorAccent"
+                    android:hint="Email Id *">
+
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/email_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="1dp"
+                        android:text="@={viewmodel.emailid}"
+                        android:textAppearance="@style/TextSize"
+                        android:textStyle="normal"
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/colorPrimary" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <!--AUTO COMPLETE TEXT VIEW CAUSING ERROR. NEED TO BE SOLVED-->
+
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10sp"
+                    android:weightSum="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        app:boxBackgroundColor="@null"
+                        app:hintTextAppearance="@style/HintText"
+                        android:textColorHint="@color/colorAccent"
+                        android:hint="Country *">
+
+
+                        <AutoCompleteTextView
+                            android:id="@+id/profile_country_dropdown"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="1dp"
+                            android:textAppearance="@style/TextSize"
+                            android:text="@={viewmodel.userCountry}"
+                            android:focusable="false"
+                            android:textStyle="normal"
+                            android:inputType="textPersonName"
+                            android:textColor="@color/colorPrimary" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Space android:layout_width="30dp"
+                        android:layout_height="wrap_content"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        app:boxBackgroundColor="@null"
+                        app:hintTextAppearance="@style/HintText"
+                        android:textColorHint="@color/colorAccent"
+                        android:hint="City *">
+
+
+                        <AutoCompleteTextView
+                            android:id="@+id/profile_city_dropdown"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="1dp"
+                            android:textAppearance="@style/TextSize"
+                            android:text="@={viewmodel.userCity}"
+                            android:textStyle="normal"
+                            android:focusable="false"
+                            android:inputType="textPersonName"
+                            android:maxLength="10"
+                            android:textColor="@color/colorPrimary" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10sp"
+                    android:layout_marginBottom="80sp"
+                    android:weightSum="1"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        app:boxBackgroundColor="@null"
+                        app:hintTextAppearance="@style/HintText"
+                        android:textColorHint="@color/colorAccent"
+                        android:hint="State *">
+
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/state_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="1dp"
+                            android:text="@={viewmodel.state}"
+                            android:textAppearance="@style/TextSize"
+                            android:textStyle="normal"
+                            android:inputType="textPersonName"
+                            android:textColor="@color/colorPrimary" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Space android:layout_width="30dp"
+                        android:layout_height="wrap_content"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        app:boxBackgroundColor="@null"
+                        app:hintTextAppearance="@style/HintText"
+                        android:textColorHint="@color/colorAccent"
+                        android:hint="Zip Code *">
+
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/zip_code_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="1dp"
+                            android:text="@={viewmodel.zipcode}"
+                            android:textAppearance="@style/TextSize"
+                            android:textStyle="normal"
+                            android:inputType="numberSigned"
+                            android:textColor="@color/colorPrimary" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+
+
+
+              <!--  <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10sp"
+                    android:layout_marginBottom="80sp"
+                    android:background="@null"
+                    app:boxBackgroundColor="@null"
+                    android:textColorHint="@color/colorAccent"
+                    android:hint="Address">
+
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/address_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="1dp"
+                        android:text="@={viewmodel.address}"
+                        android:textAppearance="@style/TextSize"
+                        android:textStyle="normal"
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/colorPrimary"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>-->
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/create_submit_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:textSize="16dp"
+        android:onClick="@{viewmodel::checkfields}"
+        android:enabled="@{viewmodel.canenablebutton}"
+        android:backgroundTint="@color/buttonColor"
+        android:textColor="@color/whiteColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toBottomOf="@+id/scrollView2"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:visibility="@{viewmodel.progressBarCreateProf}">
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/progress_bar_gen"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            style="?android:attr/progressBarStyleLarge"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

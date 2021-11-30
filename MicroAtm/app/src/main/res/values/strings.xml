@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Micro Atm</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="transaction_status">Transaction Status</string>
+
+    <string name="provide_cash_withdrawal_maximum_rs_10000_txn_for_any_bank_debit_card">Provide Cash Withdrawal
+        maximum Rs.10000/txn for any bank debit card</string>
+
+
+</resources>

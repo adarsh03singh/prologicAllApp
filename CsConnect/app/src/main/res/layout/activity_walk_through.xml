@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.csestateconnect.viewmodel.AuthViewModel" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/walkThrough_constraintLayout"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:background="@drawable/bg_splash2"
+       tools:context=".ui.WalkThroughActivity">
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/walk_through_view_pager"
+        android:layout_width="374dp"
+        android:layout_height="588dp"
+        app:layout_constraintBottom_toBottomOf="@+id/layout_dots"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="5sp"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/layout_dots"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/next_btn"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/next_btn" />
+
+
+    <Button
+            android:id="@+id/next_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="50sp"
+            android:layout_marginEnd="50sp"
+            android:layout_marginBottom="60sp"
+            android:background="#f4b241"
+            android:text="Next"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    <Button
+        android:id="@+id/walk_throsnack_barButton"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:visibility="gone"
+        android:text="Internet Not Found"
+        android:textAllCaps="false"
+        android:textColor="@color/whiteColor"
+        android:background="@color/colorchery"
+        android:clickable="true"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

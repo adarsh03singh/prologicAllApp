@@ -1,0 +1,818 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="createLeadVm"
+            type="com.csestateconnect.viewmodel.LeadsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.home.lead_Frags.CreateLeadFragment">
+
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15sp"
+                    android:layout_marginTop="10sp"
+                    android:layout_marginRight="15sp"
+                    android:text="Personal Info"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+
+                <androidx.cardview.widget.CardView
+                    android:theme="@style/NoActionBarMaterial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15sp"
+                    android:layout_marginTop="15sp"
+                    android:layout_marginRight="15sp"
+                    app:cardElevation="1dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingStart="15sp"
+                        android:paddingEnd="15sp">
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/first_name_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12sp"
+                            android:hint="*Name"
+                            android:textColorHint="@color/colorPrimary"
+                            app:hintEnabled="true"
+                            app:boxBackgroundColor="@null"
+                            app:hintTextAppearance="@style/HintText">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/first_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="textPersonName"
+                                android:text="@={createLeadVm.createLeadName}"
+                                android:textAppearance="@style/TextSize"
+                                android:textColor="@color/colorPrimary"
+                                android:textStyle="normal" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="1">
+
+
+                            <!--                            <com.google.android.material.textfield.TextInputLayout-->
+                            <!--                                android:layout_width="match_parent"-->
+                            <!--                                android:layout_height="wrap_content"-->
+                            <!--                                android:layout_marginTop="12sp"-->
+                            <!--                                android:layout_weight="0.8"-->
+                            <!--                                android:hint="Country"-->
+                            <!--                                android:textColorHint="@color/colorPrimary"-->
+                            <!--                                app:hintTextAppearance="@style/HintText">-->
+
+                            <androidx.appcompat.widget.AppCompatSpinner
+                                android:id="@+id/country_code_spinner"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+
+                                android:backgroundTint="@color/colorgray" />
+
+                            <!--                                <AutoCompleteTextView-->
+                            <!--                                    android:id="@+id/country_code_spinner"-->
+                            <!--                                    android:layout_width="match_parent"-->
+                            <!--                                    android:layout_height="wrap_content"-->
+                            <!--                                    android:inputType="textPersonName"-->
+                            <!--                                    android:textAppearance="@style/TextSize"-->
+                            <!--                                    android:textColor="@color/colorPrimary"-->
+                            <!--                                    android:textStyle="normal"-->
+                            <!--                                    />-->
+                            <!--                                    android:text="@{createLeadVm.createLeadCountry}"-->
+
+                            <!--                            </com.google.android.material.textfield.TextInputLayout>-->
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/phone_no_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10sp"
+                                android:layout_marginTop="12sp"
+                                app:boxBackgroundColor="@null"
+                                android:layout_weight="0.2"
+                                android:hint="*Contact Number"
+                                android:textColorHint="@color/colorPrimary">
+
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/phone_no_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="number"
+                                    android:maxLength="10"
+                                    android:text="@={createLeadVm.createLeadNumber}"
+                                    android:textAppearance="@style/TextSize"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textStyle="normal"
+                                    />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                        </LinearLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12sp"
+                            android:hint="Email Id"
+                            app:boxBackgroundColor="@null"
+                            android:textColorHint="@color/colorPrimary"
+                            app:hintTextAppearance="@style/HintText">
+
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/email_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="textEmailAddress"
+                                android:text="@={createLeadVm.createLeadEmail}"
+                                android:textAppearance="@style/TextSize"
+                                android:textColor="@color/colorPrimary"
+                                android:textStyle="normal"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="1">
+
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12sp"
+                                android:layout_weight="0.49"
+                                android:hint="Country"
+                                app:boxBackgroundColor="@null"
+                                android:textColorHint="@color/colorPrimary"
+                                app:hintTextAppearance="@style/HintText">
+
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/country_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:editable="false"
+                                    android:focusable="false"
+                                    android:inputType="none"
+                                    android:text="@={createLeadVm.createLeadCountry}"
+                                    android:textAppearance="@style/TextSize"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textStyle="normal"
+                                    />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+<!--                            <androidx.appcompat.widget.AppCompatSpinner-->
+<!--                                android:id="@+id/lead_country_spinner"-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:layout_weight="0.02"-->
+<!--                                android:backgroundTint="@color/colorgray" />-->
+
+                            <Space
+                                android:layout_width="10dp"
+                                android:layout_height="wrap_content" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12sp"
+                                android:layout_weight="0.47"
+                                app:boxBackgroundColor="@null"
+                                android:hint="Select City"
+                                android:textColorHint="@color/colorPrimary"
+                                app:hintTextAppearance="@style/HintText">
+
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/city_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:editable="false"
+                                    android:focusable="false"
+                                    android:inputType="none"
+                                    android:maxLength="20"
+                                    android:text="@={createLeadVm.createLeadCity}"
+                                    android:textAppearance="@style/TextSize"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textStyle="normal" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+<!--                            <androidx.appcompat.widget.AppCompatSpinner-->
+<!--                                android:id="@+id/leadcity_spinner"-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:layout_weight="0.06"-->
+<!--                                android:backgroundTint="@color/colorgray" />-->
+
+                        </LinearLayout>
+
+                        <!--        State, ZipCode and Address are below, commented.     -->
+                        <!--                        <LinearLayout-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:orientation="horizontal"-->
+                        <!--                            android:weightSum="1">-->
+
+                        <!--                            <com.google.android.material.textfield.TextInputLayout-->
+                        <!--                                android:layout_width="match_parent"-->
+                        <!--                                android:layout_height="wrap_content"-->
+                        <!--                                android:layout_marginTop="12sp"-->
+                        <!--                                android:layout_weight="0.5"-->
+                        <!--                                android:hint="State"-->
+                        <!--                                android:textColorHint="@color/colorPrimary"-->
+                        <!--                                app:hintTextAppearance="@style/HintText">-->
+
+
+                        <!--                                <com.google.android.material.textfield.TextInputEditText-->
+                        <!--                                    android:id="@+id/state_text"-->
+                        <!--                                    android:layout_width="match_parent"-->
+                        <!--                                    android:layout_height="wrap_content"-->
+                        <!--                                    android:inputType="textPersonName"-->
+                        <!--                                    android:textAppearance="@style/TextSize"-->
+                        <!--                                    android:textColor="@color/colorPrimary"-->
+                        <!--                                    android:textStyle="normal"-->
+                        <!--                                    android:maxLength="15"-->
+                        <!--                                    android:text="@={createLeadVm.createLeadState}"-->
+                        <!--                                    />-->
+
+                        <!--                            </com.google.android.material.textfield.TextInputLayout>-->
+
+                        <!--                            <Space-->
+                        <!--                                android:layout_width="30dp"-->
+                        <!--                                android:layout_height="wrap_content" />-->
+
+                        <!--                            <com.google.android.material.textfield.TextInputLayout-->
+                        <!--                                android:layout_width="match_parent"-->
+                        <!--                                android:layout_height="wrap_content"-->
+                        <!--                                android:layout_marginTop="12sp"-->
+                        <!--                                android:layout_weight="0.5"-->
+                        <!--                                android:hint="Zip Code"-->
+                        <!--                                android:textColorHint="@color/colorPrimary"-->
+                        <!--                                app:hintTextAppearance="@style/HintText">-->
+
+
+                        <!--                                <com.google.android.material.textfield.TextInputEditText-->
+                        <!--                                    android:id="@+id/zip_code_text"-->
+                        <!--                                    android:layout_width="match_parent"-->
+                        <!--                                    android:layout_height="wrap_content"-->
+                        <!--                                    android:inputType="numberSigned"-->
+                        <!--                                    android:maxLength="8"-->
+                        <!--                                    android:textAppearance="@style/TextSize"-->
+                        <!--                                    android:textColor="@color/colorPrimary"-->
+                        <!--                                    android:textStyle="normal"-->
+                        <!--                                    android:text="@={createLeadVm.createLeadZipcode}"-->
+                        <!--                                    />-->
+
+                        <!--                            </com.google.android.material.textfield.TextInputLayout>-->
+
+                        <!--                        </LinearLayout>-->
+
+
+                        <!--                        <com.google.android.material.textfield.TextInputLayout-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_marginTop="12sp"-->
+                        <!--                            android:layout_marginBottom="20sp"-->
+                        <!--                            android:hint="Address"-->
+                        <!--                            android:textColorHint="@color/colorPrimary"-->
+                        <!--                            app:hintTextAppearance="@style/HintText">-->
+
+
+                        <!--                            <com.google.android.material.textfield.TextInputEditText-->
+                        <!--                                android:id="@+id/address_text"-->
+                        <!--                                android:layout_width="match_parent"-->
+                        <!--                                android:layout_height="wrap_content"-->
+                        <!--                                android:inputType="textEmailAddress"-->
+                        <!--                                android:textAppearance="@style/TextSize"-->
+                        <!--                                android:textColor="@color/colorPrimary"-->
+                        <!--                                android:textStyle="normal"-->
+                        <!--                                android:text="@={createLeadVm.createLeadAddress}"-->
+                        <!--                                />-->
+
+                        <!--                        </com.google.android.material.textfield.TextInputLayout>-->
+
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15sp"
+                    android:layout_marginTop="25sp"
+                    android:layout_marginRight="15sp"
+                    android:text="Property Preferences"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <androidx.cardview.widget.CardView
+                    android:theme="@style/NoActionBarMaterial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15sp"
+                    android:layout_marginTop="15sp"
+                    android:layout_marginRight="15sp"
+                    app:cardElevation="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15sp"
+                        android:layout_marginRight="15sp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:text="Budget"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="bottom"
+                            android:orientation="horizontal"
+                            android:weightSum="1">
+
+<!--                            <com.google.android.material.textfield.TextInputLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="60dp"-->
+<!--                                android:layout_weight="0.40"-->
+<!--                                android:hint="Min"-->
+<!--                                android:textColorHint="@color/colorPrimary"-->
+<!--                                app:hintEnabled="true"-->
+<!--                                app:boxBackgroundColor="@null"-->
+<!--                                app:hintTextAppearance="@style/HintText">-->
+
+<!--                                <com.google.android.material.textfield.TextInputEditText-->
+<!--                                    android:id="@+id/min_budget_text"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="match_parent"-->
+<!--                                    android:inputType="numberDecimal"-->
+<!--                                    android:maxLength="6"-->
+<!--                                    android:text="@={createLeadVm.createLeadMinimum}"-->
+<!--                                    android:textAppearance="@style/TextSize"-->
+<!--                                    android:textColor="@color/colorPrimary"-->
+<!--                                    android:textSize="18sp"-->
+<!--                                    android:textStyle="normal"-->
+<!--                                    />-->
+
+<!--                            </com.google.android.material.textfield.TextInputLayout>-->
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="wrap_content"
+                                android:id="@+id/min_budget_text"
+                                android:layout_height="60dp"
+                                android:hint="Min"
+                                android:maxLength="6"
+                                android:text="@={createLeadVm.createLeadMinimum}"
+                                android:inputType="numberDecimal"
+                                android:layout_weight="0.40"
+                                android:textSize="16sp"
+                                android:textColorHint="@color/colorPrimary"
+                                app:hintTextAppearance="@style/HintText"
+                                />
+
+                            <androidx.appcompat.widget.AppCompatSpinner
+                                android:id="@+id/min_budget_spinner"
+                                android:layout_width="90dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.06"
+                                android:backgroundTint="@color/colorgray" />
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="wrap_content"
+                                android:id="@+id/max_budget_text"
+                                android:layout_height="60dp"
+                                android:hint="Max"
+                                android:maxLength="6"
+                                android:text="@={createLeadVm.createLeadMaximum}"
+                                android:inputType="numberDecimal"
+                                android:layout_weight="0.40"
+                                android:textSize="16sp"
+                                android:textColorHint="@color/colorPrimary"
+                                app:hintTextAppearance="@style/HintText"
+                                />
+
+                            <androidx.appcompat.widget.AppCompatSpinner
+                                android:id="@+id/max_budget_spinner"
+                                android:layout_width="90dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.05"
+                                android:backgroundTint="@color/colorgray" />
+
+                            <AutoCompleteTextView
+                                android:id="@+id/currency_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.05"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:inputType="none"
+                                android:maxLength="3"
+                                android:text="@={createLeadVm.createLeadBudgetCurrency}"
+                                android:textAppearance="@style/TextSize"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="18sp"
+                                android:textStyle="normal"
+                                />
+
+                            <androidx.appcompat.widget.AppCompatSpinner
+                                android:id="@+id/currency_spinner"
+                                android:layout_width="30dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="8dp"
+                                android:layout_weight="0.04"
+                                android:backgroundTint="@color/colorgray" />
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:theme="@style/NoActionBarMaterial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15sp"
+                    android:layout_marginTop="15sp"
+                    android:layout_marginRight="15sp"
+                    app:cardElevation="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15sp"
+                        android:layout_marginRight="15sp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
+                            android:text="Location"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12sp" />
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/locations_recyclerview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:visibility="visible"
+                            tools:listitem="@layout/lead_create_cross_recycler" />
+
+                        <LinearLayout
+                            android:id="@+id/sel_loc_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            android:weightSum="1">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10sp"
+                                android:layout_weight="0.95"
+                                app:boxBackgroundColor="@null"
+                                android:hint="Select Location"
+                                android:textColorHint="@color/colorPrimary"
+                                app:hintTextAppearance="@style/HintText">
+
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/select_location_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:focusable="false"
+                                    android:inputType="none"
+                                    android:textAppearance="@style/TextSize"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textStyle="normal"
+                                    />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+<!--                            <androidx.appcompat.widget.AppCompatSpinner-->
+<!--                                android:id="@+id/select_location_spinner"-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:layout_weight="0.05"-->
+<!--                                android:backgroundTint="@color/colorgray" />-->
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:theme="@style/NoActionBarMaterial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15sp"
+                    android:layout_marginTop="15sp"
+                    android:layout_marginRight="15sp"
+                    android:padding="10sp"
+                    app:cardElevation="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15sp"
+                        android:layout_marginRight="15sp"
+                        android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10sp"
+                        android:text="Property Type"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="12sp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/property_recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:visibility="visible"
+                        tools:listitem="@layout/lead_create_cross_recycler" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5sp"
+                            android:layout_weight="0.95"
+                            android:hint="Property Type"
+                            app:boxBackgroundColor="@null"
+                            android:textColorHint="@color/colorPrimary"
+                            app:hintTextAppearance="@style/HintText">
+
+
+                            <AutoCompleteTextView
+                                android:id="@+id/property_type_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:inputType="none"
+                                android:textAppearance="@style/TextSize"
+                                android:textColor="@color/colorPrimary"
+                                android:textStyle="normal"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+<!--                        <androidx.appcompat.widget.AppCompatSpinner-->
+<!--                            android:id="@+id/property_type_spinner"-->
+<!--                            android:layout_width="30dp"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:layout_weight="0.05"-->
+<!--                            android:backgroundTint="@color/colorgray" />-->
+
+                    </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:theme="@style/NoActionBarMaterial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15sp"
+                    android:layout_marginTop="15sp"
+                    android:layout_marginRight="15sp"
+                    android:padding="10sp"
+                    app:cardElevation="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10sp"
+                        android:text="Construction Status"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="12sp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/completion_recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:visibility="visible"
+                        tools:listitem="@layout/lead_create_cross_recycler" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15sp"
+                        android:layout_marginRight="15sp"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5sp"
+                            android:layout_weight="0.95"
+                            android:hint="Construction Status"
+                            app:boxBackgroundColor="@null"
+                            android:textColorHint="@color/colorPrimary"
+                            app:hintTextAppearance="@style/HintText">
+
+
+                            <AutoCompleteTextView
+                                android:id="@+id/construction_status_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:inputType="none"
+                                android:textAppearance="@style/TextSize"
+                                android:textColor="@color/colorPrimary"
+                                android:textStyle="normal"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+<!--                        <androidx.appcompat.widget.AppCompatSpinner-->
+<!--                            android:id="@+id/construction_status_spinner"-->
+<!--                            android:layout_width="30dp"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:layout_weight="0.05"-->
+<!--                            android:backgroundTint="@color/colorgray" />-->
+
+                    </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15sp"
+                    android:layout_marginTop="25sp"
+                    android:layout_marginRight="15sp"
+                    android:text="*Status"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <androidx.cardview.widget.CardView
+                    android:theme="@style/NoActionBarMaterial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15sp"
+                    android:layout_marginTop="15sp"
+                    android:layout_marginRight="15sp"
+                    android:layout_marginBottom="80sp"
+                    android:padding="10sp"
+                    app:cardElevation="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15sp"
+                        android:layout_marginRight="15sp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5sp"
+                            android:layout_weight="0.95"
+                            android:hint="Select Status"
+                            app:boxBackgroundColor="@null"
+                            android:textColorHint="@color/colorPrimary"
+                            app:hintTextAppearance="@style/HintText">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/createlead_status_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:inputType="none"
+                                android:text="Select Lead Status"
+                                android:textAppearance="@style/TextSize"
+                                android:textColor="@color/colorPrimary"
+                                android:textStyle="normal"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+<!--                        <androidx.appcompat.widget.AppCompatSpinner-->
+<!--                            android:id="@+id/status_spinner"-->
+<!--                            android:layout_width="30dp"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:layout_weight="0.05"-->
+<!--                            android:backgroundTint="@color/colorgray" />-->
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/create_lead_submit_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorAccent"
+            android:onClick="@{createLeadVm::createLeadSubmitButton}"
+            android:text="Submit"
+            android:textColor="@color/colorWhite"
+            android:textSize="17dp"
+            android:enabled="@{createLeadVm.createLeadProgressBar? false : true}"
+            app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:background="#80000000"-->
+<!--            android:visibility="@{createLeadVm.createLeadProgressBar? View.VISIBLE : View.GONE}">-->
+
+<!--            <androidx.core.widget.ContentLoadingProgressBar-->
+<!--                android:id="@+id/progress_bar_createlead"-->
+<!--                android:layout_width="60dp"-->
+<!--                android:layout_height="60dp"-->
+<!--                style="?android:attr/progressBarStyleLarge"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"/>-->
+
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
