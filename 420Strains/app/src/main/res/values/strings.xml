@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">420 Strains</string>
+    <string name="UploadDriversLicense"><b>Upload Drivers License</b>> (only jpg, png, jpeg, pdf, docx and zip files extension allowed)</string>
+
+</resources>

@@ -1,0 +1,87 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/headerLay"
+        android:layout_width="match_parent"
+        android:layout_height="55sp"
+        android:background="@color/colorPrimary">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/title_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/medium"
+                android:gravity="center|start"
+                android:hint="@string/app_name"
+                android:paddingStart="20sp"
+                android:text="Upload Image"
+                android:textColor="@color/white"
+                android:textColorHint="@color/hint"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/cancel"
+                android:layout_width="50sp"
+                android:layout_height="match_parent"
+                android:background="@drawable/custom_trans_button"
+                android:padding="7sp"
+                android:src="@drawable/ic_cancel" />
+
+        </LinearLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="7sp"
+        android:paddingBottom="7sp">
+
+
+        <TextView
+            android:id="@+id/camera"
+            android:layout_width="match_parent"
+            android:layout_height="55sp"
+            android:background="@drawable/custom_trans_button"
+            android:fontFamily="@font/medium"
+            android:gravity="center|start"
+            android:paddingLeft="20sp"
+            android:text="Camera"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1sp"
+            android:background="#F3F3F3" />
+
+        <TextView
+            android:id="@+id/gallery"
+            android:layout_width="match_parent"
+            android:layout_height="55sp"
+            android:background="@drawable/custom_trans_button"
+            android:fontFamily="@font/medium"
+            android:gravity="center|start"
+
+            android:paddingLeft="20sp"
+            android:text="Gallery"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+
+    </LinearLayout>
+</LinearLayout>
+

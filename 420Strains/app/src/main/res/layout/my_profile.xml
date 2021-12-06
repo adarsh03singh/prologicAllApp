@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.prologic.strains.viewmodel.ProfileViewModel" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_color"
+        android:orientation="vertical">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:paddingBottom="50sp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.appbar.AppBarLayout
+                    android:id="@+id/headerLay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:layout_width="150sp"
+                        android:layout_height="150sp"
+                        android:layout_marginTop="25sp"
+                        android:layout_marginBottom="25sp"
+                        android:src="@drawable/logo_circle"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+
+                </com.google.android.material.appbar.AppBarLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:orientation="vertical"
+                    android:paddingLeft="20sp"
+                    android:paddingTop="25sp"
+                    android:paddingRight="20sp"
+                    android:paddingBottom="30sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <LinearLayout
+                        android:id="@+id/nameLay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="First Name"
+                                android:textColorHint="@color/user_text"
+                                app:hintTextColor="@color/user_text">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/input_first_name"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/edt_bg_selector"
+                                    android:fontFamily="@font/medium"
+                                    android:inputType="textCapWords"
+                                    android:paddingBottom="2sp"
+                                    android:singleLine="true"
+                                    android:text="@={viewModel.input_first_name}"
+                                    android:textColor="@color/white"
+                                    android:textCursorDrawable="@drawable/color_cursor"
+                                    android:textSize="15sp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12sp"
+                                android:layout_weight="1"
+                                android:hint="Last Name"
+                                android:textColorHint="@color/user_text"
+                                app:hintTextColor="@color/user_text">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/input_last_name"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/edt_bg_selector"
+                                    android:fontFamily="@font/medium"
+                                    android:inputType="textCapWords"
+                                    android:paddingBottom="2sp"
+                                    android:singleLine="true"
+                                    android:text="@={viewModel.input_last_name}"
+                                    android:textColor="@color/white"
+                                    android:textCursorDrawable="@drawable/color_cursor"
+                                    android:textSize="15sp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="35sp"
+                        android:hint="Email"
+                        android:textColorHint="@color/user_text"
+                        app:hintTextColor="@color/user_text">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/input_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edt_bg_selector"
+                            android:fontFamily="@font/medium"
+                            android:inputType="textEmailAddress"
+                            android:paddingBottom="2sp"
+                            android:singleLine="true"
+                            android:text="@={viewModel.input_email}"
+                            android:textColor="@color/white"
+                            android:textCursorDrawable="@drawable/color_cursor"
+                            android:textSize="15sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="35sp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Password"
+                            android:textColorHint="@color/user_text"
+                            app:hintTextColor="@color/user_text">
+
+                            <EditText
+                                android:id="@+id/input_password"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/edt_bg_selector"
+                                android:fontFamily="@font/medium"
+                                android:inputType="textPassword"
+                                android:paddingBottom="2sp"
+                                android:singleLine="true"
+                                android:text="@={viewModel.input_password}"
+                                android:textColor="@color/white"
+                                android:textCursorDrawable="@drawable/color_cursor"
+                                android:textSize="15sp" />
+
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:id="@+id/password_show"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end|center"
+                            android:background="@drawable/custom_trans_button"
+                            android:fontFamily="@font/medium"
+                            android:hint="Show"
+                            android:paddingLeft="5sp"
+                            android:paddingTop="5sp"
+                            android:textColorHint="@color/user_text"
+                            android:paddingBottom="5sp"
+                            android:text="@{viewModel.password_show}"
+                            android:textColor="@color/user_text"
+                            android:textSize="12sp" />
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10sp"
+
+                    app:cardBackgroundColor="#302F2F">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/custom_trans_button"
+                        android:gravity="center"
+                        android:onClick="@{viewModel::move_billing_page}"
+                        android:orientation="horizontal"
+                        android:padding="10sp">
+
+                        <TextView
+                            android:id="@+id/add_billing_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/medium"
+                            android:text="Billing Details"
+                            android:textColor="@color/white"
+                            android:textSize="15sp" />
+
+
+                        <TextView
+                            android:id="@+id/billing_details"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/add_billing_tv"
+                            android:layout_marginTop="6sp"
+                            android:fontFamily="@font/normal"
+                            android:hint="Enter Billing Details"
+                            android:htmlText="@{viewModel.billing_details}"
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/graylight"
+                            android:textSize="16sp" />
+
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:layout_width="35sp"
+                        android:layout_height="35sp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="end"
+                        android:layout_margin="5sp"
+                        android:src="@drawable/add_circle_24" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginBottom="5sp"
+
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/black">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/custom_trans_button"
+                        android:gravity="center"
+                        android:onClick="@{viewModel::move_shipping_page}"
+                        android:orientation="horizontal"
+                        android:padding="10sp">
+
+                        <TextView
+                            android:id="@+id/add_shipping_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:layout_weight="1"
+                            android:fontFamily="@font/medium"
+                            android:text="Shipping Details"
+                            android:textColor="@color/white"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:layout_width="35sp"
+                            android:layout_height="35sp"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/add_circle_24" />
+
+                        <TextView
+                            android:id="@+id/shipping_details"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/add_shipping_tv"
+                            android:layout_marginTop="6sp"
+                            android:fontFamily="@font/normal"
+                            android:hint="Enter Billing Details"
+                            android:htmlText="@{viewModel.shipping_details}"
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/graylight"
+                            android:textSize="16sp" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+        <Button
+            android:id="@+id/updateButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:background="@drawable/custom_primary_button"
+            android:fontFamily="@font/medium"
+            android:text="@{viewModel.update_button}"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/button_text_size" />
+
+    </LinearLayout>
+</layout>

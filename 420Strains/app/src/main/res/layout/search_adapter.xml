@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.prologic.strains.search_dialog.SearchItem" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/click"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+android:layout_marginBottom="1sp"
+        android:gravity="center"
+        android:paddingLeft="10sp"
+        android:paddingTop="12sp"
+        android:background="@color/black"
+        android:paddingRight="12sp"
+        android:paddingBottom="10sp">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="50sp"
+            android:layout_height="45sp"
+            android:layout_marginEnd="10sp"
+            android:src="@drawable/loader" />
+
+        <LinearLayout android:layout_marginStart="5sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/medium"
+                android:text="Title"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3sp"
+                android:fontFamily="@font/normal"
+                android:text="Text"
+                android:textColor="@color/user_text"
+                android:textSize="13sp" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>
+

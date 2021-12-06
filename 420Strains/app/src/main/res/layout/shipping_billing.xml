@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.prologic.strains.viewmodel.ShippingBillingViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background2_color"
+        android:orientation="vertical">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:orientation="vertical"
+                        android:paddingLeft="20sp"
+                        android:paddingTop="25sp"
+                        android:paddingRight="20sp"
+                        android:paddingBottom="5sp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5sp">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="First Name *"
+                                android:textColorHint="@color/user_text"
+                                app:hintTextColor="@color/user_text">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/firstName"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/edt_bg_selector"
+                                    android:fontFamily="@font/medium"
+                                    android:inputType="textCapWords"
+                                    android:paddingBottom="2sp"
+                                    android:singleLine="true"
+                                    android:text="@={viewModel.firstName}"
+                                    android:textColor="@color/white"
+                                    android:textCursorDrawable="@drawable/color_cursor"
+                                    android:textSize="15sp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10sp"
+                                android:layout_weight="1"
+                                android:hint="Last Name *"
+                                android:textColorHint="@color/user_text"
+                                app:hintTextColor="@color/user_text">
+
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/lastName"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/edt_bg_selector"
+                                    android:fontFamily="@font/medium"
+                                    android:inputType="textCapWords"
+                                    android:paddingBottom="2sp"
+                                    android:singleLine="true"
+                                    android:text="@={viewModel.lastName}"
+                                    android:textColor="@color/white"
+                                    android:textCursorDrawable="@drawable/color_cursor"
+                                    android:textSize="15sp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                        </LinearLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30sp"
+                            android:hint="Address 1"
+                            android:textColorHint="@color/user_text"
+                            app:hintTextColor="@color/user_text">
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/address_1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/edt_bg_selector"
+                                android:fontFamily="@font/medium"
+                                android:inputType="textCapWords"
+                                android:paddingBottom="2sp"
+                                android:singleLine="true"
+                                android:text="@={viewModel.address_1}"
+                                android:textColor="@color/white"
+                                android:textCursorDrawable="@drawable/color_cursor"
+                                android:textSize="15sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30sp"
+                            android:hint="Address 2"
+                            android:textColorHint="@color/user_text"
+                            app:hintTextColor="@color/user_text">
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/address_2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/edt_bg_selector"
+                                android:fontFamily="@font/medium"
+                                android:inputType="textCapWords"
+                                android:paddingBottom="2sp"
+                                android:singleLine="true"
+                                android:text="@={viewModel.address_2}"
+                                android:textColor="@color/white"
+                                android:textCursorDrawable="@drawable/color_cursor"
+                                android:textSize="15sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30sp"
+                            android:hint="Company"
+                            android:textColorHint="@color/user_text"
+                            app:hintTextColor="@color/user_text">
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/companyName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/edt_bg_selector"
+                                android:fontFamily="@font/medium"
+                                android:inputType="textCapWords"
+                                android:paddingBottom="2sp"
+                                android:singleLine="true"
+                                android:text="@={viewModel.companyName}"
+                                android:textColor="@color/white"
+                                android:textCursorDrawable="@drawable/color_cursor"
+                                android:textSize="15sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30sp"
+                            android:hint="City *"
+                            android:textColorHint="@color/user_text"
+                            app:hintTextColor="@color/user_text">
+
+                            <EditText
+                                android:id="@+id/cityName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/edt_bg_selector"
+                                android:fontFamily="@font/medium"
+                                android:inputType="textCapWords"
+                                android:paddingBottom="2sp"
+                                android:singleLine="true"
+                                android:text="@={viewModel.cityName}"
+                                android:textColor="@color/white"
+                                android:textCursorDrawable="@drawable/color_cursor"
+                                android:textSize="15sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30sp"
+                            android:hint="Country/Region *"
+                            android:textColorHint="@color/user_text"
+                            app:hintTextColor="@color/user_text">
+
+                            <EditText
+                                android:id="@+id/countryRegion"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/edt_bg_selector"
+                                android:focusable="false"
+                                android:fontFamily="@font/medium"
+                                android:inputType="textCapWords"
+                                android:paddingBottom="2sp"
+                                android:singleLine="true"
+                                android:text="@={viewModel.countryRegionName}"
+                                android:textColor="@color/white"
+                                android:textCursorDrawable="@drawable/color_cursor"
+                                android:textSize="15sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30sp"
+                            android:hint="State *"
+                            android:textColorHint="@color/user_text"
+                            app:hintTextColor="@color/user_text">
+
+                            <EditText
+                                android:id="@+id/stateName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/edt_bg_selector"
+                                android:focusable="false"
+                                android:fontFamily="@font/medium"
+                                android:inputType="textCapWords"
+                                android:paddingBottom="2sp"
+                                android:singleLine="true"
+                                android:text="@={viewModel.stateName}"
+                                android:textColor="@color/white"
+                                android:textCursorDrawable="@drawable/color_cursor"
+                                android:textSize="15sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30sp"
+                            android:hint="Postal Code *"
+                            android:textColorHint="@color/user_text"
+                            app:hintTextColor="@color/user_text">
+
+                            <EditText
+                                android:id="@+id/postcode"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/edt_bg_selector"
+                                android:fontFamily="@font/medium"
+                                android:inputType="number"
+                                android:paddingBottom="2sp"
+                                android:singleLine="true"
+                                android:text="@={viewModel.postcode}"
+                                android:textColor="@color/white"
+                                android:textCursorDrawable="@drawable/color_cursor"
+                                android:textSize="15sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:id="@+id/phoneEmailLay"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="@{viewModel.view_type}">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="30sp"
+                                android:hint="Phone *"
+                                android:textColorHint="@color/user_text"
+                                app:hintTextColor="@color/user_text">
+
+                                <EditText
+                                    android:id="@+id/phoneNumber"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/edt_bg_selector"
+                                    android:fontFamily="@font/medium"
+                                    android:inputType="number"
+                                    android:paddingBottom="2sp"
+                                    android:singleLine="true"
+                                    android:text="@={viewModel.phoneNumber}"
+                                    android:textColor="@color/white"
+                                    android:textCursorDrawable="@drawable/color_cursor"
+                                    android:textSize="15sp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="30sp"
+                                android:hint="Email Address *"
+                                android:textColorHint="@color/user_text"
+                                app:hintTextColor="@color/user_text">
+
+                                <EditText
+                                    android:id="@+id/emailAddress"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/edt_bg_selector"
+                                    android:fontFamily="@font/medium"
+                                    android:inputType="textEmailAddress"
+                                    android:paddingBottom="2sp"
+                                    android:singleLine="true"
+                                    android:text="@={viewModel.emailAddress}"
+                                    android:textColor="@color/white"
+                                    android:textCursorDrawable="@drawable/color_cursor"
+                                    android:textSize="15sp" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.core.widget.NestedScrollView>
+
+        <Button
+            android:id="@+id/add_details"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/custom_primary_button"
+            android:fontFamily="@font/bold"
+            android:text="Submit"
+            android:textColor="@color/white"
+            android:textSize="@dimen/button_text_size" />
+
+    </LinearLayout>
+</layout>

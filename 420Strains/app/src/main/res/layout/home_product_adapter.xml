@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.prologic.strains.model.product.ProductItem" />
+    </data>
+
+
+    <LinearLayout
+        android:id="@+id/click"
+        android:layout_width="130sp"
+        android:layout_height="match_parent"
+        android:layout_margin="3sp"
+        android:background="@drawable/category_back"
+        android:orientation="vertical"
+        android:padding="4sp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="110sp"
+            android:background="@color/graylight"
+            android:scaleType="centerInside"
+
+            app:imageTitle="@{item.name}"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize1Percent"
+            app:showImage="@{item.getImageUrl}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/medium"
+                android:hint="SLEEP GEL CAPS 6 COUNT BY SANNA"
+                android:text="@{item.name}"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bold"
+                android:gravity="center"
+                android:hint="$0.00"
+                android:priceText="@{item.getProductPrice}"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

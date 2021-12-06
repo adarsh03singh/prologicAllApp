@@ -1,0 +1,137 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.prologic.strains.viewmodel.CartItemViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:orientation="vertical">
+      <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:gravity="center"
+                      android:orientation="vertical"
+                      android:visibility="@{viewModel.emptyLay}">
+
+                      <ImageView
+                          android:layout_width="250sp"
+                          android:layout_height="250sp"
+                          android:src="@drawable/cart_empty" />
+
+                      <TextView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="30sp"
+                          android:fontFamily="@font/bold"
+                          android:gravity="center"
+                          android:text="Your cart is empty"
+                          android:textColor="@color/white"
+                          android:textSize="20sp" />
+
+                      <TextView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="15sp"
+                          android:fontFamily="@font/normal"
+                          android:gravity="center"
+                          android:padding="5sp"
+                          android:text="You have no items in your shopping cart.\nLet's go by something!"
+                          android:textColor="@color/hint"
+                          android:textSize="15sp" />
+
+                      <View
+                          android:layout_width="match_parent"
+                          android:layout_height="35sp" />
+
+                      <Button
+                          android:id="@+id/shopNow"
+                          android:layout_width="wrap_content"
+                          android:layout_height="50sp"
+                          android:layout_margin="7sp"
+                          android:background="@drawable/circle_green_button"
+                          android:fontFamily="@font/medium"
+                          android:gravity="center"
+                          android:paddingLeft="40sp"
+                          android:paddingRight="40sp"
+                          android:text="Shop Now"
+                          android:textAllCaps="false"
+                          android:textColor="@color/white"
+                          android:textSize="15sp" />
+
+                  </LinearLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewCart"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:adapter="@{viewModel.cartAdapter}"
+            android:clipToPadding="false"
+            android:paddingTop="5sp"
+            android:paddingBottom="50sp"
+            android:visibility="@{viewModel.recyclerViewLay}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <FrameLayout
+
+            android:id="@+id/bottomLay"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:background="@color/background2_color"
+            android:visibility="@{viewModel.bottomLay}">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/medium"
+                android:gravity="center"
+                android:hint="Total Amount : ₹0.00"
+                android:htmlText="@{viewModel.total_amount_view}"
+                android:padding="7sp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:id="@+id/checkout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end|center"
+                android:layout_marginTop="7sp"
+                android:layout_marginEnd="7sp"
+                android:layout_marginBottom="7sp"
+                android:background="@drawable/circle_border_red_button"
+                android:gravity="center"
+                android:paddingLeft="12sp"
+                android:paddingRight="12sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/medium"
+                    android:letterSpacing=".1"
+                    android:text="Checkout"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="25sp"
+                    android:layout_height="25sp"
+                    android:layout_marginStart="7sp"
+                    android:src="@drawable/ic_double_arrow" />
+            </LinearLayout>
+
+        </FrameLayout>
+
+
+    </LinearLayout>
+</layout>

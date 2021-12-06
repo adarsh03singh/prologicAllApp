@@ -1,0 +1,351 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.prologic.strains.viewmodel.CheckOutViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background2_color"
+        android:orientation="vertical">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:paddingBottom="50sp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewCart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adapter="@{viewModel.checkOutCartAdapter}"
+                    android:clipToPadding="false"
+
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10sp"
+                    android:layout_marginTop="10sp"
+                    android:layout_marginEnd="10sp"
+                    android:layout_marginBottom="5sp"
+                    app:cardBackgroundColor="@color/black">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingLeft="10sp"
+                        android:paddingTop="2sp"
+                        android:paddingBottom="2sp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center">
+
+                            <EditText
+                                android:id="@+id/couponCodeEt"
+                                android:layout_width="match_parent"
+                                android:layout_height="35sp"
+                                android:layout_marginTop="5sp"
+                                android:layout_marginBottom="5sp"
+                                android:layout_weight="1"
+                                android:background="@color/trans"
+                                android:fontFamily="@font/medium"
+                                android:hint="Coupon Code "
+                                android:includeFontPadding="false"
+                                android:inputType="textCapCharacters"
+                                android:letterSpacing="0.3"
+                                android:maxLength="12"
+                                android:singleLine="true"
+                                android:text="@={viewModel.coupon_code}"
+                                android:textColor="@color/white"
+                                android:textColorHint="@color/user_text"
+                                android:textCursorDrawable="@drawable/color_cursor"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/applyCancel"
+                                android:layout_width="90sp"
+                                android:layout_height="35sp"
+                                android:layout_gravity="center|end"
+                                android:layout_marginStart="5sp"
+                                android:layout_marginTop="5sp"
+                                android:layout_marginEnd="5sp"
+                                android:layout_marginBottom="5sp"
+                                android:background="@drawable/circle_border_white_button"
+                                android:fontFamily="@font/medium"
+                                android:gravity="center"
+                                android:text="Apply"
+                                android:textColor="@color/white"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/coupon_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="7sp"
+                            android:fontFamily="@font/normal"
+                            android:hint="The amount of discount. Should always be numeric, even if setting a percentage."
+                        android:htmlText="@{viewModel.coupon_title}"
+                            android:textColor="@color/user_text"
+                            android:textColorHint="@color/user_text"
+                            android:textSize="12sp"
+                />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10sp"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginEnd="10sp"
+                    android:layout_marginBottom="5sp"
+                    app:cardBackgroundColor="@color/black">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/custom_trans_button"
+                        android:gravity="center"
+                        android:onClick="@{viewModel::move_billing_page}"
+                        android:orientation="horizontal"
+                        android:padding="10sp">
+
+                        <TextView
+                            android:id="@+id/add_billing_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="3sp"
+                            android:layout_marginTop="2sp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/bold"
+                            android:text="Billing Details"
+                            android:textColor="@color/white"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:layout_width="35sp"
+                            android:layout_height="35sp"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/add_circle_24" />
+
+                        <TextView
+                            android:id="@+id/billing_details"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/add_billing_tv"
+                            android:layout_marginStart="3sp"
+                            android:layout_marginTop="4sp"
+                            android:fontFamily="@font/normal"
+                            android:hint="Enter Billing Details"
+                            android:htmlText="@{viewModel.billing_details}"
+                            android:textColor="@color/user_text"
+                            android:textColorHint="@color/user_text"
+                            android:textSize="15sp" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10sp"
+                    android:layout_marginTop="5sp"
+                    android:visibility="gone"
+                    android:layout_marginEnd="10sp"
+                    android:layout_marginBottom="5sp"
+                    app:cardBackgroundColor="@color/black">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/custom_trans_button"
+                        android:gravity="center"
+                        android:onClick="@{viewModel::move_shipping_page}"
+                        android:orientation="horizontal"
+                        android:padding="7sp">
+
+                        <TextView
+                            android:id="@+id/add_shipping_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="3sp"
+                            android:layout_marginTop="2sp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/bold"
+                            android:text="Shipping Details"
+                            android:textColor="@color/white"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:layout_width="35sp"
+                            android:layout_height="35sp"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/add_circle_24" />
+
+                        <TextView
+                            android:id="@+id/shipping_details"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/add_shipping_tv"
+                            android:layout_marginStart="3sp"
+                            android:layout_marginTop="4sp"
+                            android:fontFamily="@font/normal"
+                            android:hint="Enter Billing Details"
+                            android:htmlText="@{viewModel.shipping_details}"
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/user_text"
+                            android:textSize="13sp" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10sp"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginEnd="10sp"
+                    android:layout_marginBottom="5sp"
+                    app:cardBackgroundColor="@color/black">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingLeft="12sp"
+                        android:paddingTop="10sp"
+                        android:paddingEnd="12sp"
+
+                        android:paddingBottom="10sp">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/medium"
+                                android:text="Product Amount : "
+                                android:textColor="@color/white"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/medium"
+                                android:gravity="end"
+                                android:minWidth="90sp"
+                                android:hint="$0.00"
+                                android:text="@{viewModel.productAmount}"
+                                android:textColorHint="@color/user_text"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:visibility="@{viewModel.discountLay}"
+                            android:id="@+id/discountLay"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7sp"
+                            android:gravity="end">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/medium"
+                                android:text="Discount : "
+                                android:textColor="@color/white"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/medium"
+                                android:gravity="end"
+                                android:minWidth="90sp"
+                                android:hint="$0.00"
+                                android:text="@{viewModel.couponAmount}"
+                                android:textColorHint="@color/user_text"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+
+            android:background="@color/black">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center"
+                android:fontFamily="@font/medium"
+                android:hint="Total Amount : $0.00"
+                android:paddingLeft="10sp"
+                android:text="@{viewModel.totalAmount}"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:id="@+id/create_order"
+                android:layout_width="100sp"
+                android:layout_height="35sp"
+                android:layout_gravity="end|center"
+                android:layout_marginEnd="7sp"
+                android:background="@drawable/circle_white_button"
+                android:fontFamily="@font/bold"
+                android:gravity="center"
+                android:text="Order Place"
+                android:textColor="@color/green"
+                android:textColorHint="@color/green"
+                android:textSize="12sp" />
+
+
+        </FrameLayout>
+
+    </LinearLayout>
+</layout>

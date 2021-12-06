@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.prologic.strains.model.business_hour.Item" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/click"
+        android:layout_width="match_parent"
+        android:layout_height="35sp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/day"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/_05_border"
+            android:fontFamily="@font/medium"
+            android:gravity="center"
+            android:hint="Product Name"
+            android:text="@{item.day}"
+            android:textColor="@color/colorAccent"
+            android:textSize="14sp" />
+
+        <TextView  android:id="@+id/from"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/_05_border"
+            android:fontFamily="@font/medium"
+            android:gravity="center"
+            android:hint="Product Name"
+            android:text="@{item.from}"
+            android:textColor="@color/colorAccent"
+            android:textSize="14sp" />
+
+        <TextView  android:id="@+id/to"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/_05_border"
+            android:fontFamily="@font/medium"
+            android:gravity="center"
+            android:hint="$0.00"
+            android:text="@{item.to}"
+            android:textColor="@color/colorAccent"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+</layout>

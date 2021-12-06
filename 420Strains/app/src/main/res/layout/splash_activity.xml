@@ -1,0 +1,54 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.prologic.strains.viewmodel.SplashViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="40sp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="20sp">
+
+            <ImageView
+                android:id="@+id/back_button"
+                android:layout_width="250sp"
+                android:layout_height="250sp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/logo_circle" />
+
+            <ImageView android:layout_marginTop="25sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/big_logo" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <TextView
+            android:id="@+id/version_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:fontFamily="@font/normal"
+            android:gravity="center"
+            android:padding="7sp"
+            android:text="Version Name"
+            android:textColor="@color/graylight"
+            android:textSize="10sp" />
+
+    </FrameLayout>
+</layout>

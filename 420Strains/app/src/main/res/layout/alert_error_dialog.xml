@@ -1,0 +1,65 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/alerterror"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35sp"
+            android:background="@drawable/alert_back"
+            android:orientation="vertical"
+            android:padding="12sp">
+
+
+            <TextView
+                android:id="@+id/msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35sp"
+                android:fontFamily="@font/medium"
+                android:gravity="center"
+                android:lineSpacingExtra="2sp"
+                android:text="No Internet connection. Make sure WI-Fi or cellular data is turned on, then try again."
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/cancel"
+                android:layout_width="120sp"
+                android:layout_height="45sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20sp"
+                android:layout_marginBottom="5sp"
+                android:background="@drawable/circle_primary_button"
+                android:fontFamily="@font/bold"
+                android:includeFontPadding="false"
+                android:text="Close"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/topViewTv"
+            android:layout_width="70sp"
+            android:layout_height="70sp"
+            android:layout_gravity="center|top"
+            android:background="@drawable/_1_dp_red_circle_border"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="!"
+            android:textColor="@color/white"
+            android:textSize="45sp"
+            android:textStyle="bold" />
+
+
+    </FrameLayout>
+
+</LinearLayout>

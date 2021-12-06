@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.prologic.strains.model.category.CategoryItem" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/click"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3sp"
+        android:background="@drawable/category_back"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="7sp">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/medium"
+            android:hint="Category Name"
+            android:includeFontPadding="false"
+            android:text="@{item.name}"
+            android:textColor="@color/user_text"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:layout_width="15sp"
+            android:layout_height="15sp"
+            android:src="@drawable/ic_double_arrow"
+           android:tint="@color/graylight"
+            tools:ignore="UseAppTint" />
+    </LinearLayout>
+
+</layout>

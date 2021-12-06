@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background2_color"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/header_height"
+        android:background="@color/black">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="45sp"
+            android:layout_height="match_parent"
+            android:background="@drawable/custom_trans_button"
+            android:padding="7sp"
+            android:src="@drawable/ic_arrow_back" />
+
+        <EditText
+            android:inputType="textCapWords"
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="6sp"
+            android:layout_marginEnd="6sp"
+            android:layout_marginBottom="6sp"
+            android:singleLine="true"
+            android:background="@drawable/_2_dp_radius"
+            android:drawableRight="@drawable/ic_search_"
+            android:gravity="center|start"
+            android:hint="Search List"
+            android:paddingLeft="10sp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/user_text"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+
+        tools:listitem="@layout/search_adapter"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+</LinearLayout>
