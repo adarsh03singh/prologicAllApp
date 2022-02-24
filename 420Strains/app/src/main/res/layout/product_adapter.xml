@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
 
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -16,44 +15,79 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5sp"
-        android:background="@drawable/category_back"
-        android:orientation="vertical"
+        android:background="@color/black"
+        android:orientation="horizontal"
         android:padding="5sp">
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/image"
-            android:layout_width="match_parent"
-            android:layout_height="180sp"
-            android:scaleType="fitXY"
-            android:src="@drawable/loader"
-            app:imageTitle="@{item.name}"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize1Percent"
-            app:showImage="@{item.getImageUrl}" />
 
-        <TextView
-            android:id="@+id/name"
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="5sp">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="80sp"
+                android:layout_height="70sp"
+                android:background="@color/hint"
+                android:scaleType="centerInside"
+                android:src="@drawable/loader"
+                app:imageTitle="@{item.name}"
+                app:showImage="@{item.getImageUrl}" />
+
+            <TextView
+                android:id="@+id/alertText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:background="@color/red"
+                android:fontFamily="@font/medium"
+                android:includeFontPadding="false"
+                android:paddingLeft="7sp"
+                android:paddingTop="5sp"
+                android:paddingRight="7sp"
+                android:paddingBottom="5sp"
+                android:text="Out of Stock"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5sp"
-            android:fontFamily="@font/medium"
-            android:gravity="center"
-            android:hint="Product Name"
-            android:text="@{item.name}"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
+            android:layout_marginStart="10sp"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2sp"
-            android:fontFamily="@font/bold"
-            android:gravity="center"
-            android:hint="$0.00"
-            android:priceText="@{item.getProductPrice}"
-            android:textColor="@color/colorAccent"
-            android:textSize="15sp" />
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5sp"
+                android:fontFamily="@font/normal"
+                android:hint="Product Name"
+                android:maxLines="3"
+                android:text="@{item.name}"
+                android:textColor="@color/user_text"
+                android:textColorHint="@color/user_text"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="2sp"
+                android:fontFamily="@font/bold"
+                android:hint="$0.00"
+                android:priceText="@{item.getProductPrice}"
+                android:textColor="@color/user_text"
+                android:textColorHint="@color/user_text"
+                android:textSize="15sp" />
+        </LinearLayout>
+
 
     </LinearLayout>
+
 
 </layout>

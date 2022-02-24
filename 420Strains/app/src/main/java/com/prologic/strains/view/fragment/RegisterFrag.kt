@@ -36,8 +36,6 @@ import java.util.*
 
 class RegisterFrag : Fragment() {
     lateinit var viewModel: RegisterViewModel
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -50,14 +48,10 @@ class RegisterFrag : Fragment() {
         binding.lifecycleOwner = this
         binding.executePendingBindings()
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-
         viewModel.isLoaderVisible.observeForever {
             if (it)
                 DialogLoading.show(requireContext())

@@ -24,6 +24,10 @@ import com.prologic.strains.db.AppRoomDatabase
 import com.prologic.strains.view.activity.MyImageView
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.*
+import okio.buffer
+import okio.source
+import java.io.IOException
+import java.nio.charset.Charset
 import java.util.concurrent.TimeUnit
 
 
@@ -39,12 +43,21 @@ val title_name = "title_name"
 val user_password = "user_password"
 val user_email = "user_email"
 var is_cart_update = true
-val on_back_key = "on_back_key"
-val billing_shipping = "billing_shipping"
+
 val billing = "billing"
 val shipping = "shipping"
 var gson = Gson()
 
+fun getAssetJsonAssets(fileName:String): String? {
+    var jsonSting: String? = null
+    try {
+        val source = application.assets.open(fileName).source().buffer()
+        jsonSting= source.readByteString().string(Charset.forName("utf-8"))
+    } catch (e: IOException) {
+        e.printStackTrace()
+    }
+    return jsonSting
+}
 fun getProductUniqeKey(product_id: String, variation_id: String): String {
     return "${product_id}_${variation_id}"
 }
@@ -81,31 +94,30 @@ fun hideSoftKeyBoard(activity: Activity) {
 
 }
 
+fun hideSoftKeyBoard(view : View) {
+    try {
+        val imm =
+            view.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+    } catch (e: Exception) {
+        e.printStackTrace()
+    }
+
+}
+
 fun isNetworkAvailable(context: Context?): Boolean {
-    if (context == null) return false
     val connectivityManager =
-        context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-        val capabilities =
-            connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
-        if (capabilities != null) {
-            when {
-                capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> {
-                    return true
-                }
-                capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> {
-                    return true
-                }
-                capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> {
-                    return true
-                }
-            }
-        }
-    } else {
-        val activeNetworkInfo = connectivityManager.activeNetworkInfo
-        if (activeNetworkInfo != null && activeNetworkInfo.isConnected) {
-            return true
-        }
+        context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    val networkCapabilities =
+        connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+    if (networkCapabilities == null)
+        return false
+    if (networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+        return true
+    } else if (networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+        return true
+    } else if (networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
+        return true
     }
     return false
 }
@@ -121,7 +133,7 @@ fun showToastShort(msg: String) {
 fun deleteCardData() {
     val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
         val error = "Error : " + throwable.localizedMessage
-       // showToast(error)
+        // showToast(error)
     }
     val roomProductDao = getRoomDatabase().productRoomDao()
     CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
@@ -149,6 +161,7 @@ fun showImage(imageView: ImageView, imageUrl: String?, imageTitle: String?) {
     }
 
 }
+
 @BindingAdapter("loadImageOriginal")
 fun loadImageOriginal(imageView: ImageView, imageUrl: String?) {
     Picasso.get()
@@ -157,6 +170,7 @@ fun loadImageOriginal(imageView: ImageView, imageUrl: String?) {
         .error(R.drawable.loader)
         .into(imageView)
 }
+
 @BindingAdapter("loadImage")
 fun loadImage(imageView: ImageView, imageUrl: String?) {
     Picasso.get()
@@ -192,8 +206,8 @@ fun getHtmlSpanned(htmlText: String): Spanned {
 
 @BindingAdapter("android:priceDouble")
 fun getPriceTextView(textView: TextView, price: Double?) {
-    if (price!=null)
-    textView.text = currency + number2digits(price)
+    if (price != null)
+        textView.text = currency + number2digits(price)
 }
 
 @BindingAdapter("android:priceText")

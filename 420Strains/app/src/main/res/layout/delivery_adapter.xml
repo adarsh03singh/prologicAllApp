@@ -25,12 +25,12 @@
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/medium"
+            android:fontFamily="@font/normal"
             android:hint="Category Name"
             android:includeFontPadding="false"
             android:text="@{item.title}"
             android:textColor="@color/user_text"
-            android:textSize="15sp" />
+            android:textSize="14sp" />
 
     </LinearLayout>
 

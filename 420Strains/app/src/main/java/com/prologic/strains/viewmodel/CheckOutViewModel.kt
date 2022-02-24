@@ -8,19 +8,22 @@ import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.prologic.strains.R
 import com.prologic.strains.adapter.CheckOutCartAdapter
-import com.prologic.strains.databinding.CheckOutBinding
 import com.prologic.strains.db.ProductRoom
 import com.prologic.strains.model.auth.Billing
 import com.prologic.strains.model.auth.Shipping
 import com.prologic.strains.model.coupon.CouponItem
-import com.prologic.strains.model.create_order.*
+import com.prologic.strains.model.create_order.CouponLines
+import com.prologic.strains.model.create_order.CreateOrder
+import com.prologic.strains.model.create_order.OrderResponse
+import com.prologic.strains.model.create_order.ProductItem
 import com.prologic.strains.network.Repository
 import com.prologic.strains.network.errorException
 import com.prologic.strains.utils.*
 import com.prologic.strains.view.fragment.ShippingBilling
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class CheckOutViewModel(application: Application) : AndroidViewModel(application) {
@@ -127,7 +130,7 @@ class CheckOutViewModel(application: Application) : AndroidViewModel(application
             if (billing.company.isNotEmpty())
                 value += "Company : " + billing.company + "<br> "
             value += billing.state + " " + billing.country + " Postcode <b>" + billing.postcode + "</b><br>"
-            value += "<b>Contact : </b><br>Phone Number : " + billing.phone + "<br>Email Id : " + billing.email + "<br> "
+            value += "Contact :<br>Phone Number : " + billing.phone + "<br>Email Id : " + billing.email + "<br> "
             billing_details.value = value
         }
     }
@@ -155,7 +158,7 @@ class CheckOutViewModel(application: Application) : AndroidViewModel(application
             city = bundle.getString("cityName")!!,
             company = bundle.getString("companyName")!!,
             state = bundle.getString("stateName")!!,
-            country = bundle.getString("countryRegionId")!!,
+            country = bundle.getString("countryId")!!,
             postcode = bundle.getString("postcode")!!,
             phone = bundle.getString("phoneNumber")!!,
             email = bundle.getString("emailAddress")!!,
@@ -173,7 +176,7 @@ class CheckOutViewModel(application: Application) : AndroidViewModel(application
             city = bundle.getString("cityName")!!,
             company = bundle.getString("companyName")!!,
             state = bundle.getString("stateName")!!,
-            country = bundle.getString("countryRegionId")!!,
+            country = bundle.getString("countryId")!!,
             postcode = bundle.getString("postcode")!!,
         )
         shipping = shipping2
@@ -190,8 +193,7 @@ class CheckOutViewModel(application: Application) : AndroidViewModel(application
         bundle.putString("address_1", billing.address_1)
         bundle.putString("address_2", billing.address_2)
         bundle.putString("companyName", billing.company)
-        bundle.putString("countryRegionName", billing.country)
-        bundle.putString("countryRegionId", billing.country)
+        bundle.putString("countryId", billing.country)
         bundle.putString("stateName", billing.state)
         bundle.putString("cityName", billing.city)
         bundle.putString("postcode", billing.postcode)
@@ -209,8 +211,7 @@ class CheckOutViewModel(application: Application) : AndroidViewModel(application
         bundle.putString("address_1", shipping.address_1)
         bundle.putString("address_2", shipping.address_2)
         bundle.putString("companyName", shipping.company)
-        bundle.putString("countryRegionName", shipping.country)
-        bundle.putString("countryRegionId", shipping.country)
+        bundle.putString("countryId", shipping.country)
         bundle.putString("stateName", shipping.state)
         bundle.putString("cityName", shipping.city)
         bundle.putString("postcode", shipping.postcode)
@@ -240,29 +241,65 @@ class CheckOutViewModel(application: Application) : AndroidViewModel(application
 
     }
 
-    fun move_billing_page(view: View) {
-        val fragment = ShippingBilling()
-        val bundle = getBillingBundle()
-        bundle.putString(view_type, com.prologic.strains.utils.billing)
-        bundle.putString(title_name, "Billing Details")
-        fragment.arguments = bundle
-        addFragment(fragment)
+
+
+    fun checkBilling(): String {
+        if (billing!!.first_name.isNullOrEmpty()) {
+            return "First Name can't be blank!"
+        } else if (billing!!.last_name.isNullOrEmpty()) {
+            return "Lat Name can't be blank!"
+        } else if (billing!!.address_1.isNullOrEmpty()) {
+            return "Address1 can't be blank!"
+        } else if (billing!!.address_2.isNullOrEmpty()) {
+            return "Address2 can't be blank!"
+        } else if (billing!!.city.isNullOrEmpty()) {
+            return "City can't be blank!"
+        } else if (billing!!.state.isNullOrEmpty()) {
+            return "State can't be blank!"
+        } else if (billing!!.country.isNullOrEmpty()) {
+            return "Country can't be blank!"
+        } else if (billing!!.postcode.isNullOrEmpty()) {
+            return "Postcode can't be blank!"
+        } else if (billing!!.phone.isNullOrEmpty()) {
+            return "Phone No can't be blank!"
+        } else if (billing!!.email.isNullOrEmpty()) {
+            return "Email Id can't be blank!"
+        }
+        return ""
     }
 
-    fun move_shipping_page(view: View) {
-        val fragment = ShippingBilling()
-        val bundle = getShippingBundle()
-        bundle.putString(view_type, com.prologic.strains.utils.shipping)
-        bundle.putString(title_name, "Shipping Details")
-        fragment.arguments = bundle
-        addFragment(fragment)
+    fun checkShipping(): String {
+        if (shipping!!.first_name.isNullOrEmpty()) {
+            return "First Name can't be blank!"
+        } else if (shipping!!.last_name.isNullOrEmpty()) {
+            return "Lat Name can't be blank!"
+        } else if (shipping!!.address_1.isNullOrEmpty()) {
+            return "Address1 can't be blank!"
+        } else if (shipping!!.address_2.isNullOrEmpty()) {
+            return "Address2 can't be blank!"
+        } else if (shipping!!.city.isNullOrEmpty()) {
+            return "City can't be blank!"
+        } else if (shipping!!.state.isNullOrEmpty()) {
+            return "State can't be blank!"
+        } else if (shipping!!.country.isNullOrEmpty()) {
+            return "Country can't be blank!"
+        } else if (shipping!!.postcode.isNullOrEmpty()) {
+            return "Postcode can't be blank!"
+        }
+        return ""
     }
 
     fun checkValidation(): Boolean {
+        val billingError = checkBilling()
+        val shippingError = checkShipping()
         var isValidation = false
         if (customer_id.isEmpty()) {
             errorMessage.postValue("Customer Id not available")
-        } else if (productRoomArray.size == 0) {
+        } else if (!billingError.isNullOrEmpty()) {
+            errorMessage.postValue("Billing Details : " + billingError)
+        }/* else if (!shippingError.isNullOrEmpty()) {
+            actionMessage.postValue( "Shipping Details : " + shippingError)
+        } */ else if (productRoomArray.size == 0) {
             errorMessage.postValue("Please Add product")
         } else if (billing_details.value!!.isEmpty()) {
             errorMessage.postValue("Please select billing")

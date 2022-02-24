@@ -28,7 +28,7 @@
             android:fontFamily="@font/medium"
             android:hint="Category Name"
             android:includeFontPadding="false"
-            android:text="@{item.name}"
+            android:text="@{item.getNameCount}"
             android:textColor="@color/user_text"
             android:textSize="14sp" />
 

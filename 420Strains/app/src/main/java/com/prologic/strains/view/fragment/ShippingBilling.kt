@@ -55,11 +55,11 @@ class ShippingBilling : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getCountryState()
         bundle = requireArguments()
-        val view_type = bundle.getString(view_type)
+        val view_type = bundle.getString("result_key")
         setHeader()
-        if (view_type.equals(billing))
+        if (view_type.equals("billing"))
             viewModel.view_type.value = View.VISIBLE
-        else if (view_type.equals(shipping))
+        else if (view_type.equals("shipping"))
             viewModel.view_type.value = View.GONE
 
         viewModel.setValue(bundle)
@@ -68,13 +68,12 @@ class ShippingBilling : Fragment() {
             validation()
 
         }
-        countryRegion.setOnClickListener {
+        countryId.setOnClickListener {
             searchDialog = SearchDialog(viewModel.getCountry(), requireActivity())
             searchDialog.setHint("Search Country")
             searchDialog.setOnItemClickListItem(object : OnSearchDialogListener {
                 override fun onClick(item: SearchItem) {
-                    viewModel.countryRegionName.postValue(item.title)
-                    viewModel.countryRegionId.postValue(item.id)
+                    viewModel.countryId.postValue(item.id)
                     viewModel.stateName.postValue("")
                 }
             })
@@ -109,11 +108,11 @@ class ShippingBilling : Fragment() {
         } else if (cityName.text.toString().isEmpty()) {
             cityName.setError("Can't be blank")
             cityName.requestFocus()
-        } else if (countryRegion.text.toString().isEmpty()) {
-            countryRegion.setError("Can't be blank")
-            countryRegion.requestFocus()
+        } else if (countryId.text.toString().isEmpty()) {
+            countryId.setError("Country can't be blank")
+            countryId.requestFocus()
         } else if (stateName.text.toString().isEmpty()) {
-            stateName.setError("Can't be blank")
+            stateName.setError("Sate can't be blank")
             stateName.requestFocus()
         } else if (postcode.text.toString().isEmpty()) {
             postcode.setError("Can't be blank")
@@ -125,13 +124,7 @@ class ShippingBilling : Fragment() {
             emailAddress.setError("Invalid Email Id")
             emailAddress.requestFocus()
         } else {
-            val bundle = viewModel.getBundle()
-            bundle.putString(view_type, this.bundle.getString(view_type))
-            requireActivity().supportFragmentManager.setFragmentResult(
-                on_back_key,
-                bundleOf(billing_shipping to bundle)
-            )
-            requireActivity().supportFragmentManager.popBackStack()
+            setOnBackResult(bundle.getString("result_key")!!, viewModel.getBundle())
         }
     }
 

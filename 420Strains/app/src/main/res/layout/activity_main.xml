@@ -74,12 +74,30 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent">
 
+                        <TextView
+                            android:id="@+id/shopClick"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="10sp"
+                            android:background="@drawable/custom_primary_button"
+                            android:fontFamily="@font/medium"
+                            android:includeFontPadding="false"
+                            android:paddingLeft="15sp"
+                            android:paddingTop="7sp"
+                            android:paddingRight="15sp"
+                            android:paddingBottom="7sp"
+                            android:text="Shop"
+                            android:textSize="14sp"
+                            android:visibility="@{viewModel.shop_visibility}"
+                            android:textColor="@color/white" />
+
                         <ImageView
                             android:id="@+id/searchClick"
-                            android:layout_width="40sp"
+                            android:layout_width="50sp"
                             android:layout_height="match_parent"
                             android:background="@drawable/custom_trans_button"
-                            android:padding="2sp"
+                            android:padding="10sp"
                             android:src="@drawable/ic_search_"
                             android:tint="@color/white"
                             android:visibility="@{viewModel.search_visibility}"
@@ -93,9 +111,9 @@
                             android:visibility="@{viewModel.my_cart_visibility}">
 
                             <ImageView
-                                android:layout_width="45sp"
+                                android:layout_width="55sp"
                                 android:layout_height="match_parent"
-                                android:padding="5sp"
+                                android:padding="10sp"
                                 android:src="@drawable/ic_shopping_cart" />
 
                             <TextView
@@ -183,7 +201,7 @@
                     <com.google.android.material.imageview.ShapeableImageView
                         android:layout_width="150sp"
                         android:layout_height="150sp"
-                        android:src="@drawable/logo_circle"
+                        android:src="@drawable/logo"
                         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
 
 
@@ -199,9 +217,9 @@
                         android:textSize="@dimen/header_text_size" />
 
                     <TextView
-                        android:layout_marginTop="3sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="3sp"
                         android:fontFamily="@font/normal"
                         android:hint="User Email"
                         android:htmlText="@{viewModel.user_email}"
@@ -225,7 +243,7 @@
                         android:layout_height="wrap_content"
 
                         android:fontFamily="@font/medium"
-                        android:text="My Profile"
+                        android:text="Profile"
                         android:textColor="@color/user_text"
                         android:textSize="16sp" />
 

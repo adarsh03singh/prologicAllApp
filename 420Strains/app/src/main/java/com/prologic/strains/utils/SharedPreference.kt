@@ -67,7 +67,7 @@ class SharedPreference {
         var registerResponse: UserResult? = null
         val json = appSharedPrefs.getString(user_data, "")
         if (json!!.isNotEmpty()) {
-            registerResponse = Gson().fromJson(json, UserResult::class.java)
+            registerResponse = gson.fromJson(json, UserResult::class.java)
         }
         return registerResponse
     }

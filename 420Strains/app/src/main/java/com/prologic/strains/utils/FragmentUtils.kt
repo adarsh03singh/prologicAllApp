@@ -1,5 +1,6 @@
 package com.prologic.strains.utils
 
+import android.os.Bundle
 import androidx.fragment.app.*
 import com.prologic.strains.R
 import com.prologic.strains.view.activity.MainActivity
@@ -10,7 +11,10 @@ var shooterFragment: Fragment? = null
 fun getAppFragmentManager(): FragmentManager {
     return fragmentActivity!!.supportFragmentManager
 }
-
+fun addFragment(targetFragment: Fragment, bundle: Bundle) {
+    targetFragment.arguments=bundle
+    addFragment(targetFragment)
+}
 fun addFragment(targetFragment: Fragment) {
     val transaction = getAppFragmentManager().beginTransaction()
     transaction.setCustomAnimations(
@@ -64,4 +68,8 @@ fun clearFragments() {
     while (fragmentManager.getBackStackEntryCount() > 0) {
         fragmentManager.popBackStackImmediate()
     }
+}
+fun setOnBackResult(key: String, bundle: Bundle) {
+    getAppFragmentManager().setFragmentResult(key, bundle)
+    getAppFragmentManager().popBackStack()
 }

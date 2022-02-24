@@ -1,6 +1,5 @@
 package com.prologic.strains.view.activity
 
-import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
@@ -91,7 +90,7 @@ class MainActivity : FragmentActivity() {
         aboutUsClick.setOnClickListener { callMenu(aboutUsClick) }
         contactClick.setOnClickListener { callMenu(contactClick) }
         searchClick.setOnClickListener { callMenu(searchClick) }
-
+        shopClick.setOnClickListener { viewModel.showPopupWindow(it) }
         cartClick.setOnClickListener {
             addFragmentBottomTop(CartItem())
 
@@ -158,6 +157,7 @@ class MainActivity : FragmentActivity() {
         } else if (view == profileClick) {
             if (viewModel.userData != null) {
                 addFragment(MyProfile())
+                onBackResult("profile_update")
             } else {
                 loginPage()
             }
@@ -174,9 +174,6 @@ class MainActivity : FragmentActivity() {
         }
     }
 
-/*    fun getActivity(): MainActivity {
-        return mainActivity!!
-    }*/
 
     fun setHeader(
         title: String,
@@ -198,11 +195,13 @@ class MainActivity : FragmentActivity() {
         }
 
         if (isBack) {
+            viewModel.shop_visibility.value = View.GONE
             viewModel.menu_visibility.value = View.GONE
             viewModel.back_visibility.value = View.VISIBLE
         } else {
             viewModel.menu_visibility.value = View.VISIBLE
             viewModel.back_visibility.value = View.GONE
+            viewModel.shop_visibility.value = View.VISIBLE
         }
         if (isCart) {
             viewModel.my_cart_visibility.value = View.VISIBLE
@@ -210,10 +209,6 @@ class MainActivity : FragmentActivity() {
             viewModel.my_cart_visibility.value = View.GONE
         }
     }
-
-/*    override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp()
-    }*/
 
 
     private fun logoutDailog() {
@@ -259,5 +254,16 @@ class MainActivity : FragmentActivity() {
 
     }
 
+    fun onBackResult(result_key: String) {
+        getAppFragmentManager().setFragmentResultListener(
+            result_key,
+            this
+        ) { requestKey, bundle ->
+            if (bundle.getInt("result") == 1) {
+                viewModel.getCustomerById()
+            }
+
+        }
+    }
 }
 

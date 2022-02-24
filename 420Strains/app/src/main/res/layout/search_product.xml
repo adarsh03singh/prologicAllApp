@@ -12,14 +12,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_color"
+        android:background="@color/black"
         android:orientation="vertical">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/headerLay"
+            android:background="@color/black"
             android:layout_width="match_parent"
             android:layout_height="@dimen/header_height"
-            android:background="@color/black"
             android:orientation="vertical"
             android:paddingEnd="5sp">
 
@@ -44,20 +44,20 @@
                     android:layout_marginStart="3sp"
                     android:layout_marginTop="7sp"
                     android:layout_marginEnd="5sp"
-                    android:layout_marginBottom="7sp">
+                    android:layout_marginBottom="5sp">
 
                     <EditText
                         android:id="@+id/search_et"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/_2_dp_radius"
-                        android:enabled="@{viewModel.search_enabled}"
+
                         android:fontFamily="@font/medium"
                         android:gravity="center|start"
                         android:hint="Search Product"
                         android:imeOptions="actionSearch"
                         android:inputType="textCapWords"
-                        android:onTextChanged="@{(text, start, before, count) -> viewModel.onTextChanged(text)}"
+
                         android:paddingStart="12sp"
                         android:paddingEnd="5sp"
                         android:singleLine="true"
@@ -65,7 +65,7 @@
                         android:textColor="@color/white"
                         android:textColorHint="@color/graylight"
                         android:textCursorDrawable="@drawable/color_cursor"
-                        android:textSize="15sp" />
+                        android:textSize="17sp" />
 
                     <ImageView
                         android:id="@+id/searchIcon"
@@ -73,17 +73,7 @@
                         android:layout_height="45sp"
                         android:layout_gravity="center|end"
                         android:padding="7sp"
-                        android:src="@drawable/ic_search_"
-                        android:visibility="@{viewModel.search_visibility}" />
-
-                    <ImageView
-                        android:id="@+id/cancelIcon"
-                        android:layout_width="45sp"
-                        android:layout_height="45sp"
-                        android:layout_gravity="center|end"
-                        android:padding="7sp"
-                        android:src="@drawable/ic_cancel"
-                        android:visibility="@{viewModel.cancel_visibility}" />
+                        android:src="@drawable/ic_search_" />
 
 
                 </FrameLayout>
@@ -105,6 +95,7 @@
                 android:layout_height="match_parent"
                 android:adapter="@{viewModel.searchProductAdapter}"
                 android:clipToPadding="false"
+
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/search_product_adp" />
 

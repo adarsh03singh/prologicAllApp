@@ -1,28 +1,21 @@
 package com.prologic.strains.view.fragment
 
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
-
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.widget.Spinner
-
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.prologic.strains.R
 import com.prologic.strains.databinding.ProductInfoBinding
 import com.prologic.strains.model.product.ProductItem
-import com.prologic.strains.model.product.Variation
-import com.prologic.strains.model.slider.SliderItem
-import com.prologic.strains.model.slider.SliderResult
 import com.prologic.strains.utils.*
-import com.prologic.strains.utils.is_cart_update
-import com.prologic.strains.utils.shooterFragment
 import com.prologic.strains.view.activity.MainActivity
 import com.prologic.strains.viewmodel.ProductInfoViewModel
 import kotlinx.android.synthetic.main.product_info.*
@@ -31,14 +24,13 @@ import kotlinx.android.synthetic.main.product_info.*
 class ProductInfo : Fragment() {
     lateinit var viewModel: ProductInfoViewModel
 
-    lateinit var variationsArray: List<Variation>
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        var binding: ProductInfoBinding =
+        val binding: ProductInfoBinding =
             DataBindingUtil.inflate(inflater, R.layout.product_info, container, false)
         viewModel = ViewModelProvider(this).get(ProductInfoViewModel::class.java)
         binding.viewModel = viewModel
@@ -60,7 +52,7 @@ class ProductInfo : Fragment() {
     private fun setHeader() {
         shooterFragment = this
         (activity as MainActivity).setHeader(
-            viewModel.productItem.value!!.name,
+            viewModel.productItem!!.name,
             true,
             true,
             true,
@@ -71,7 +63,9 @@ class ProductInfo : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.productItem.value = arguments?.getSerializable(intent_data) as ProductItem
+        val productItem = arguments?.getSerializable(intent_data) as ProductItem
+        viewModel.productItem = productItem
+        viewModel.init()
         viewModel.setViewPager(viewPager)
         layMain.visibility = View.GONE
         viewModel.isLoaderVisible.observe(viewLifecycleOwner, Observer { it ->
@@ -83,12 +77,13 @@ class ProductInfo : Fragment() {
 
 
         viewModel.errorMessage.observeForever { it ->
-            if (it.isNotEmpty())
-                AlertError.show(requireActivity(), it, object : OnDialogCloseListener {
-                    override fun onClick() {
-                        requireActivity().supportFragmentManager.popBackStack()
-                    }
-                })
+            AlertError.show(requireActivity(), it.message, object : OnDialogCloseListener {
+                override fun onClick() {
+                    if (it.action == 1)
+                        getAppFragmentManager().popBackStack()
+                }
+            })
+
         }
 
         viewModel.product_quantity.observeForever {
@@ -105,13 +100,11 @@ class ProductInfo : Fragment() {
                 addToCart.visibility = View.VISIBLE
             }
         }
-        viewModel.productItem.observeForever {
+        if (productItem.variations.size == 0) {
             loadData()
-            val sliderResult = SliderResult()
-            it.images.forEach {
-                sliderResult.add(SliderItem(it.src))
-            }
-            viewModel.sliderResult.value = sliderResult
+        }
+        viewModel.variationResult.observeForever {
+            loadData()
         }
     }
 
@@ -126,7 +119,7 @@ class ProductInfo : Fragment() {
     }
 
     private fun loadData() {
-        val productItem = viewModel.productItem.value
+        val productItem = viewModel.productItem
         if (productItem == null)
             return
         setHeader()
@@ -139,8 +132,6 @@ class ProductInfo : Fragment() {
         eventLay.visibility = View.GONE
         spin1Lay.visibility = View.GONE
         spin2Lay.visibility = View.GONE
-
-
         val categories: ArrayList<String> = ArrayList()
         productItem.categories.forEach {
             categories.add(it.name)
@@ -156,9 +147,9 @@ class ProductInfo : Fragment() {
             short_description.visibility = View.GONE
             short_description.text = ""
         }
-        variationsArray = productItem.variations
+
         val attributes = productItem.attributes
-        if (attributes.size > 0 && variationsArray.size > 0) {
+        if (productItem.variations.size > 0) {
             start_end_price.visibility = View.VISIBLE
             unit_option.visibility = View.VISIBLE
             variation_lay.visibility = View.VISIBLE
@@ -179,7 +170,7 @@ class ProductInfo : Fragment() {
             unit_option.visibility = View.GONE
             variation_lay.visibility = View.GONE
             viewModel.getProductQuantity()
-            setPrice(productItem.getProductPrice(), productItem.in_stock)
+            setPrice(productItem.getProductPrice(), productItem.stock_status)
         }
         layMain.visibility = View.VISIBLE
     }
@@ -203,13 +194,13 @@ class ProductInfo : Fragment() {
         }
     }
 
-    private fun setPrice(priceval: String, in_stock: Boolean) {
+    private fun setPrice(priceval: String, stock_status: String) {
         if (priceval.isEmpty()) {
             price.text = ""
         } else {
             price.text = currency + priceval
         }
-        if (in_stock) {
+        if (stock_status.equals("instock")) {
             eventLay.visibility = View.VISIBLE
             outOfStock.visibility = View.GONE
         } else {
@@ -221,19 +212,20 @@ class ProductInfo : Fragment() {
 
 
     fun getSelectedVariations() {
+        val variationsArray = viewModel.variationResult.value!!
         if (variationsArray.size > 1) {
             start_end_price.text =
                 "Min to Max : " + currency + variationsArray[0].price + " - " + currency + variationsArray[variationsArray.size - 1].price
         }
-        viewModel.variation.value = null
+        viewModel.variation = null
         for (variation in variationsArray) {
             val v_att = variation.attributes
             if (v_att.size == 1) {
                 val spin1Val = spin1.selectedItem.toString()
                 if (v_att[0].option.equals(spin1Val)) {
                     unit_option.text = spin1Text.text.toString() + " " + spin1Val
-                    setPrice(variation.getProductPrice(), variation.in_stock)
-                    viewModel.variation.value = variation
+                    setPrice(variation.getProductPrice(), variation.stock_status)
+                    viewModel.variation = variation
                     viewModel.getProductQuantity()
                 }
             } else if (v_att.size == 2) {
@@ -242,8 +234,8 @@ class ProductInfo : Fragment() {
                 if (v_att[0].option.equals(spin1Val) && v_att[1].option.equals(spin2Val)) {
                     unit_option.text =
                         spin1Text.text.toString() + " : " + spin1Val + " & " + spin2Text.text.toString() + " : " + spin2Val
-                    setPrice(variation.getProductPrice(), variation.in_stock)
-                    viewModel.variation.value = variation
+                    setPrice(variation.getProductPrice(), variation.stock_status)
+                    viewModel.variation = variation
                     viewModel.getProductQuantity()
                 }
             }

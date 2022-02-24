@@ -1,21 +1,25 @@
 package com.prologic.strains.view.fragment
+
+import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.core.content.res.ResourcesCompat
 import com.prologic.strains.R
 import com.prologic.strains.databinding.MyProfileBinding
 import com.prologic.strains.utils.*
 import com.prologic.strains.view.activity.MainActivity
 import com.prologic.strains.viewmodel.ProfileViewModel
 import kotlinx.android.synthetic.main.my_profile.*
+
 
 
 class MyProfile : Fragment() {
@@ -50,7 +54,16 @@ class MyProfile : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHeader()
-        viewModel.setView(requireActivity())
+        viewModel.registerResponse.observeForever {
+            SuccessAlert.showHtml(
+                requireActivity(),
+                "Your profile has been updated",
+                object : OnDialogCloseListener {
+                    override fun onClick() {
+                        setOnBackResult("profile_update", bundleOf("result" to 1))
+                    }
+                })
+        }
         viewModel.isLoaderVisible.observe(viewLifecycleOwner, Observer { it ->
             if (it == 1)
                 DialogLoading.show(requireActivity())
@@ -76,7 +89,7 @@ class MyProfile : Fragment() {
                     InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
             }
             input_password.setSelection(input_password.length())
-            input_password.typeface = ResourcesCompat.getFont(requireActivity(), R.font.medium)
+            input_password.typeface = ResourcesCompat.getFont(requireActivity(), R.font.normal)
         }
 
         updateButton.setOnClickListener {
@@ -88,27 +101,46 @@ class MyProfile : Fragment() {
 
         viewModel.update_button.observeForever {
             if (it.equals("Edit Profile")) {
-                input_first_name.setBackgroundResource(R.color.trans)
-                input_last_name.setBackgroundResource(R.color.trans)
-                input_email.setBackgroundResource(R.color.trans)
-                input_password.setBackgroundResource(R.color.trans)
+                input_first_name.setBackgroundResource(R.drawable.edit_back)
+                input_last_name.setBackgroundResource(R.drawable.edit_back)
+                input_email.setBackgroundResource(R.drawable.edit_back)
+                input_password.setBackgroundResource(R.drawable.edit_back)
 
                 input_first_name.isEnabled = false
                 input_last_name.isEnabled = false
                 input_email.isEnabled = false
                 input_password.isEnabled = false
             } else {
-                input_first_name.setBackgroundResource(R.drawable.edt_bg_selector)
-                input_last_name.setBackgroundResource(R.drawable.edt_bg_selector)
-                input_email.setBackgroundResource(R.drawable.edt_bg_selector)
-                input_password.setBackgroundResource(R.drawable.edt_bg_selector)
+                input_first_name.setBackgroundResource(R.drawable.edit_back)
+                input_last_name.setBackgroundResource(R.drawable.edit_back)
+                input_email.setBackgroundResource(R.drawable.edit_back)
+                input_password.setBackgroundResource(R.drawable.edit_back)
                 input_first_name.isEnabled = true
                 input_last_name.isEnabled = true
                 input_email.isEnabled = true
                 input_password.isEnabled = true
             }
         }
-        onBackResult()
+        billingView.setOnClickListener {
+            val result_key = "billing"
+            onBackResult(result_key)
+            val fragment = ShippingBilling()
+            val bundle = viewModel.getBillingBundle()
+            bundle.putString("result_key", result_key)
+            bundle.putString(title_name, "Billing Details")
+            fragment.arguments = bundle
+            addFragment(fragment)
+        }
+        shippingView.setOnClickListener {
+            val result_key = "shipping"
+            onBackResult(result_key)
+            val fragment = ShippingBilling()
+            val bundle = viewModel.getShippingBundle()
+            bundle.putString("result_key", result_key)
+            bundle.putString(title_name, "Shipping Details")
+            fragment.arguments = bundle
+            addFragment(fragment)
+        }
     }
 
 
@@ -131,19 +163,15 @@ class MyProfile : Fragment() {
     }
 
 
-    fun onBackResult() {
-        requireActivity().supportFragmentManager.setFragmentResultListener(
-            on_back_key,
+    fun onBackResult(result_key: String) {
+        getAppFragmentManager().setFragmentResultListener(
+            result_key,
             viewLifecycleOwner
         ) { requestKey, bundle ->
-            if (requestKey.equals(on_back_key)) {
-                val bundle = bundle.getBundle(billing_shipping)!!
-                val view_type = bundle.getString(view_type)
-                if (view_type.equals(billing)) {
-                    viewModel.setBillingBundle(bundle)
-                } else if (view_type.equals(shipping)) {
-                    viewModel.setShippingBundle(bundle)
-                }
+            if (requestKey.equals("billing")) {
+                viewModel.setBillingBundle(bundle)
+            } else if (requestKey.equals("shipping")) {
+                viewModel.setShippingBundle(bundle)
             }
         }
     }

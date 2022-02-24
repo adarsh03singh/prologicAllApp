@@ -105,30 +105,45 @@ class CheckOut : Fragment() {
                     viewModel.getCoupon()
                 }
         }
-        onBackResult()
+        billingView.setOnClickListener {
+            val result_key = "billing"
+            onBackResult(result_key)
+            val fragment = ShippingBilling()
+            val bundle = viewModel.getBillingBundle()
+            bundle.putString("result_key", result_key)
+            bundle.putString(title_name, "Billing Details")
+            fragment.arguments = bundle
+            addFragment(fragment)
+        }
+        shippingView.setOnClickListener {
+            val result_key = "shipping"
+            onBackResult(result_key)
+            val fragment = ShippingBilling()
+            val bundle = viewModel.getShippingBundle()
+            bundle.putString("result_key", result_key)
+            bundle.putString(title_name, "Shipping Details")
+            fragment.arguments = bundle
+            addFragment(fragment)
+        }
         create_order.setOnClickListener {
             if (viewModel.checkValidation()) {
-                viewModel.createOrderApi()
+                showToast("Order Processing")
+                // viewModel.createOrderApi()
             }
         }
     }
 
-    fun onBackResult() {
-        requireActivity().supportFragmentManager.setFragmentResultListener(
-            on_back_key,
+    fun onBackResult(result_key: String) {
+        getAppFragmentManager().setFragmentResultListener(
+            result_key,
             viewLifecycleOwner
         ) { requestKey, bundle ->
-            if (requestKey.equals(on_back_key)) {
-                val bundle = bundle.getBundle(billing_shipping)!!
-                val view_type = bundle.getString(view_type)
-                if (view_type.equals(billing)) {
-                    viewModel.setBillingBundle(bundle)
-                } else if (view_type.equals(shipping)) {
-                    viewModel.setShippingBundle(bundle)
-                }
+            if (requestKey.equals("billing")) {
+                viewModel.setBillingBundle(bundle)
+            } else if (requestKey.equals("shipping")) {
+                viewModel.setShippingBundle(bundle)
             }
         }
     }
-
 
 }

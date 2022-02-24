@@ -24,8 +24,9 @@
                 android:id="@+id/layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="100sp"
+
                 android:orientation="vertical">
+
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -78,7 +79,7 @@
                                 android:includeFontPadding="false"
                                 android:text="Promotional"
                                 android:textColor="@color/white"
-                                android:textSize="20sp" />
+                                android:textSize="15sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -87,7 +88,7 @@
                                 android:includeFontPadding="false"
                                 android:text="Sales"
                                 android:textColor="@color/white"
-                                android:textSize="35sp" />
+                                android:textSize="25sp" />
                         </LinearLayout>
 
 
@@ -134,7 +135,7 @@
                                 android:includeFontPadding="false"
                                 android:text="Top Shelf"
                                 android:textColor="@color/colorAccent"
-                                android:textSize="25sp" />
+                                android:textSize="15sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -143,7 +144,7 @@
                                 android:includeFontPadding="false"
                                 android:text="Indica"
                                 android:textColor="@color/colorAccent"
-                                android:textSize="40sp" />
+                                android:textSize="25sp" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -159,7 +160,7 @@
                                 android:includeFontPadding="false"
                                 android:text="THE PERFECT BEDTIME BUDS"
                                 android:textColor="@color/white"
-                                android:textSize="18sp" />
+                                android:textSize="14sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -168,7 +169,7 @@
                                 android:includeFontPadding="false"
                                 android:text="Great for people who struggle to get to sleep, indicas produce very sedative effects. Indica smokers often feel sleepy, relaxed, and have a strong desire to eat."
                                 android:textColor="@color/user_text"
-                                android:textSize="13sp" />
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -214,7 +215,7 @@
                                 android:includeFontPadding="false"
                                 android:text="Head\nChanging"
                                 android:textColor="@color/white"
-                                android:textSize="20sp" />
+                                android:textSize="15sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -223,7 +224,7 @@
                                 android:includeFontPadding="false"
                                 android:text="Hybrids"
                                 android:textColor="@color/white"
-                                android:textSize="35sp" />
+                                android:textSize="20sp" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -239,7 +240,7 @@
                                 android:includeFontPadding="false"
                                 android:text="THE BEST OF BOTH WORLDS"
                                 android:textColor="@color/white"
-                                android:textSize="18sp" />
+                                android:textSize="15sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -248,7 +249,7 @@
                                 android:includeFontPadding="false"
                                 android:text="We select the very best sativa and indica strains and combine them into super strains that maintain the best aspects from both parents."
                                 android:textColor="@color/user_text"
-                                android:textSize="13sp" />
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -294,7 +295,7 @@
                                 android:includeFontPadding="false"
                                 android:text="Stimulating"
                                 android:textColor="@color/colorAccent"
-                                android:textSize="25sp" />
+                                android:textSize="15sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -303,7 +304,7 @@
                                 android:includeFontPadding="false"
                                 android:text="Sativa"
                                 android:textColor="@color/colorAccent"
-                                android:textSize="40sp" />
+                                android:textSize="25sp" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -319,7 +320,7 @@
                                 android:includeFontPadding="false"
                                 android:text="THE PERFECT DAYTIME MEDICATION"
                                 android:textColor="@color/white"
-                                android:textSize="18sp" />
+                                android:textSize="15sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -365,7 +366,7 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:orientation="horizontal">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -374,16 +375,17 @@
                                 android:includeFontPadding="false"
                                 android:text="Wax, Shatter, Hash"
                                 android:textColor="@color/white"
-                                android:textSize="20sp" />
+                                android:textSize="15sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/medium"
+                                android:layout_marginStart="10sp"
+                                android:fontFamily="@font/bold"
                                 android:includeFontPadding="false"
                                 android:text="Concentrates"
                                 android:textColor="@color/white"
-                                android:textSize="35sp" />
+                                android:textSize="15sp" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -407,8 +409,8 @@
                                 android:fontFamily="@font/normal"
                                 android:includeFontPadding="false"
                                 android:text="The most important distinction to make between cannabis flowers and concentrates is potency. While bud potency tends to range between 10-25% THC, a concentrate typically falls between 50-80% though some exceptional extracts can even push past 90%."
-                                android:textColor="@color/user_text"
-                                android:textSize="13sp" />
+                                android:textColor="#E8E8E8"
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -426,6 +428,7 @@
 
                 </LinearLayout>
 
+<!--
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -454,6 +457,7 @@
                         app:spanCount="2"
                         tools:listitem="@layout/category_adapter" />
                 </LinearLayout>
+-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -563,6 +567,13 @@
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         tools:listitem="@layout/delivery_adapter" />
                 </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@color/white"
+                    android:src="@drawable/license" />
 
             </LinearLayout>
 

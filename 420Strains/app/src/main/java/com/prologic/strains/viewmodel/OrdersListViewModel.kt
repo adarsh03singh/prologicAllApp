@@ -12,10 +12,7 @@ import com.google.gson.Gson
 import com.prologic.strains.adapter.OrdersAdapter
 import com.prologic.strains.network.Repository
 import com.prologic.strains.network.errorException
-import com.prologic.strains.utils.OrderListClickListener
-import com.prologic.strains.utils.SharedPreference
-import com.prologic.strains.utils.addFragmentFadeAnim
-import com.prologic.strains.utils.intent_data
+import com.prologic.strains.utils.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -43,7 +40,7 @@ class OrdersListViewModel(application: Application) : AndroidViewModel(applicati
     private fun getLocalData() {
         val json = sharedPreference.getString("orders_" + customer_id)
         if (json!!.isNotEmpty())
-            ordersArray.value=(Gson().fromJson(json, OrdersResult::class.java))
+            ordersArray.value=(gson.fromJson(json, OrdersResult::class.java))
     }
 
     fun getOrders() {
@@ -68,7 +65,7 @@ class OrdersListViewModel(application: Application) : AndroidViewModel(applicati
 
     override fun onClick(orderItem: OrderItem) {
         val bundle = Bundle()
-        bundle.putString(intent_data, Gson().toJson(orderItem))
+        bundle.putString(intent_data, gson.toJson(orderItem))
         val fragment = OrderDetails()
         fragment.arguments = bundle
         addFragmentFadeAnim(fragment)

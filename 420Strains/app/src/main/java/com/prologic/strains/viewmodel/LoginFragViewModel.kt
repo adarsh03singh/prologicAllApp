@@ -39,7 +39,7 @@ class LoginFragViewModel(application: Application) : AndroidViewModel(applicatio
                         val loginResponse = response.body()
                         Log.d(TAG, loginResponse.toString())
                         errorMessage.postValue("Welcome " + loginResponse!!.user_email)
-                        sharedPreference.putString(user_login, Gson().toJson(loginResponse))
+                        sharedPreference.putString(user_login, gson.toJson(loginResponse))
                         val customer_data: Customer =
                             apiRepository.getCustomerByEmail(input_email.value!!)
 

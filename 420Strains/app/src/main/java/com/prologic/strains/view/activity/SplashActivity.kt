@@ -16,6 +16,7 @@ import com.prologic.strains.utils.UrlValue
 import com.prologic.strains.utils.fragmentActivity
 
 import com.prologic.strains.viewmodel.SplashViewModel
+import com.prologic.wpsupport.view.WebActivity
 import kotlinx.android.synthetic.main.splash_activity.*
 import kotlinx.coroutines.*
 import java.lang.Runnable
@@ -36,7 +37,7 @@ class SplashActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             delay(TimeUnit.SECONDS.toMillis(1))
             withContext(Dispatchers.Main) {
-                val intent = Intent(applicationContext, MainActivity::class.java)
+                val intent = Intent(applicationContext, WebActivity::class.java)
                 startActivity(intent)
                 finish()
 /*                val intent = Intent(applicationContext, MyWebView::class.java)

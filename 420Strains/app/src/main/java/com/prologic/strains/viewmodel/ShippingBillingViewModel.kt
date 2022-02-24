@@ -15,6 +15,7 @@ import com.prologic.strains.network.Repository
 import com.prologic.strains.network.errorException
 import com.prologic.strains.search_dialog.SearchItem
 import com.prologic.strains.utils.SharedPreference
+import com.prologic.strains.utils.gson
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -28,8 +29,7 @@ class ShippingBillingViewModel(application: Application) : AndroidViewModel(appl
     var address_1 = MutableLiveData<String>("")
     var address_2 = MutableLiveData<String>("")
     var companyName = MutableLiveData<String>("")
-    var countryRegionName = MutableLiveData<String>("")
-    var countryRegionId = MutableLiveData<String>("")
+    var countryId = MutableLiveData<String>("")
     var cityName = MutableLiveData<String>("")
     var stateName = MutableLiveData<String>("")
     var postcode = MutableLiveData<String>("")
@@ -50,8 +50,7 @@ class ShippingBillingViewModel(application: Application) : AndroidViewModel(appl
             address_1.value = bundle.getString("address_1")
             address_2.value = bundle.getString("address_2")
             companyName.value = bundle.getString("companyName")
-            countryRegionName.value = bundle.getString("countryRegionName")
-            countryRegionId.value = bundle.getString("countryRegionId")
+            countryId.value = bundle.getString("countryId")
             stateName.value = bundle.getString("stateName")
             cityName.value = bundle.getString("cityName")
             postcode.value = bundle.getString("postcode")
@@ -68,8 +67,7 @@ class ShippingBillingViewModel(application: Application) : AndroidViewModel(appl
         bundle.putString("address_1", address_1.value)
         bundle.putString("address_2", address_2.value)
         bundle.putString("companyName", companyName.value)
-        bundle.putString("countryRegionName", countryRegionName.value)
-        bundle.putString("countryRegionId", countryRegionId.value)
+        bundle.putString("countryId", countryId.value)
         bundle.putString("stateName", stateName.value)
         bundle.putString("cityName", cityName.value)
         bundle.putString("postcode", postcode.value)
@@ -105,7 +103,7 @@ class ShippingBillingViewModel(application: Application) : AndroidViewModel(appl
     fun getStateArray(): List<String> {
         val countries = countryState.value!!.countries
         for (item in countries) {
-            if (item.alpha2Code.equals(countryRegionId.value)) {
+            if (item.alpha2Code.equals(countryId.value)) {
                 return item.states
             }
         }
@@ -115,7 +113,7 @@ class ShippingBillingViewModel(application: Application) : AndroidViewModel(appl
     fun getCountryState() {
         val json = sharedPreference.getString("country_state")
         if (json!!.isNotEmpty()) {
-            countryState.postValue(Gson().fromJson(json, CountryState::class.java))
+            countryState.postValue(gson.fromJson(json, CountryState::class.java))
         }
         viewModelScope.launch {
             kotlin.runCatching {

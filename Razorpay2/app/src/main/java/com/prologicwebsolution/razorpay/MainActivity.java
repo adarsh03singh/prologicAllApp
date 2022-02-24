@@ -28,8 +28,6 @@ public class MainActivity extends AppCompatActivity implements PaymentResultList
         // checkout use for load all razor library
         // hamlogo ko loading time phase na karna pade isliye ise preload krate h
         Checkout.preload(getApplicationContext());
-
-
         payButton = findViewById(R.id.paybutton);
         payStatus = findViewById(R.id.payStatus);
 
@@ -46,7 +44,6 @@ public class MainActivity extends AppCompatActivity implements PaymentResultList
     public void PaymentNow(String amount){
 
         final Activity activity = this;
-
         Checkout checkout = new Checkout();
         checkout.setKeyID("rzp_test_ENKopQVUjc3bu5");
         checkout.setImage(R.drawable.ic_launcher_foreground);
@@ -57,14 +54,14 @@ public class MainActivity extends AppCompatActivity implements PaymentResultList
 
         try {
             JSONObject options = new JSONObject();
-            options.put("name", "Prologic Web Solutions");
-            options.put("description", "Refence no. #5536737");
-            options.put("image", "https://woocommerce.com/wp-content/uploads/2021/01/fb-razorpay@2x.png");
-            options.put("theme.color", "#e3665d");
-            options.put("currency", "INR");
-            options.put("amount", finalAmount+"");
-            options.put("prefill.email", "adadad@gmail.com");
-            options.put("prefill.contact", "98657577257");
+//            options.put("name", "Prologic Web Solutions");
+//            options.put("description", "Refence no. #5536737");
+//            options.put("image", "https://woocommerce.com/wp-content/uploads/2021/01/fb-razorpay@2x.png");
+//            options.put("theme.color", "#e3665d");
+//            options.put("currency", "INR");
+//            options.put("amount", finalAmount+"");
+//            options.put("prefill.email", "adadad@gmail.com");
+//            options.put("prefill.contact", "98657577257");
             checkout.open(activity,options);
 
         }catch (Exception e){

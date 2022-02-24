@@ -28,7 +28,7 @@
                 android:layout_width="250sp"
                 android:layout_height="250sp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/logo_circle" />
+                android:src="@drawable/logo" />
 
             <ImageView android:layout_marginTop="25sp"
                 android:layout_width="match_parent"

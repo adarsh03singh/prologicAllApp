@@ -10,12 +10,12 @@
     <color name="black">#000000</color>
     <color name="gray">#606060</color>
     <color name="green">#008000</color>
-    <color name="hint">#E6E6E6</color>
+    <color name="hint">#AEAEAE</color>
     <color name="blue">#2196F3</color>
     <color name="orange">#FF5722</color>
     <color name="orangeLight">#FF9E80</color>
-    <color name="background_color">#303030</color>
-    <color name="background2_color">#232323</color>
+    <color name="background_color">#222222</color>
+    <color name="background2_color">#191818</color>
     <color name="graylight">#CACACA</color>
     <color name="user_text">#D5D4D4</color>
 

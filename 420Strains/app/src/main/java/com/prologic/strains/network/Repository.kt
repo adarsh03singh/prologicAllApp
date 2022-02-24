@@ -2,23 +2,19 @@ package com.prologic.strains.network
 
 
 import com.blog.prologic.model.country_state.CountryState
-import com.google.gson.Gson
-
 import com.prologic.strains.model.auth.*
-
 import com.prologic.strains.model.category.CategoryResult
 import com.prologic.strains.model.coupon.CouponResult
 import com.prologic.strains.model.create_order.CreateOrder
 import com.prologic.strains.model.create_order.OrderResponse
 import com.prologic.strains.model.delivery.DeliveryAreaResult
 import com.prologic.strains.model.delivery.DeliveryResult
-
 import com.prologic.strains.model.order_list.OrdersResult
 import com.prologic.strains.model.product.ProductResult
-
+import com.prologic.strains.model.product.VariationResult
 import com.prologic.strains.model.slider.SliderResult
-
 import com.prologic.strains.utils.SharedPreference
+import com.prologic.strains.utils.gson
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response
@@ -37,7 +33,7 @@ class Repository {
 
     suspend fun getDeliveryArea(): DeliveryResult {
         val response = getClient().getDeliveryArea().body()!!
-        sharedPreference.putString("delivery_area", Gson().toJson(response))
+        sharedPreference.putString("delivery_area", gson.toJson(response))
         return response
     }
 
@@ -72,27 +68,34 @@ class Repository {
 
     suspend fun getCategory(): CategoryResult {
         val response = getClient().getCategory().body()!!
-        sharedPreference.putString("category_data", Gson().toJson(response))
+        sharedPreference.putString("category_data", gson.toJson(response))
         return response
     }
 
-    suspend fun getProductByCategory(category: String): ProductResult {
-        val response = getClient().getProductByCategory(category).body()!!
-        sharedPreference.putString("product_" + category, Gson().toJson(response))
+    suspend fun getProducts(
+        category: String,
+        page: Int,
+        orderby: String,
+        order: String
+    ): ProductResult {
+        val response: ProductResult?
+        if (category.isNullOrEmpty())
+            response = getClient().getProducts(page, orderby, order).body()!!
+        else
+            response = getClient().getProductByCategory(category, page, orderby, order).body()!!
         return response
     }
 
-
-
+    suspend fun getProductVariations(id: String): VariationResult {
+        val response = getClient().getProductVariations(id).body()!!
+        return response
+    }
 
     suspend fun getSlider(): SliderResult {
         val response = getClient().getSlider().body()!!
-        sharedPreference.putString("slider_data", Gson().toJson(response))
+        sharedPreference.putString("slider_data", gson.toJson(response))
         return response
     }
-
-
-
 
 
     suspend fun getCoupon(coupon_code: String): CouponResult {
@@ -108,19 +111,14 @@ class Repository {
 
     suspend fun getCountryState(): CountryState {
         val response = getClient().getCountryState().body()!!
-        sharedPreference.putString("country_state", Gson().toJson(response))
+        sharedPreference.putString("country_state", gson.toJson(response))
         return response
     }
 
-    suspend fun getFeaturedProduct(): ProductResult {
-        val response = getClient().getFeaturedProduct(true).body()!!
-        sharedPreference.putString("featured_product", Gson().toJson(response))
-        return response
-    }
 
     suspend fun getOrders(customer_id: String): OrdersResult {
         val response = getClient().getOrders(customer_id).body()!!
-        sharedPreference.putString("orders_" + customer_id, Gson().toJson(response))
+        sharedPreference.putString("orders_" + customer_id, gson.toJson(response))
         return response
     }
 }

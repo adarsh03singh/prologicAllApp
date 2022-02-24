@@ -1,15 +1,12 @@
 package com.prologic.strains.viewmodel
 
-import android.app.Activity
 import android.app.Application
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-
 import com.google.gson.Gson
 import com.prologic.strains.model.ApiError
 import com.prologic.strains.model.auth.Billing
@@ -19,7 +16,6 @@ import com.prologic.strains.model.auth.UserResult
 import com.prologic.strains.network.Repository
 import com.prologic.strains.network.errorException
 import com.prologic.strains.utils.*
-import com.prologic.strains.view.activity.MainActivity
 import com.prologic.strains.view.fragment.ShippingBilling
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -45,56 +41,38 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
     var billing: Billing = user_data!!.billing
     var shipping: Shipping = user_data!!.shipping
 
-    fun setView(activity: Activity) {
+    init {
         input_first_name.value = user_data?.first_name
         input_last_name.value = user_data?.last_name
         input_email.value = user_data?.email
         input_password.value = sharedPreference.getString(user_password)
-        setBilling()
-        setShipping()
-        registerResponse.observeForever {
-            sharedPreference.putString(user_email, input_email.value!!)
-            sharedPreference.putString(user_password, input_password.value!!)
-            Log.d(TAG, it.toString())
-            sharedPreference.putString(com.prologic.strains.utils.user_data, Gson().toJson(it))
-            SuccessAlert.showHtml(
-                activity,
-                "Your profile has been updated",
-                object : OnDialogCloseListener {
-                    override fun onClick() {
-                        val intent = Intent(activity, MainActivity::class.java)
-                        intent.flags =
-                            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-                        activity.startActivity(intent)
-                        activity.finish()
-                    }
-                })
-        }
+        setBillingData()
+        setShippingData()
     }
 
-    private fun setBilling() {
-        if (billing.first_name.isNotEmpty() && billing.last_name.isNotEmpty()) {
-            var value = ""
-            value += "<b>Name : " + billing.first_name + " " + billing.last_name + "</b><br> "
-            value += "<b>Address : </b>" + billing.address_1 + " " + billing.address_2 + " " + billing.city + "<br> "
-            if (billing.company.isNotEmpty())
-                value += "<b>Company : " + billing.company + "</b><br> "
-            value += billing.state + " " + billing.country + " Postcode <b>" + billing.postcode + "</b><br>"
-            value += "<b>Contact : </b><br>Phone Number : " + billing.phone + "<br>Email Id : " + billing.email + "<br> "
-            billing_details.value = value
-        }
+
+    private fun setBillingData() {
+        val mBiiling = billing!!
+        var value = ""
+        value += "Name : " + mBiiling.first_name + " " + mBiiling.last_name + "<br> "
+        if (mBiiling.company.isNotEmpty())
+            value += "Company : " + mBiiling.company + "<br> "
+        value += "Address : " + mBiiling.address_1 + " " + mBiiling.address_2 + " " + mBiiling.city + " "
+        value += mBiiling.state + " " + mBiiling.country + " <b>" + mBiiling.postcode + "</b><br>"
+        value += "Contact Details : <br>Phone Number : " + mBiiling.phone + "<br>Email Id : " + mBiiling.email + "<br> "
+        billing_details.value = value
     }
 
-    private fun setShipping() {
-        if (shipping.first_name.isNotEmpty() && shipping.last_name.isNotEmpty()) {
-            var value = ""
-            value += "<b>Name : " + shipping.first_name + " " + shipping.last_name + "</b><br> "
-            value += "<b>Address : </b>" + shipping.address_1 + " " + shipping.address_2 + " " + shipping.city + "<br> "
-            if (shipping.company.isNotEmpty())
-                value += "<b>Company : " + shipping.company + "</b><br> "
-            value += shipping.state + " " + shipping.country + " Postcode <b>" + shipping.postcode + "</b><br>"
-            shipping_details.value = value
-        }
+    private fun setShippingData() {
+        val mShipping = shipping!!
+        var value = ""
+        value += "Name : " + mShipping.first_name + " " + mShipping.last_name + "<br> "
+        if (mShipping.company.isNotEmpty())
+            value += "Company : " + mShipping.company + "<br> "
+        value += "Address : " + mShipping.address_1 + " " + mShipping.address_2 + " " + mShipping.city + "<br> "
+        value += mShipping.state + " " + mShipping.country + " <b>" + mShipping.postcode + "</b><br>"
+
+        shipping_details.value = value
     }
 
     fun setBillingBundle(bundle: Bundle) {
@@ -106,13 +84,13 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
             city = bundle.getString("cityName")!!,
             company = bundle.getString("companyName")!!,
             state = bundle.getString("stateName")!!,
-            country = bundle.getString("countryRegionId")!!,
+            country = bundle.getString("countryId")!!,
             postcode = bundle.getString("postcode")!!,
             phone = bundle.getString("phoneNumber")!!,
             email = bundle.getString("emailAddress")!!,
         )
         billing = billing2
-        setBilling()
+        setBillingData()
     }
 
     fun setShippingBundle(bundle: Bundle) {
@@ -124,11 +102,11 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
             city = bundle.getString("cityName")!!,
             company = bundle.getString("companyName")!!,
             state = bundle.getString("stateName")!!,
-            country = bundle.getString("countryRegionId")!!,
+            country = bundle.getString("countryId")!!,
             postcode = bundle.getString("postcode")!!,
         )
         shipping = shipping2
-        setShipping()
+        setShippingData()
 
     }
 
@@ -139,8 +117,7 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
         bundle.putString("address_1", billing.address_1)
         bundle.putString("address_2", billing.address_2)
         bundle.putString("companyName", billing.company)
-        bundle.putString("countryRegionName", billing.country)
-        bundle.putString("countryRegionId", billing.country)
+        bundle.putString("countryId", billing.country)
         bundle.putString("stateName", billing.state)
         bundle.putString("cityName", billing.city)
         bundle.putString("postcode", billing.postcode)
@@ -156,8 +133,7 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
         bundle.putString("address_1", shipping.address_1)
         bundle.putString("address_2", shipping.address_2)
         bundle.putString("companyName", shipping.company)
-        bundle.putString("countryRegionName", shipping.country)
-        bundle.putString("countryRegionId", shipping.country)
+        bundle.putString("countryId", shipping.country)
         bundle.putString("stateName", shipping.state)
         bundle.putString("cityName", shipping.city)
         bundle.putString("postcode", shipping.postcode)
@@ -202,6 +178,9 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
                     val response =
                         apiRepository.updateCustomer(user_data.id.toString(), registerRequest)
                     if (response.isSuccessful) {
+                        sharedPreference.putString(com.prologic.strains.utils.user_data, gson.toJson(response.body()))
+                        sharedPreference.putString(user_email, input_email.value!!)
+                        sharedPreference.putString(user_password, input_password.value!!)
                         registerResponse.postValue(response.body())
                     } else {
                         val jsonString = response.errorBody()!!.string()

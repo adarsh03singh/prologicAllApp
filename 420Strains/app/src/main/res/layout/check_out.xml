@@ -129,7 +129,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/custom_trans_button"
                         android:gravity="center"
-                        android:onClick="@{viewModel::move_billing_page}"
+                     android:id="@+id/billingView"
                         android:orientation="horizontal"
                         android:padding="10sp">
 
@@ -185,7 +185,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/custom_trans_button"
                         android:gravity="center"
-                        android:onClick="@{viewModel::move_shipping_page}"
+                        android:id="@+id/shippingView"
                         android:orientation="horizontal"
                         android:padding="7sp">
 

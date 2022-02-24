@@ -1,17 +1,14 @@
 package com.prologic.strains.viewmodel
 
+
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.viewpager.widget.ViewPager
-import com.google.gson.Gson
 import com.prologic.strains.adapter.*
-
-
 import com.prologic.strains.model.business_hour.BusinessHourResult
 import com.prologic.strains.model.business_hour.Item
 import com.prologic.strains.model.category.CategoryItem
@@ -19,49 +16,47 @@ import com.prologic.strains.model.category.CategoryResult
 import com.prologic.strains.model.delivery.DeliveryAreaResult
 import com.prologic.strains.model.delivery.DeliveryItem
 import com.prologic.strains.model.delivery.DeliveryResult
-
 import com.prologic.strains.model.product.ProductItem
 import com.prologic.strains.model.product.ProductResult
 import com.prologic.strains.model.slider.SliderResult
 import com.prologic.strains.network.Repository
 import com.prologic.strains.network.errorException
 import com.prologic.strains.utils.*
-import com.prologic.strains.view.activity.MyWebView
 import com.prologic.strains.view.fragment.PostInfo
 import com.prologic.strains.view.fragment.ProductInfo
 import com.prologic.strains.view.fragment.ProductList
-import kotlinx.android.synthetic.main.home_page.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.*
 
-class HomeViewModel : ViewModel(), CategoryItemListener,
-    FeaturedProductClickListener {
+class HomeViewModel : ViewModel(), CategoryItemListener, ProductItemListener {
     val sharedPreference = SharedPreference()
     val apiRepository = Repository()
-    var isLoaderVisible = MutableLiveData<Boolean>(false)
-    var categoryResult = MutableLiveData<CategoryResult>()
-    var deliveryResult = MutableLiveData<DeliveryResult>()
-    var errorMessage = MutableLiveData<String>("")
-    val categoryAdapter = CategoryAdapter(this)
+    val isLoaderVisible = MutableLiveData<Boolean>()
+
+    val categoryResult = MutableLiveData<CategoryResult>()
+    val deliveryResult = MutableLiveData<DeliveryResult>()
+    val errorMessage = MutableLiveData<String>()
+
+    //val categoryAdapter = CategoryAdapter(this)
     val businessHourAdapter = BusinessHourAdapter(this)
     var promotionalProductResult = MutableLiveData<ProductResult>()
-    var indicaProductResult = MutableLiveData<ProductResult>()
-    var sliderResult = MutableLiveData<SliderResult>()
-    var hybridsProductResult = MutableLiveData<ProductResult>()
-    var sativaProductResult = MutableLiveData<ProductResult>()
-    var concentratesProductResult = MutableLiveData<ProductResult>()
+    val indicaProductResult = MutableLiveData<ProductResult>()
+    val sliderResult = MutableLiveData<SliderResult>()
+    val hybridsProductResult = MutableLiveData<ProductResult>()
+    val sativaProductResult = MutableLiveData<ProductResult>()
+    val concentratesProductResult = MutableLiveData<ProductResult>()
     var businessHourResult = BusinessHourResult()
 
     val sliderAdapter = HomeSliderAdapter()
     val indicatorAdapter = IndicatorAdapter()
-    val promotionalAdapter = HomeProductAdapter(this)
-    val indicaAdapter = HomeProductAdapter(this)
-    val hybridsAdapter = HomeProductAdapter(this)
-    val sativaAdapter = HomeProductAdapter(this)
-    val concentratesAdapter = HomeProductAdapter(this)
+    val promotionalAdapter = ProductAdapter(2)
+    val indicaAdapter = ProductAdapter(2)
+    val hybridsAdapter = ProductAdapter(2)
+    val sativaAdapter = ProductAdapter(2)
+    val concentratesAdapter = ProductAdapter(2)
     val deliveryAdapter = DeliveryAdapter(this)
     var apiCount = 0
 
@@ -87,51 +82,53 @@ class HomeViewModel : ViewModel(), CategoryItemListener,
         businessHourResult.add(Item("Saturday", "11:00 AM", "07:00 PM"))
         businessHourResult.add(Item("Sunday", "CLOSED", "CLOSED"))
 
-
         var json: String? = ""
+
         json = sharedPreference.getString("product_116")
         if (json!!.isNotEmpty())
-            promotionalProductResult.value = (Gson().fromJson(json, ProductResult::class.java))
+            promotionalProductResult.value = gson.fromJson(json, ProductResult::class.java)
 
         json = sharedPreference.getString("product_54")
         if (json!!.isNotEmpty())
-            indicaProductResult.value = (Gson().fromJson(json, ProductResult::class.java))
+            indicaProductResult.value = gson.fromJson(json, ProductResult::class.java)
 
         json = sharedPreference.getString("product_55")
         if (json!!.isNotEmpty())
-            hybridsProductResult.value = (Gson().fromJson(json, ProductResult::class.java))
+            hybridsProductResult.value = gson.fromJson(json, ProductResult::class.java)
 
         json = sharedPreference.getString("product_56")
         if (json!!.isNotEmpty())
-            sativaProductResult.value = (Gson().fromJson(json, ProductResult::class.java))
+            sativaProductResult.value = gson.fromJson(json, ProductResult::class.java)
 
         json = sharedPreference.getString("product_57")
         if (json!!.isNotEmpty())
-            concentratesProductResult.value = (Gson().fromJson(json, ProductResult::class.java))
+            concentratesProductResult.value = gson.fromJson(json, ProductResult::class.java)
 
-        json = sharedPreference.getString("category_data")
-        if (json!!.isNotEmpty())
-            categoryResult.value = (Gson().fromJson(json, CategoryResult::class.java))
+        /*  json = sharedPreference.getString("category_data")
+          if (json!!.isNotEmpty())
+              categoryResult.value = gson.fromJson(json, CategoryResult::class.java)*/
 
         json = sharedPreference.getString("delivery_area")
         if (json!!.isNotEmpty())
-            deliveryResult.value = (Gson().fromJson(json, DeliveryResult::class.java))
+            deliveryResult.value = gson.fromJson(json, DeliveryResult::class.java)
 
         json = sharedPreference.getString("slider_data")
         if (json!!.isNotEmpty())
-            sliderResult.value = (Gson().fromJson(json, SliderResult::class.java))
+            sliderResult.value = gson.fromJson(json, SliderResult::class.java)
 
-        categoryAdapter.setCategoryItemListener(this)
-        promotionalAdapter.setClickItemListener(this)
-        indicaAdapter.setClickItemListener(this)
-        hybridsAdapter.setClickItemListener(this)
-        sativaAdapter.setClickItemListener(this)
-        concentratesAdapter.setClickItemListener(this)
+        //categoryAdapter.setCategoryItemListener(this)
+
+        promotionalAdapter.setOnItemListener(this)
+        indicaAdapter.setOnItemListener(this)
+        hybridsAdapter.setOnItemListener(this)
+        sativaAdapter.setOnItemListener(this)
+        concentratesAdapter.setOnItemListener(this)
         deliveryResult.observeForever {
             deliveryAdapter.updateAdapter(it)
         }
         categoryResult.observeForever {
-            categoryAdapter.updateAdapter(it)
+            Log.d(TAG, it.toString())
+            // categoryAdapter.updateAdapter(it)
         }
         sliderResult.observeForever {
             sliderAdapter.updateAdapter(it)
@@ -139,19 +136,19 @@ class HomeViewModel : ViewModel(), CategoryItemListener,
             startSliding()
         }
         promotionalProductResult.observeForever {
-            promotionalAdapter.updateAdapter(it)
+            promotionalAdapter.setUpdateAdapter(it)
         }
         indicaProductResult.observeForever {
-            indicaAdapter.updateAdapter(it)
+            indicaAdapter.setUpdateAdapter(it)
         }
         hybridsProductResult.observeForever {
-            hybridsAdapter.updateAdapter(it)
+            hybridsAdapter.setUpdateAdapter(it)
         }
         sativaProductResult.observeForever {
-            sativaAdapter.updateAdapter(it)
+            sativaAdapter.setUpdateAdapter(it)
         }
         concentratesProductResult.observeForever {
-            concentratesAdapter.updateAdapter(it)
+            concentratesAdapter.setUpdateAdapter(it)
         }
         initialize()
     }
@@ -159,8 +156,8 @@ class HomeViewModel : ViewModel(), CategoryItemListener,
 
     fun getToday(context: Context) {
         val calendar = Calendar.getInstance()
-        val date = calendar.getTime()
-        val day = SimpleDateFormat("EEEE", Locale.ENGLISH).format(date.getTime())
+        val date = calendar.time
+        val day = SimpleDateFormat("EEEE", Locale.ENGLISH).format(date.time)
         businessHourAdapter.updateAdapter(context, day, businessHourResult)
     }
 
@@ -177,7 +174,7 @@ class HomeViewModel : ViewModel(), CategoryItemListener,
 
     fun hideLoading() {
         apiCount++
-        if (apiCount >= 6) {
+        if (apiCount >= 5) {
             isLoaderVisible.value = false
         }
     }
@@ -203,9 +200,12 @@ class HomeViewModel : ViewModel(), CategoryItemListener,
         viewModelScope.launch {
             kotlin.runCatching {
                 withContext(Dispatchers.IO) {
-                    productResult.postValue(apiRepository.getProductByCategory(category))
+                    apiRepository.getProducts(category, 1, "id", "asc")
+
                 }
             }.onSuccess {
+                productResult.postValue(it)
+                sharedPreference.putString("product_" + category, gson.toJson(it))
                 hideLoading()
             }.onFailure {
                 hideLoading()

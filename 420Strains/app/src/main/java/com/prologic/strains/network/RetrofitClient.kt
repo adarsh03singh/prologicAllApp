@@ -69,7 +69,8 @@ fun errorException(throwable: Throwable): String {
     } else if (throwable is TimeoutException || throwable is TimeoutCancellationException) {
         error_msg = ("Timeout Exception")
     } else if (throwable is Exception) {
-        error_msg = ("Unknown Error"/* + throwable.localizedMessage?.toString()*/)
+        error_msg = "No Internet Connection\n" +
+                "Please check your Wi-Fi or Mobile network connection & try again!"
     }
     Log.d(TAG, "API_Error:\n"+error_msg+"\n"+ throwable.localizedMessage?.toString())
     return error_msg

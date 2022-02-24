@@ -19,10 +19,7 @@ import com.ecom.prologic.viewmodel.OrdersListViewModel
 import com.google.gson.Gson
 import com.prologic.strains.R
 import com.prologic.strains.databinding.OrdersDetailsBinding
-import com.prologic.strains.utils.AlertError
-import com.prologic.strains.utils.currency
-import com.prologic.strains.utils.intent_data
-import com.prologic.strains.utils.shooterFragment
+import com.prologic.strains.utils.*
 import com.prologic.strains.view.activity.MainActivity
 import kotlinx.android.synthetic.main.orders_details.*
 import kotlinx.android.synthetic.main.orders_details.view.*
@@ -51,7 +48,7 @@ class OrderDetails : Fragment() {
         val intent_data = arguments?.getString(intent_data)
 
         if (intent_data != null) {
-            val orderItem = Gson().fromJson(intent_data, OrderItem::class.java)
+            val orderItem = gson.fromJson(intent_data, OrderItem::class.java)
             viewModel.orderItem.value = orderItem
         }
         viewModel.isLoaderVisible.observe(viewLifecycleOwner, Observer { it ->

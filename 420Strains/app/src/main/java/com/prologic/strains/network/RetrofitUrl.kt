@@ -13,6 +13,7 @@ import com.prologic.strains.model.delivery.DeliveryResult
 
 import com.prologic.strains.model.order_list.OrdersResult
 import com.prologic.strains.model.product.ProductResult
+import com.prologic.strains.model.product.VariationResult
 
 import com.prologic.strains.model.slider.SliderResult
 
@@ -57,20 +58,47 @@ interface RetrofitUrl {
     suspend fun getCustomerById(@Path("id") id: String): Response<UserResult>
 
     @GET("wp-json/wc/v3/products/categories?")
-    suspend fun getCategory(): Response<CategoryResult>
-
-    @GET("wp-json/wc/v1/products?")
-    suspend fun getProductByCategory(@Query("category") categories: String): Response<ProductResult>
+    suspend fun getCategory(
+        @Query("orderby") orderby: String = "name",
+        @Query("order") order: String = "asc",
+        @Query("per_page") per_page: Int = 100,
+        @Query("page") page: Int = 1,
+    ): Response<CategoryResult>
 
     @GET("wp-json/wc/v3/products?")
-    suspend fun getFeaturedProduct(@Query("featured") featured: Boolean): Response<ProductResult>
+    suspend fun getProductByCategory(
+        @Query("category") categories: String,
+        @Query("page") page: Int,
+        @Query("orderby") orderby: String,
+        @Query("order") order: String,
+        @Query("per_page") per_page: Int = 20,
+        @Query("status") status: String = "publish"
+    ): Response<ProductResult>
 
+    @GET("wp-json/wc/v3/products?")
+    suspend fun getProducts(
+        @Query("page") page: Int,
+        @Query("orderby") orderby: String,
+        @Query("order") order: String,
+        @Query("per_page") per_page: Int = 30,
+        @Query("status") status: String = "publish"
+    ): Response<ProductResult>
+
+
+    @GET("wp-json/wc/v3/products?")
+    suspend fun getProductBySearch(
+        @Query("search") search: String,
+        @Query("status") status: String = "publish",
+        @Query("per_page") per_page: Int = 10,
+    ): Response<ProductResult>
+
+    @GET("wp-json/wc/v3/products/{id}/variations?")
+    suspend fun getProductVariations(
+        @Path("id") id: String
+    ): Response<VariationResult>
 
     @GET("wp-json/wp/v2/home/slider")
     suspend fun getSlider(): Response<SliderResult>
-
-
-
 
 
     @GET("wp-json/wc/v3/coupons?")
@@ -78,9 +106,6 @@ interface RetrofitUrl {
 
     @POST("wp-json/wc/v3/orders")
     suspend fun createOrder(@Body createOrder: CreateOrder): Response<OrderResponse>
-
-    @GET("wp-json/wc/v1/products?")
-    suspend fun getProductBySearch(@Query("search") search: String): Response<ProductResult>
 
 
     @GET("ramon/country_state.json")

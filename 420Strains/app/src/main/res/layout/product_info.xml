@@ -44,6 +44,18 @@
 
             </FrameLayout>
 
+            <TextView
+                android:id="@+id/outOfStock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/red"
+                android:fontFamily="@font/medium"
+                android:gravity="center"
+                android:padding="10sp"
+                android:text="Out of Stock"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -148,7 +160,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="40sp"
                                     android:layout_marginTop="5sp"
-                                    android:background="@color/black" />
+                                    android:background="@color/background_color" />
 
                             </LinearLayout>
 
@@ -177,7 +189,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="40sp"
                                     android:layout_marginTop="5sp"
-                                    android:background="@color/black" />
+                                    android:background="@color/background_color" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -237,18 +249,6 @@
                                 android:layout_height="28sp"
                                 android:gravity="end">
 
-                                <TextView
-                                    android:id="@+id/outOfStock"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
-                                    android:background="@drawable/_2_red_border"
-                                    android:fontFamily="@font/medium"
-                                    android:gravity="center"
-                                    android:minWidth="90sp"
-                                    android:onClick="@{viewModel::plus}"
-                                    android:text="Out of Stock"
-                                    android:textColor="@color/red"
-                                    android:textSize="14sp" />
 
                                 <LinearLayout
                                     android:id="@+id/eventLay"

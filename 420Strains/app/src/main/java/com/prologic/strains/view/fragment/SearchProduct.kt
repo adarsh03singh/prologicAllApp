@@ -57,27 +57,13 @@ class SearchProduct : Fragment() {
         setHeader()
 
         swipeRefreshLayout.setOnRefreshListener {
-            viewModel.getProductBySearch(viewModel.search_value.value!!)
+            viewModel.getProductBySearch()
         }
         viewModel.isLoaderVisible.observeForever {
-            if (viewModel.search_value.value!!.isEmpty())
-                swipeRefreshLayout.isRefreshing = false
             swipeRefreshLayout.isRefreshing = it
         }
 
-        searchIcon.setOnClickListener {
-            viewModel.searchProduct()
-        }
-        cancelIcon.setOnClickListener {
-            viewModel.cancelProduct()
-        }
-        search_et.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                viewModel.searchProduct()
-                hideSoftKeyBoard(requireActivity())
-            }
-            true
-        }
+
         viewModel.errorMessage.observeForever { it ->
             if (it.isNotEmpty())
                 AlertError.show(requireActivity(), it)

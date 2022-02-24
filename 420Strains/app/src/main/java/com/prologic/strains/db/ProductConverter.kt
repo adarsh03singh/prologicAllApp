@@ -5,6 +5,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.prologic.strains.model.product.Category
 import com.prologic.strains.model.product.VariationAttribute
+import com.prologic.strains.utils.gson
 import java.util.*
 
 class ProductConverter {
@@ -12,23 +13,23 @@ class ProductConverter {
     fun stringToVariationAttribute(data: String?): List<VariationAttribute> {
         if (data == null)
             return Collections.emptyList()
-        return Gson().fromJson(data, object : TypeToken<List<VariationAttribute>>() {}.type)
+        return gson.fromJson(data, object : TypeToken<List<VariationAttribute>>() {}.type)
     }
 
     @TypeConverter
     fun variationAttributeToString(someObjects: List<VariationAttribute>): String {
-        return Gson().toJson(someObjects)
+        return gson.toJson(someObjects)
     }
 
     @TypeConverter
     fun stringToCategory(data: String?): List<Category> {
         if (data == null)
             return Collections.emptyList()
-        return Gson().fromJson(data, object : TypeToken<List<Category>>() {}.type)
+        return gson.fromJson(data, object : TypeToken<List<Category>>() {}.type)
     }
 
     @TypeConverter
     fun categoryToString(someObjects: List<Category>): String {
-        return Gson().toJson(someObjects)
+        return gson.toJson(someObjects)
     }
 }

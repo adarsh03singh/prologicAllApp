@@ -57,7 +57,7 @@ class SharedPreferenceProduct {
         } else {
             val key = getProductUniqeKey(productItem.id, variation.id)
             productRoom.unique_id = key
-            productRoom.image = variation.image[0].src
+            productRoom.image = variation.image.src
             productRoom.variation_id = variation.id
             productRoom.price = variation.price
             productRoom.regular_price = variation.regular_price
