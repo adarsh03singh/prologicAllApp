@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Application
 import android.app.ProgressDialog
 import android.content.Context
+import android.content.Intent
 import android.net.ConnectivityManager
 import android.view.View
 import android.widget.Toast
@@ -18,9 +19,11 @@ import com.prologicwebsolution.microatm.R
 import com.prologicwebsolution.microatm.data.loginData.LoginEntity
 import com.prologicwebsolution.microatm.data.transactionData.GetTransactionEntity
 import com.prologicwebsolution.microatm.data.wallet.WalletEntity
+import com.prologicwebsolution.microatm.database.MyDatabase
 import com.prologicwebsolution.microatm.network2.RetrofitClient
 import com.prologicwebsolution.microatm.repo.LoginRepository
 import com.prologicwebsolution.microatm.repo.TransactionRepository
+import com.prologicwebsolution.microatm.ui.loginUi.LoginActivity
 import com.prologicwebsolution.microatm.util.Coroutines
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -32,6 +35,7 @@ import java.lang.NullPointerException
 @Suppress("UNNECESSARY_NOT_NULL_ASSERTION")
 class DashboardViewModel(application: Application) : AndroidViewModel(application) {
 
+    val myDatabase = MyDatabase.getInstance(application)
     private val transactionRepository: TransactionRepository
     val walletAllData = MutableLiveData<WalletEntity?>()
     private var dialog: ProgressDialog? = null
@@ -119,6 +123,23 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetwork = cm.activeNetworkInfo
         return activeNetwork != null && activeNetwork.isConnectedOrConnecting
+    }
+
+    fun logout(view: View) {
+        viewModelScope.launch {
+            kotlin.runCatching {
+                withContext(Dispatchers.IO) {
+                    myDatabase.clearAllTables()
+//                    sharePreference.clearallSharedPrefernce()
+                }
+            }.onSuccess {
+                val intent = Intent(view.context, LoginActivity::class.java)
+                view.context?.startActivity(intent)
+                (view.context as Activity).finish()
+            }.onFailure {
+
+            }
+        }
     }
 
 }

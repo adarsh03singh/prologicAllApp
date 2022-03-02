@@ -80,7 +80,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/custom_trans_button"
-                    android:onClick="@{viewModel::getAepsBankList}"
                     android:orientation="vertical"
                     android:padding="@dimen/_10sdp">
 
@@ -96,6 +95,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp"
+                        android:onClick="@{viewModel::getAepsBankList}"
                         android:background="@drawable/edt_bg_selector"
                         android:fontFamily="@font/medium"
 

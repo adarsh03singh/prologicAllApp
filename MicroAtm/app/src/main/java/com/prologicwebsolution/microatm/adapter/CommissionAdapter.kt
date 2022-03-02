@@ -15,12 +15,7 @@ import kotlinx.android.synthetic.main.transaction_items.view.*
 import kotlinx.android.synthetic.main.transaction_items.view.tvCardNumber
 
 class CommissionAdapter(val users: List<com.prologicwebsolution.microatm.data.transactionData.Data>?) : RecyclerView.Adapter<CommissionAdapter.ViewHolder>() {
-
-    var navController: NavController? = null
-
     override fun onCreateViewHolder(p0: ViewGroup, viewType: Int): ViewHolder {
-
-        navController = Navigation.findNavController(p0)
         val v: View = LayoutInflater.from(p0.context)
             .inflate(R.layout.commission_items,p0,false)
         return ViewHolder(v)

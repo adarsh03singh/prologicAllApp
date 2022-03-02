@@ -22,6 +22,7 @@ import com.prologicwebsolution.microatm.network2.RetrofitClient
 import com.prologicwebsolution.microatm.repo.HomeRepository
 import com.prologicwebsolution.microatm.util.Constants
 import com.prologicwebsolution.microatm.util.Coroutines
+import com.prologicwebsolution.microatm.util.hideSoftKeyBoard
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -94,6 +95,8 @@ class AepsViewModel(application: Application) : AndroidViewModel(application) {
 
 
     fun getAepsApi(jsonData: String, pidData: String) {
+
+        hideSoftKeyBoard()
         val paramBalanceReq = BalanceReq()
         paramBalanceReq.requestcode = "aepsTxn"
         paramBalanceReq.txType = tnx_type.get()

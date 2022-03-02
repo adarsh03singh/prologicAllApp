@@ -55,6 +55,8 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import android.widget.Toast
 import androidx.core.view.isVisible
+import com.prologicwebsolution.microatm.ui.MainActivity
+import com.prologicwebsolution.microatm.util.shooterFragment
 
 
 class ConnectMicroAtmFragment : Fragment(), View.OnClickListener {
@@ -112,7 +114,7 @@ class ConnectMicroAtmFragment : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        setHeader()
         uCubeManager = UCubeManager.getInstance(view.context, LICENSEY_KEY)
         customDialog = CustomDialog(requireContext())
 
@@ -149,6 +151,16 @@ class ConnectMicroAtmFragment : Fragment(), View.OnClickListener {
 
     }
 
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (!hidden)
+            setHeader()
+    }
+
+    private fun setHeader() {
+        shooterFragment = this
+        (activity as MainActivity).setHeader(true,true,"Connect Micro ATM")
+    }
 
     @SuppressLint("HardwareIds")
     fun callBalanceInquiry() {

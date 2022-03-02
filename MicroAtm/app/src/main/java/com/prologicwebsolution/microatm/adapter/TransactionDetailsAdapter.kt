@@ -1,24 +1,16 @@
 package com.prologicwebsolution.microatm.adapter
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.prologicwebsolution.microatm.R
 import com.prologicwebsolution.microatm.data.transactionData.Data
 import kotlinx.android.synthetic.main.transaction_items.view.*
 
 class TransactionDetailsAdapter(val users: List<Data>?,  val itemClick: (Int) -> Unit) : RecyclerView.Adapter<TransactionDetailsAdapter.ViewHolder>() {
-
-    var navController: NavController? = null
-
     override fun onCreateViewHolder(p0: ViewGroup, viewType: Int): ViewHolder {
 
-        navController = Navigation.findNavController(p0)
         val v: View = LayoutInflater.from(p0.context)
             .inflate(R.layout.transaction_items,p0,false)
         return ViewHolder(v)

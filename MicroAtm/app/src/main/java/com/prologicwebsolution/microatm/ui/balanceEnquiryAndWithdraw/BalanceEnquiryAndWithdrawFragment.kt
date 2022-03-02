@@ -12,8 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.prologicwebsolution.microatm.R
 import com.prologicwebsolution.microatm.adapter.BalanceEnquiryAdaper
 import com.prologicwebsolution.microatm.databinding.FragmentBalanceEnquiryAndWithdrawBinding
+import com.prologicwebsolution.microatm.ui.MainActivity
 
 import com.prologicwebsolution.microatm.ui.commission.CommissionViewModel
+import com.prologicwebsolution.microatm.util.shooterFragment
 import kotlinx.android.synthetic.main.fragment_balance_enquiry_and_withdraw.*
 import kotlinx.android.synthetic.main.fragment_withdrawl_status.*
 
@@ -33,10 +35,11 @@ class BalanceEnquiryAndWithdrawFragment : Fragment() {
         return view
     }
 
+
         @SuppressLint("WrongConstant")
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
-
+            setHeader()
             //adding a layoutmanager
             balanceEnquiry_recycler_view.layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false)
 
@@ -56,6 +59,17 @@ class BalanceEnquiryAndWithdrawFragment : Fragment() {
             balanceEnquiry_recycler_view.adapter = adapter
 
         }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (!hidden)
+            setHeader()
+    }
+
+    private fun setHeader() {
+        shooterFragment = this
+        (activity as MainActivity).setHeader(true,true,"Balance Enquiry")
+    }
         // //creating our Model
         data class User(val name: String)
 }

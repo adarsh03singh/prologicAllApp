@@ -16,6 +16,8 @@ import com.prologicwebsolution.microatm.adapter.CommissionAdapter
 import com.prologicwebsolution.microatm.adapter.WithdrawalStatusAdapter
 import com.prologicwebsolution.microatm.data.payoutList.PayoutListEntity
 import com.prologicwebsolution.microatm.databinding.FragmentWithdrawlStatusBinding
+import com.prologicwebsolution.microatm.ui.MainActivity
+import com.prologicwebsolution.microatm.util.shooterFragment
 import kotlinx.android.synthetic.main.fragment_commission.*
 import kotlinx.android.synthetic.main.fragment_connect_micro_atm.*
 import kotlinx.android.synthetic.main.fragment_withdrawl_status.*
@@ -50,7 +52,7 @@ class WithdrawlStatusFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        setHeader()
         val startDatetext = view.findViewById<EditText>(R.id.startDate)
         val endDatetext = view.findViewById<EditText>(R.id.endDate)
 
@@ -61,6 +63,17 @@ class WithdrawlStatusFragment : Fragment() {
             datePicker(endDatetext)
         }
 
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (!hidden)
+            setHeader()
+    }
+
+    private fun setHeader() {
+        shooterFragment = this
+        (activity as MainActivity).setHeader(true,true,"Withdraw Status")
     }
 
     // Withdrawl status data set in recyclerView

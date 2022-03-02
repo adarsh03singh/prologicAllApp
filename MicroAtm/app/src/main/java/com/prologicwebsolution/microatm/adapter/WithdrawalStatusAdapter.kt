@@ -16,12 +16,7 @@ import kotlinx.android.synthetic.main.transaction_items.view.tvCardNumber
 import kotlinx.android.synthetic.main.withdrawl_status_items.view.*
 
 class WithdrawalStatusAdapter(val users: List<com.prologicwebsolution.microatm.data.payoutList.Data>?) : RecyclerView.Adapter<WithdrawalStatusAdapter.ViewHolder>() {
-
-    var navController: NavController? = null
-
     override fun onCreateViewHolder(p0: ViewGroup, viewType: Int): ViewHolder {
-
-        navController = Navigation.findNavController(p0)
         val v: View = LayoutInflater.from(p0.context)
             .inflate(R.layout.withdrawl_status_items,p0,false)
         return ViewHolder(v)

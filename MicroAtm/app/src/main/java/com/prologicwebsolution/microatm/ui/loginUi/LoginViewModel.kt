@@ -8,6 +8,7 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.AndroidViewModel
@@ -19,6 +20,8 @@ import com.prologicwebsolution.microatm.network2.CreateLoginBody
 import com.prologicwebsolution.microatm.network2.RetrofitClient
 import com.prologicwebsolution.microatm.repo.LoginRepository
 import com.prologicwebsolution.microatm.ui.MainActivity
+import com.prologicwebsolution.microatm.util.fragmentActivity
+import com.prologicwebsolution.microatm.util.hideSoftKeyBoard
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -30,7 +33,7 @@ import java.lang.NullPointerException
 @Suppress("UNNECESSARY_NOT_NULL_ASSERTION")
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val loginRepository: LoginRepository
+     val loginRepository:  LoginRepository
 
     private var dialog: ProgressDialog? = null
     var userName  = MutableLiveData<String>().apply { postValue("") }
@@ -41,12 +44,10 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
     init{
         loginRepository = LoginRepository(application)
-
     }
-
-
     fun loginClient(view: View){
 
+        hideSoftKeyBoard(view)
         if (userName.value.isNullOrEmpty()){
             Snackbar.make(view, "Please enter Email", Snackbar.LENGTH_LONG).show()
         }
@@ -54,7 +55,6 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
             Snackbar.make(view, "Please enter Password", Snackbar.LENGTH_LONG).show()
         }
         else {
-
 
             val paramLoginBody = CreateLoginBody()
             paramLoginBody.username = userName.value.toString()
@@ -108,7 +108,6 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
         }
 
     }
-
 
     fun showToast(view: View,msg: String) {
         Toast.makeText(view.context, msg, Toast.LENGTH_LONG).show()

@@ -1,12 +1,9 @@
 package com.prologicwebsolution.microatm.ui.transaction
 
-import android.app.Activity
 import android.app.AlertDialog
 import android.app.Application
 import android.app.ProgressDialog
-import android.content.Context
 import android.content.DialogInterface
-import android.net.ConnectivityManager
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
@@ -14,14 +11,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.android.material.snackbar.Snackbar
 import com.prologicwebsolution.microatm.data.transactionData.GetTransactionEntity
-import com.prologicwebsolution.microatm.data.wallet.WalletEntity
 import com.prologicwebsolution.microatm.network2.RetrofitClient
 import com.prologicwebsolution.microatm.repo.TransactionRepository
-import com.prologicwebsolution.microatm.util.Coroutines
+import com.prologicwebsolution.microatm.util.hideSoftKeyBoard
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.json.JSONObject
 import retrofit2.Response
 
 @Suppress("UNNECESSARY_NOT_NULL_ASSERTION")
@@ -39,35 +34,8 @@ class TransactionViewModel(application: Application) : AndroidViewModel(applicat
         transactionRepository = TransactionRepository(application)
     }
 
-
-
-    fun callTransactionApiAfterCheckInternet(view: View) {
-        if (isNetworkConnected(view.context!!)) {
-            try {
-                checkfieldsAndCallTransactionApi(view)
-
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        } else {
-            Toast.makeText(view.context, "No internet found.", Toast.LENGTH_LONG).show()
-        }
-    }
-
-
-    fun checkfieldsAndCallTransactionApi(view: View) {
-        if (startDate.value.isNullOrEmpty()) {
-            Snackbar.make(view, "Please enter start date", Snackbar.LENGTH_LONG).show()
-        } else if (endDate.value.isNullOrEmpty()) {
-            Snackbar.make(view, "Please enter end date", Snackbar.LENGTH_LONG).show()
-        } else {
-            transactionADetailpi(view)
-        }
-    }
-
-
     fun transactionADetailpi(view: View) {
-
+        hideSoftKeyBoard()
         if (startDate.value.isNullOrEmpty()) {
             Snackbar.make(view, "Please enter start date", Snackbar.LENGTH_LONG).show()
         } else if (endDate.value.isNullOrEmpty()) {
@@ -132,31 +100,16 @@ class TransactionViewModel(application: Application) : AndroidViewModel(applicat
             if (dialog!!.isShowing)
                 dialog!!.dismiss()
     }
-
-    fun isNetworkConnected(context: Context): Boolean {
-        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val activeNetwork = cm.activeNetworkInfo
-        return activeNetwork != null && activeNetwork.isConnectedOrConnecting
-    }
-
     fun showDialog(view: View, message: String){
-
         val dialogBuilder = AlertDialog.Builder(view.context)
-
-        // set message of alert dialog
         dialogBuilder.setMessage(message)
-                // if the dialog is cancelable
                 .setCancelable(false)
-                // negative button text and action
                 .setNegativeButton("Ok", DialogInterface.OnClickListener {
                     dialog, id -> dialog.cancel()
                 })
 
-        // create dialog box
         val alert = dialogBuilder.create()
-        // set title for alert dialog box
         alert.setTitle("Oops!")
-        // show alert dialog
         alert.show()
     }
 }

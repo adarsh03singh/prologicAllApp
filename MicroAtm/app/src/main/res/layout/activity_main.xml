@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.prologicwebsolution.microatm.ui.MainViewModel" />
+
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/mainParentActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,25 +21,55 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include
-            android:id="@+id/tool_bar_id"
-            layout="@layout/app_bar_home_acticity"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="@dimen/header_height"
+            android:background="@color/blue"
+            android:orientation="vertical"
+            android:visibility="@{viewModel.header_bar_lay}">
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/nav_host_fragment"
-            android:name="androidx.navigation.fragment.NavHostFragment"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <ImageView
+                    android:id="@+id/back_button"
+                    android:layout_width="50sp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/custom_trans_button"
+                    android:paddingStart="10sp"
+                    android:paddingEnd="10sp"
+                    android:src="@drawable/ic_arrow_back"
+                    android:visibility="@{viewModel.back_button_visibility}" />
+
+                <TextView
+                    android:id="@+id/title_name"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/bold"
+                    android:gravity="center|start"
+                    android:hint="@string/app_name"
+                    android:paddingStart="5sp"
+                    android:singleLine="true"
+                    android:text="@{viewModel.title_value}"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="@dimen/header_text_size"
+                    android:visibility="@{viewModel.title_value_visibility}" />
+
+            </LinearLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <FrameLayout
+            android:id="@+id/main_content"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:defaultNavHost="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:navGraph="@navigation/nav_graph" />
-
-
+            android:layout_height="0dp"
+            android:layout_weight="1" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

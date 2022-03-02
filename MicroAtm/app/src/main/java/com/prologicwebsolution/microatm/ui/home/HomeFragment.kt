@@ -5,23 +5,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
-import android.widget.LinearLayout
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.prologicwebsolution.microatm.R
-import com.prologicwebsolution.microatm.adapter.BalanceEnquiryAdaper
 import com.prologicwebsolution.microatm.adapter.HomeReclerviewAdaper
 import com.prologicwebsolution.microatm.databinding.FragmentHomeBinding
-import com.prologicwebsolution.microatm.databinding.FragmentTransactionDetailBinding
-import com.prologicwebsolution.microatm.ui.balanceEnquiryAndWithdraw.BalanceEnquiryAndWithdrawFragment
-import com.prologicwebsolution.microatm.ui.transaction.TransactionViewModel
-import kotlinx.android.synthetic.main.fragment_balance_enquiry_and_withdraw.*
-import kotlinx.android.synthetic.main.fragment_balance_enquiry_and_withdraw.balanceEnquiry_recycler_view
+import com.prologicwebsolution.microatm.ui.MainActivity
+import com.prologicwebsolution.microatm.ui.aepes.AepsFragment
+import com.prologicwebsolution.microatm.ui.dashboared.DashboardFragment
+import com.prologicwebsolution.microatm.util.addFragment
+import com.prologicwebsolution.microatm.util.shooterFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
@@ -45,7 +40,7 @@ class HomeFragment : Fragment() {
     @SuppressLint("WrongConstant")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        setHeader()
         //adding a layoutmanager
         home_recyclerView.layoutManager = GridLayoutManager(context, 2)
 
@@ -62,19 +57,34 @@ class HomeFragment : Fragment() {
         //creating our adapter
         val adapter = HomeReclerviewAdaper(serviceModel) {
             if (it.equals(0))
-                findNavController().navigate(R.id.dashboardFragment)
+                addFragment(DashboardFragment())
             else if (it.equals(1))
-                findNavController().navigate(R.id.aepsFragment, bundleOf("tnx_type" to "BE", "title" to serviceModel.get(it).name)                )
+                addFragment(AepsFragment(),
+                    bundleOf("tnx_type" to "BE", "title" to serviceModel.get(it).name))
             else if (it.equals(3))
-                findNavController().navigate(R.id.aepsFragment, bundleOf("tnx_type" to "MS", "title" to serviceModel.get(it).name))
+                addFragment(AepsFragment(),
+                    bundleOf("tnx_type" to "MS", "title" to serviceModel.get(it).name))
             else if (it.equals(4))
-                findNavController().navigate(R.id.aepsFragment, bundleOf("tnx_type" to "CW", "title" to serviceModel.get(it).name))
+                addFragment(AepsFragment(),
+                    bundleOf("tnx_type" to "CW", "title" to serviceModel.get(it).name))
         }
 
         //now adding the adapter to recyclerview
         home_recyclerView.adapter = adapter
 
     }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (!hidden)
+            setHeader()
+    }
+
+    private fun setHeader() {
+        shooterFragment = this
+        (activity as MainActivity).setHideHeader()
+    }
+
 
     // //creating our Model
     data class ServicesModel(val name: String, val images: Int)

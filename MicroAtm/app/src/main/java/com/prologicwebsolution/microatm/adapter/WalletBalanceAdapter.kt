@@ -15,12 +15,7 @@ import kotlinx.android.synthetic.main.transaction_items.view.*
 import kotlinx.android.synthetic.main.wallet_balance_items.view.*
 
 class WalletBalanceAdapter(val users: List<WalletEntity>?) : RecyclerView.Adapter<WalletBalanceAdapter.ViewHolder>() {
-
-    var navController: NavController? = null
-
     override fun onCreateViewHolder(p0: ViewGroup, viewType: Int): ViewHolder {
-
-        navController = Navigation.findNavController(p0)
         val v: View = LayoutInflater.from(p0.context)
             .inflate(R.layout.wallet_balance_items,p0,false)
         return ViewHolder(v)

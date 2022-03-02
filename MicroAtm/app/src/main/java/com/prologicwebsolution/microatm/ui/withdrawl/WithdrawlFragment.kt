@@ -1,17 +1,15 @@
 package com.prologicwebsolution.microatm.ui.withdrawl
 
-import android.content.res.ColorStateList
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
-import android.widget.RadioGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.prologicwebsolution.microatm.R
 import com.prologicwebsolution.microatm.databinding.FragmentWithdrawlBinding
+import com.prologicwebsolution.microatm.ui.MainActivity
+import com.prologicwebsolution.microatm.util.shooterFragment
 import kotlinx.android.synthetic.main.fragment_withdrawl.*
 
 
@@ -35,6 +33,7 @@ class WithdrawlFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHeader()
 
         impsLayout.setOnClickListener {
             impsLayout.setBackgroundResource(R.drawable.withdraw_amount_blue_background)
@@ -63,11 +62,23 @@ class WithdrawlFragment : Fragment() {
             impsRadioButton.isChecked = false
             neftradiobutton.isChecked = true
 
-            if(neftradiobutton.isChecked){
+            if (neftradiobutton.isChecked) {
                 viewmodel.modeypeValue.value = "LPN"
             }
 
         }
 
     }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (!hidden)
+            setHeader()
+    }
+
+    private fun setHeader() {
+        shooterFragment = this
+        (activity as MainActivity).setHeader(true, true, "Withdrawal")
+    }
+
 }

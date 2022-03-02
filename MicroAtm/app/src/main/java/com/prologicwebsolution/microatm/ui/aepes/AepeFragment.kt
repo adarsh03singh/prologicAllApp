@@ -23,6 +23,7 @@ import com.prologicwebsolution.microatm.databinding.FragmentAepesBinding
 import com.prologicwebsolution.microatm.ui.MainActivity
 import com.prologicwebsolution.microatm.ui.aeps_bank.BankListActivity
 import com.prologicwebsolution.microatm.util.Constants
+import com.prologicwebsolution.microatm.util.shooterFragment
 import kotlinx.android.synthetic.main.fragment_aepes.*
 import java.security.AccessController
 import java.util.*
@@ -49,12 +50,12 @@ class AepsFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_aepes, container, false)
         val binding = FragmentAepesBinding.bind(view)
         val tnx_type = arguments?.getString("tnx_type")!!
-        (activity as MainActivity).toolbar.setTitle(arguments?.getString("title")!!)
+//        (activity as MainActivity).setHeader(true, true, arguments?.getString("title")!!)
         viewmodel = ViewModelProviders.of(this).get(AepsViewModel::class.java)
         binding.viewModel = viewmodel
         binding.lifecycleOwner = this
         viewmodel.setTnxType(tnx_type)
-
+        setHeader()
 
 
         viewmodel.intent_open.observe(this.viewLifecycleOwner, Observer {
@@ -100,6 +101,18 @@ class AepsFragment : Fragment() {
         viewmodel.clearData()
 
     }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (!hidden)
+            setHeader()
+    }
+
+    private fun setHeader() {
+        shooterFragment = this
+        (activity as MainActivity).setHeader(true, true, arguments?.getString("title")!!)
+    }
+
 
     fun openFPSensor() {
         try {

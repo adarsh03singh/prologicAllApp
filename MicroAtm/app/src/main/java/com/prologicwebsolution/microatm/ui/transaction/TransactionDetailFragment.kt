@@ -33,7 +33,9 @@ import com.prologicwebsolution.microatm.adapter.TransactionDetailsAdapter
 import com.prologicwebsolution.microatm.data.transactionData.Data
 import com.prologicwebsolution.microatm.data.transactionData.GetTransactionEntity
 import com.prologicwebsolution.microatm.databinding.FragmentTransactionDetailBinding
+import com.prologicwebsolution.microatm.ui.MainActivity
 import com.prologicwebsolution.microatm.ui.loginUi.LoginViewModel
+import com.prologicwebsolution.microatm.util.shooterFragment
 import kotlinx.android.synthetic.main.fragment_transaction_detail.*
 import java.io.File
 import java.io.FileNotFoundException
@@ -86,7 +88,7 @@ class TransactionDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        setHeader()
         val startDatetext = view.findViewById<EditText>(R.id.startDate)
         val endDatetext = view.findViewById<EditText>(R.id.endDate)
 
@@ -97,6 +99,17 @@ class TransactionDetailFragment : Fragment() {
             datePicker(endDatetext)
         }
 
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (!hidden)
+            setHeader()
+    }
+
+    private fun setHeader() {
+        shooterFragment = this
+        (activity as MainActivity).setHeader(true,true,"Transaction Details")
     }
 
     // transaction data set in recyclerView

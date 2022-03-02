@@ -22,6 +22,7 @@ import com.prologicwebsolution.microatm.repo.HomeRepository
 
 import com.prologicwebsolution.microatm.util.Constants
 import com.prologicwebsolution.microatm.util.Coroutines
+import com.prologicwebsolution.microatm.util.hideSoftKeyBoard
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -58,6 +59,7 @@ class BankListViewModel(application: Application) : AndroidViewModel(application
     }
 
     fun getApi() {
+        hideSoftKeyBoard()
         val bankReqModel = BankReqModel()
         bankReqModel.requestcode = "aepsBanks"
         bankReqModel.username = Constants.USER_NAME
@@ -81,20 +83,6 @@ class BankListViewModel(application: Application) : AndroidViewModel(application
                 error_msg.postValue(RetrofitClient.errorException(it))
             }
         }
-
-
-        //  var response: retrofit2.Response<BankResModel>?
-//        Coroutines.io {
-//            var response = homeRepository.getAepsBankList(bankReqModel)
-//            Coroutines.main {
-//                progress_bar.postValue(false)
-//                if (response.isSuccessful) {
-//                    codeValueList.postValue(response.body()?.codeValues)
-//                } else {
-//                }
-//            }
-//
-//        }
     }
 
 
