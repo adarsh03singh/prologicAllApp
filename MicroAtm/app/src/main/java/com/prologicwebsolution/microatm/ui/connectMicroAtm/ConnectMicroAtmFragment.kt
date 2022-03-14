@@ -10,13 +10,16 @@ import android.bluetooth.BluetoothDevice
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
+import android.os.*
 import android.provider.MediaStore
 import android.provider.Settings
 import android.telephony.TelephonyManager
+import android.util.JsonReader
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -26,13 +29,19 @@ import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.print.PrintHelper
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.prologicwebsolution.microatm.R
+import com.prologicwebsolution.microatm.adapter.BlutoothDevicesAdaper
 import com.prologicwebsolution.microatm.databinding.FragmentConnectMicroAtmBinding
+import com.prologicwebsolution.microatm.ui.MainActivity
 import com.prologicwebsolution.microatm.util.Coroutines
 import com.prologicwebsolution.microatm.util.CustomDialog
+import com.prologicwebsolution.microatm.util.shooterFragment
 import com.sil.ucubesdk.POJO.UCubeRequest
 import com.sil.ucubesdk.UCubeCallBacks
 import com.sil.ucubesdk.UCubeManager
@@ -45,18 +54,6 @@ import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
 import java.util.*
-import android.app.ProgressDialog
-import android.widget.TextView
-import com.prologicwebsolution.microatm.adapter.BlutoothDevicesAdaper
-import android.bluetooth.BluetoothSocket
-import android.content.IntentFilter
-import android.os.*
-import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.LinearLayoutManager
-import android.widget.Toast
-import androidx.core.view.isVisible
-import com.prologicwebsolution.microatm.ui.MainActivity
-import com.prologicwebsolution.microatm.util.shooterFragment
 
 
 class ConnectMicroAtmFragment : Fragment(), View.OnClickListener {
@@ -68,13 +65,14 @@ class ConnectMicroAtmFragment : Fragment(), View.OnClickListener {
     private val tid = "PRO00001"
     val REQUEST_ID_MULTIPLE_PERMISSIONS = 1
     var num: Int = 0
+    var count: Int? = 0
 
 
     var uCubeManager: UCubeManager? = null
     var uCubeRequest: UCubeRequest? = null
-    var balanceEnquiryLayout: androidx.appcompat.widget.LinearLayoutCompat? = null
-    var cashWithdrawlLayout: androidx.appcompat.widget.LinearLayoutCompat? = null
-    var sellByCardLayout: androidx.appcompat.widget.LinearLayoutCompat? = null
+    var balanceEnquiryLayout: LinearLayoutCompat? = null
+    var cashWithdrawlLayout: LinearLayoutCompat? = null
+    var sellByCardLayout: LinearLayoutCompat? = null
     var responseMessageTv: TextView? = null
     var trasactionId = ""
     var customDialog: CustomDialog? = null
@@ -165,24 +163,26 @@ class ConnectMicroAtmFragment : Fragment(), View.OnClickListener {
     @SuppressLint("HardwareIds")
     fun callBalanceInquiry() {
 
-        //Getting imei no of Phone by this code
         var IMEINumber: String? = null
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            IMEINumber = Settings.Secure.getString(requireContext().contentResolver,
-                Settings.Secure.ANDROID_ID
-            )
-        } else {
-            val mTelephony =
-                requireContext().getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-            if (mTelephony.deviceId != null) {
-                IMEINumber = mTelephony.deviceId
-            } else {
-                IMEINumber = Settings.Secure.getString(
-                    requireContext().contentResolver,
-                    Settings.Secure.ANDROID_ID
-                )
-            }
+        getImeiNumber {
+            IMEINumber = it
         }
+        /*   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+               IMEINumber = Settings.Secure.getString(requireContext().contentResolver,
+                   Settings.Secure.ANDROID_ID
+               )
+           } else {
+               val mTelephony =
+                   requireContext().getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+               if (mTelephony.deviceId != null) {
+                   IMEINumber = mTelephony.deviceId
+               } else {
+                   IMEINumber = Settings.Secure.getString(
+                       requireContext().contentResolver,
+                       Settings.Secure.ANDROID_ID
+                   )
+               }
+           }*/
 
         if (pairedDeviceAddress != null) {
             bluetoothAdddress = pairedDeviceAddress
@@ -356,21 +356,8 @@ class ConnectMicroAtmFragment : Fragment(), View.OnClickListener {
     fun callWS(txnvalue: String) {
 
         var IMEINumber: String? = null
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            IMEINumber = Settings.Secure.getString(requireContext().contentResolver,
-                Settings.Secure.ANDROID_ID
-            )
-        } else {
-            val mTelephony =
-                requireContext().getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-            if (mTelephony.deviceId != null) {
-                IMEINumber = mTelephony.deviceId
-            } else {
-                IMEINumber = Settings.Secure.getString(
-                    requireContext().contentResolver,
-                    Settings.Secure.ANDROID_ID
-                )
-            }
+        getImeiNumber {
+            IMEINumber = it
         }
 
         if (pairedDeviceAddress != null) {
@@ -379,11 +366,9 @@ class ConnectMicroAtmFragment : Fragment(), View.OnClickListener {
             uCubeRequest!!.setUsername("8929879302")
             uCubeRequest!!.setPassword("2106")
             uCubeRequest!!.setRefCompany("PROLOGIC")
-            uCubeRequest!!.setMid("PRO000000000001")
-            uCubeRequest!!.setTid("PRO00001")
+            uCubeRequest!!.setMid(mid)
+            uCubeRequest!!.setTid(tid)
             uCubeRequest!!.setImei(IMEINumber)
-//            trasactionId = uCubeManager!!.transactionId
-            uCubeRequest!!.setTransactionId(trasactionId)
             uCubeRequest!!.setImsi("404277270869423")
             uCubeRequest!!.setTxn_amount(txnvalue)
             Log.d(TAG, "bluetoothAdddress: $bluetoothAdddress")
@@ -541,21 +526,8 @@ class ConnectMicroAtmFragment : Fragment(), View.OnClickListener {
     fun callSBCMethod(txnvalue: String) {
 
         var IMEINumber: String? = null
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            IMEINumber = Settings.Secure.getString(requireContext().contentResolver,
-                Settings.Secure.ANDROID_ID
-            )
-        } else {
-            val mTelephony =
-                requireContext().getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-            if (mTelephony.deviceId != null) {
-                IMEINumber = mTelephony.deviceId
-            } else {
-                IMEINumber = Settings.Secure.getString(
-                    requireContext().contentResolver,
-                    Settings.Secure.ANDROID_ID
-                )
-            }
+        getImeiNumber {
+            IMEINumber = it
         }
 
         if (pairedDeviceAddress != null) {
@@ -567,8 +539,6 @@ class ConnectMicroAtmFragment : Fragment(), View.OnClickListener {
             uCubeRequest!!.setMid("441072227302905")
             uCubeRequest!!.setTid("41716955")
             uCubeRequest!!.setImei(IMEINumber)
-//            trasactionId = uCubeManager!!.transactionId
-            uCubeRequest!!.setTransactionId(trasactionId)
             uCubeRequest!!.setImsi("404277270869423")
             uCubeRequest!!.setTxn_amount(txnvalue)
             Log.d(TAG, "bluetoothAdddress: $bluetoothAdddress")
@@ -799,17 +769,12 @@ class ConnectMicroAtmFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         val id = v!!.id
         if (id == R.id.cashWithdrawlLayout) {
-
             callWithdrawlMethod(v)
-
         } else if (id == R.id.balanceEnquiryLayout) {
             callBalanceEnuiryMethod()
-
         } else if (id == R.id.sellBycardLayout) {
             callSellByCardMethod(v)
-
         }
-
     }
 
     fun callWithdrawlMethod(view: View) {
@@ -914,12 +879,12 @@ class ConnectMicroAtmFragment : Fragment(), View.OnClickListener {
     }
 
 
-  private fun pairedDeviceList() {
-      blutoothScanProgressbar.isVisible = true
-      Handler().postDelayed({
-          blutoothScanProgressbar.isVisible = false
+    private fun pairedDeviceList() {
+        blutoothScanProgressbar.isVisible = true
+        Handler().postDelayed({
+            blutoothScanProgressbar.isVisible = false
 
-      }, 2000)
+        }, 2000)
 
         m_pairedDevices = m_bluetoothAdapter!!.bondedDevices
 
@@ -933,27 +898,27 @@ class ConnectMicroAtmFragment : Fragment(), View.OnClickListener {
             showToast("no paired bluetooth devices found")
         }
 
-        blutooth_devices_recycleView.adapter = BlutoothDevicesAdaper(requireView(),list){
+        blutooth_devices_recycleView.adapter = BlutoothDevicesAdaper(requireView(), list) {
             val device: BluetoothDevice = list[it]
             callConfirmationDialog(device)
         }
 
     }
 
-        override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-            super.onActivityResult(requestCode, resultCode, data)
-            if (requestCode == REQUEST_ENABLE_BLUETOOTH) {
-                if (resultCode == Activity.RESULT_OK) {
-                    if (m_bluetoothAdapter!!.isEnabled) {
-                        showToast("Bluetooth has been enabled")
-                    } else {
-                        showToast("Bluetooth has been disabled")
-                    }
-                } else if (resultCode == Activity.RESULT_CANCELED) {
-                    showToast("Bluetooth enabling has been canceled")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_ENABLE_BLUETOOTH) {
+            if (resultCode == Activity.RESULT_OK) {
+                if (m_bluetoothAdapter!!.isEnabled) {
+                    showToast("Bluetooth has been enabled")
+                } else {
+                    showToast("Bluetooth has been disabled")
                 }
+            } else if (resultCode == Activity.RESULT_CANCELED) {
+                showToast("Bluetooth enabling has been canceled")
             }
         }
+    }
 
 
     private fun callConfirmationDialog(bluetoothDevice: BluetoothDevice) {
@@ -1223,6 +1188,48 @@ class ConnectMicroAtmFragment : Fragment(), View.OnClickListener {
         }
         return true
 
+    }
+
+    @SuppressLint("HardwareIds")
+    fun getImeiNumber(value: (value: String) -> Unit) {
+//        var IMEINumber: String? = null
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            value(Settings.Secure.getString(requireContext().contentResolver,
+                Settings.Secure.ANDROID_ID)
+//            IMEINumber = Settings.Secure.getString(requireContext().contentResolver,
+//                Settings.Secure.ANDROID_ID
+            )
+        } else {
+            val mTelephony =
+                requireContext().getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+            if (mTelephony.deviceId != null) {
+                value(mTelephony.deviceId)
+//                IMEINumber = mTelephony.deviceId
+            } else {
+                value(Settings.Secure.getString(
+                    requireContext().contentResolver,
+                    Settings.Secure.ANDROID_ID
+                ))
+//                IMEINumber = Settings.Secure.getString(
+//                    requireContext().contentResolver,
+//                    Settings.Secure.ANDROID_ID
+//                )
+            }
+        }
+    }
+
+    fun setUcubeData() {
+        bluetoothAdddress = pairedDeviceAddress
+        uCubeRequest = UCubeRequest()
+        uCubeRequest!!.setUsername("8929879302")
+        uCubeRequest!!.setPassword("2106")
+        uCubeRequest!!.setRefCompany("PROLOGIC")
+        uCubeRequest!!.setImsi("404277270869423")
+        uCubeRequest!!.setTxn_amount(txnAmount)
+        trasactionId = uCubeManager!!.transactionId
+        uCubeRequest!!.setTransactionId(trasactionId)
+        uCubeRequest!!.setBt_address(bluetoothAdddress)
+        uCubeRequest!!.setRequestCode(TransactionType.INQUIRY) //INQUIRY, DEBIT, WITHDRAWAL
     }
 
 }

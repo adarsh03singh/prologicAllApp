@@ -24,12 +24,30 @@
         <entry key="..\:/Users/adarsh.singh/AndroidStudioProjects/MicroAtm/app/src/main/res/layout/transaction_items.xml" value="0.26871794871794874" />
         <entry key="..\:/Users/adarsh.singh/AndroidStudioProjects/MicroAtm/app/src/main/res/layout/transaction_status_dialog_item.xml" value="0.26871794871794874" />
         <entry key="..\:/Users/adarsh.singh/prologicAllApp/MicroAtm/app/src/main/res/drawable-xhdpi/ic_arrow_back.xml" value="0.2574055158324821" />
+        <entry key="..\:/Users/adarsh.singh/prologicAllApp/MicroAtm/app/src/main/res/drawable/edittext_round_corner.xml" value="0.2625" />
+        <entry key="..\:/Users/adarsh.singh/prologicAllApp/MicroAtm/app/src/main/res/drawable/ic_atm_card_icon.xml" value="0.2625" />
+        <entry key="..\:/Users/adarsh.singh/prologicAllApp/MicroAtm/app/src/main/res/drawable/ic_baseline_bluetooth_24.xml" value="0.2625" />
+        <entry key="..\:/Users/adarsh.singh/prologicAllApp/MicroAtm/app/src/main/res/drawable/micro_atm_debit_card_background.xml" value="0.2625" />
+        <entry key="..\:/Users/adarsh.singh/prologicAllApp/MicroAtm/app/src/main/res/drawable/rounded_bottom_light.xml" value="0.2625" />
+        <entry key="..\:/Users/adarsh.singh/prologicAllApp/MicroAtm/app/src/main/res/drawable/rounded_top_dark.xml" value="0.2625" />
+        <entry key="..\:/Users/adarsh.singh/prologicAllApp/MicroAtm/app/src/main/res/drawable/withdraw_amount_blue_background.xml" value="0.2625" />
+        <entry key="..\:/Users/adarsh.singh/prologicAllApp/MicroAtm/app/src/main/res/drawable/withdraw_amount_gray_background.xml" value="0.2625" />
         <entry key="..\:/Users/adarsh.singh/prologicAllApp/MicroAtm/app/src/main/res/layout/activity_main.xml" value="0.2421875" />
+        <entry key="..\:/Users/adarsh.singh/prologicAllApp/MicroAtm/app/src/main/res/layout/blutooth_paired_items.xml" value="0.2421875" />
+        <entry key="..\:/Users/adarsh.singh/prologicAllApp/MicroAtm/app/src/main/res/layout/cash_withdrawl_dialog_item.xml" value="0.2421875" />
+        <entry key="..\:/Users/adarsh.singh/prologicAllApp/MicroAtm/app/src/main/res/layout/commission_items.xml" value="0.2421875" />
+        <entry key="..\:/Users/adarsh.singh/prologicAllApp/MicroAtm/app/src/main/res/layout/dialog_end_cash_drawer.xml" value="0.2421875" />
         <entry key="..\:/Users/adarsh.singh/prologicAllApp/MicroAtm/app/src/main/res/layout/fragment_aepes.xml" value="0.2421875" />
         <entry key="..\:/Users/adarsh.singh/prologicAllApp/MicroAtm/app/src/main/res/layout/fragment_balance_enquiry_and_withdraw.xml" value="0.2421875" />
+        <entry key="..\:/Users/adarsh.singh/prologicAllApp/MicroAtm/app/src/main/res/layout/fragment_commission.xml" value="0.2421875" />
         <entry key="..\:/Users/adarsh.singh/prologicAllApp/MicroAtm/app/src/main/res/layout/fragment_connect_micro_atm.xml" value="0.2421875" />
         <entry key="..\:/Users/adarsh.singh/prologicAllApp/MicroAtm/app/src/main/res/layout/fragment_dashboard.xml" value="0.22" />
         <entry key="..\:/Users/adarsh.singh/prologicAllApp/MicroAtm/app/src/main/res/layout/fragment_transaction_detail.xml" value="0.2421875" />
+        <entry key="..\:/Users/adarsh.singh/prologicAllApp/MicroAtm/app/src/main/res/layout/fragment_withdrawl.xml" value="0.2421875" />
+        <entry key="..\:/Users/adarsh.singh/prologicAllApp/MicroAtm/app/src/main/res/layout/fragment_withdrawl_status.xml" value="0.2421875" />
+        <entry key="..\:/Users/adarsh.singh/prologicAllApp/MicroAtm/app/src/main/res/layout/transaction_items.xml" value="0.2421875" />
+        <entry key="..\:/Users/adarsh.singh/prologicAllApp/MicroAtm/app/src/main/res/layout/transaction_status_dialog_item.xml" value="0.2421875" />
+        <entry key="..\:/Users/adarsh.singh/prologicAllApp/MicroAtm/app/src/main/res/layout/withdrawl_status_items.xml" value="0.2421875" />
         <entry key="..\:/Users/adarsh.singh/prologicAllApp/MicroAtm/app/src/main/res/menu/main_menu.xml" value="0.2421875" />
       </map>
     </option>
